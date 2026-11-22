@@ -21,7 +21,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px}.panel h2{font-size:16px;margin:0 0 15px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}.stat strong{font-size:26px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:13px}.muted{color:var(--muted)}
 .task{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:5px;accent-color:var(--accent);width:16px;height:16px}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:3px;font-size:13px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px;font-size:16px}.empty{color:#9aa1af;text-align:center;padding:24px 8px;font-size:14px}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700;font-size:15px}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:6px 11px;font-size:15px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:12px;padding:6px 0}.day{min-height:40px;border-radius:8px;background:transparent;color:#515b6e;position:relative;font-size:14px}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent);background:var(--soft)}.day.has-task:after{content:"";position:absolute;bottom:5px;left:calc(50% - 2px);width:5px;height:5px;border-radius:50%;background:var(--green)}.day.has-done:after{background:#b8bdc9}.day.has-lessons:before{content:"";position:absolute;bottom:5px;left:calc(50% - 9px);width:5px;height:5px;border-radius:50%;background:var(--accent)}.day.has-lessons.has-task:before,.day.has-lessons.has-task:after{left:calc(50% - 7px)}.day.has-lessons.has-task:after{left:calc(50% + 3px)}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700;font-size:15px}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:6px 11px;font-size:15px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:12px;padding:6px 0}.day{min-height:40px;border-radius:8px;background:transparent;color:#515b6e;position:relative;font-size:14px}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent);background:var(--soft)}.day.has-task:after{content:"";position:absolute;bottom:5px;left:calc(50% - 2.5px);width:5px;height:5px;border-radius:50%;background:var(--green)}.day.has-done:after{background:#b8bdc9}
 .section{display:none}.section.active{display:block}
 /* Timetable & Tasks CSS */
 .timetable{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.lesson-row{background:var(--lesson-bg);border:1px solid var(--lesson-border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start}.lesson-row.has-deadline{background:var(--red-soft);border-color:var(--red)}.lesson-info strong{display:block;font-size:15px;color:var(--ink);margin-bottom:2px}.lesson-info span{font-size:13px;color:var(--muted)}.lesson-row.has-deadline .lesson-info strong{color:var(--red)}.lesson-actions button{background:var(--soft);color:var(--accent);border:0;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:600}.lesson-actions button:hover{filter:brightness(.95)}
@@ -167,7 +167,6 @@ function checkNotifications() {
     }
   }
 }
-// Run check once when app loads (if they already granted permission)
 setTimeout(checkNotifications, 2000);
 
 /* ---------- TIMETABLE LOGIC ---------- */
@@ -552,18 +551,16 @@ function renderCalendar(){
     let iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
     let num = d<1 ? prev+d : d>days ? d-days : d;
     
-    const dayTasks = data.tasks.filter(t => t.date===iso);
+    const dayTasks = getTasksForDate(iso);
     const hasOpen = dayTasks.some(t => !t.done);
-    const hasDone = dayTasks.length && !hasOpen;
-    const lessons = getLessonsForDate(iso);
+    const hasDone = dayTasks.length > 0 && !hasOpen;
     
     let cls = 'day';
     if(d<1||d>days) cls+=' other';
     if(iso===todayISO()) cls+=' today';
     if(selectedDate && iso===selectedDate) cls+=' selected';
     if(hasOpen) cls+=' has-task';
-    if(hasDone) cls+=' has-done';
-    if(lessons.length) cls+=' has-lessons';
+    else if(hasDone) cls+=' has-done';
     
     out+=`<button class="${cls}" data-date="${iso}">${num}</button>`;
   }
@@ -576,20 +573,35 @@ function renderCalendar(){
   });
 }
 $('prevMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};$('nextMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};
+
 function taskHTML(t){
   let repeatTxt = '';
   if(t.repeat === 'weekly') repeatTxt = ' · repeats weekly';
   if(t.repeat === 'fortnightly') repeatTxt = ' · repeats fortnightly';
   if(t.repeat === 'monthly') repeatTxt = ' · repeats monthly';
 
-  return `<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''}><div class="task-text">${esc(t.text)}<small>${t.date?new Date(t.date+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'No due date'}${repeatTxt}</small></div><button class="delete" data-delete="${t.id}" aria-label="Delete task">×</button></div>`;
+  let daysTxt = '';
+  let isOverdue = false;
+  if (t.date) {
+    const today = new Date(todayISO()+'T12:00:00');
+    const due = new Date(t.date+'T12:00:00');
+    const diff = Math.round((due - today) / (1000*60*60*24));
+    
+    if (diff === 0) daysTxt = 'Due today';
+    else if (diff === 1) daysTxt = 'Due tomorrow';
+    else if (diff > 1) daysTxt = `Due in ${diff} days`;
+    else if (diff < 0) { daysTxt = `${Math.abs(diff)} days overdue`; isOverdue = true; }
+  }
+
+  const colorStyle = isOverdue ? 'color:var(--red); font-weight:600;' : '';
+
+  return `<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''}><div class="task-text">${esc(t.text)}<small>${t.date?new Date(t.date+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'No due date'}${repeatTxt}</small><small style="${colorStyle}">${daysTxt}</small></div><button class="delete" data-delete="${t.id}" aria-label="Delete task">×</button></div>`;
 }
 function wireTasks(){document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{let t=data.tasks.find(x=>x.id===c.dataset.check);if(t)t.done=c.checked;save()});document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{data.tasks=data.tasks.filter(t=>t.id!==b.dataset.delete);save()})}
 
 function renderTasks(){
-  const all=[...data.tasks];
-  const forDay=all.filter(t=>t.date===selectedDate).sort((a,b)=>(a.done?1:0)-(b.done?1:0));
-  const others=all.filter(t=>t.date!==selectedDate).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
+  const forDay=getTasksForDate(selectedDate).sort((a,b)=>(a.done?1:0)-(b.done?1:0));
+  const others=data.tasks.filter(t=>t.date!==selectedDate).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
   
   let html='';
   const lessons = getLessonsForDate(selectedDate);
@@ -661,15 +673,31 @@ function renderTasks(){
 }
 
 function renderHome(){
-  const upcoming=data.tasks
-    .filter(t=>!t.done&&t.date&&t.date>=todayISO())
-    .sort((a,b)=>a.date.localeCompare(b.date))
-    .slice(0,3);
+  let upcomingTasks = [];
+  for(let i=0; i<14; i++) {
+    let d = new Date();
+    d.setDate(d.getDate() + i);
+    let iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    let tasks = getTasksForDate(iso).filter(t => !t.done);
+    upcomingTasks.push(...tasks);
+  }
+  let unique = [...new Map(upcomingTasks.map(t => [t.id, t])).values()];
+  unique.sort((a,b) => a.date.localeCompare(b.date));
+  const top3 = unique.slice(0, 3);
 
-  $('todayTasks').innerHTML=upcoming.length
-    ? upcoming.map(taskHTML).join('')
+  $('todayTasks').innerHTML = top3.length
+    ? top3.map(taskHTML).join('')
     : '<div class="empty">No upcoming tasks. Enjoy the breathing room.</div>';
-  wireTasks();
+  
+  document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{
+    let t=data.tasks.find(x=>x.id===c.dataset.check);
+    if(t) t.done=c.checked;
+    save();
+  });
+  document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{
+    data.tasks=data.tasks.filter(t=>t.id!==b.dataset.delete);
+    save();
+  });
 
   let recent=[...data.notes].sort((a,b)=>b.updated-a.updated).slice(0,4);
   $('recentNotes').innerHTML=recent.length
@@ -769,10 +797,6 @@ $('syncPanelBtn').onclick=()=>{
 };
 
 /* ---------- GENERATE REPEATING TASKS ---------- */
-// This function dynamically generates repeat tasks based on the current month so the calendar always shows them.
-// The user's original "template" task stays in the list and generates copies in the calendar view.
-// *For a pure HTML app, this is the most efficient way to handle repeats without duplicating data endlessly.*
-
 function getTasksForDate(isoDate) {
   let dayTasks = data.tasks.filter(t => t.date === isoDate);
   const d = new Date(isoDate+'T12:00:00');
@@ -780,7 +804,7 @@ function getTasksForDate(isoDate) {
   data.tasks.forEach(t => {
     if(!t.repeat || t.repeat === 'none' || t.date === isoDate) return;
     const start = new Date(t.date+'T12:00:00');
-    if(d < start) return; // Date is before the task started
+    if(d < start) return; 
     
     let match = false;
     if(t.repeat === 'weekly') {
@@ -793,169 +817,12 @@ function getTasksForDate(isoDate) {
     }
     
     if(match) {
-      // Add a virtual copy for the calendar view
       dayTasks.push({...t, id: t.id + '_' + isoDate, originalId: t.id, date: isoDate});
     }
   });
   
   return dayTasks;
 }
-
-// Override renderCalendar to use getTasksForDate
-const originalRenderCalendar = renderCalendar;
-renderCalendar = function() {
-  const y=calDate.getFullYear(), m=calDate.getMonth();
-  $('monthLabel').textContent = calDate.toLocaleDateString(undefined,{month:'long',year:'numeric'});
-  const first=new Date(y,m,1), start=(first.getDay()+6)%7;
-  const days=new Date(y,m+1,0).getDate(), prev=new Date(y,m,0).getDate();
-  let out=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="weekday">${x}</div>`).join('');
-  for(let i=0;i<42;i++){
-    let d=i-start+1, dt=new Date(y,m,d);
-    let iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
-    let num = d<1 ? prev+d : d>days ? d-days : d;
-    
-    const dayTasks = getTasksForDate(iso);
-    const hasOpen = dayTasks.some(t => !t.done);
-    const hasDone = dayTasks.length > 0 && !hasOpen;
-    const lessons = getLessonsForDate(iso);
-    
-    let cls = 'day';
-    if(d<1||d>days) cls+=' other';
-    if(iso===todayISO()) cls+=' today';
-    if(selectedDate && iso===selectedDate) cls+=' selected';
-    if(hasOpen) cls+=' has-task';
-    else if(hasDone) cls+=' has-done';
-    if(lessons.length) cls+=' has-lessons';
-    
-    out+=`<button class="${cls}" data-date="${iso}">${num}</button>`;
-  }
-  $('calendar').innerHTML=out;
-  document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{
-    selectedDate=b.dataset.date;
-    renderCalendar();
-    showView('planner');
-    renderTasks();
-  });
-};
-
-// Override renderTasks to use getTasksForDate
-const originalRenderTasks = renderTasks;
-renderTasks = function() {
-  const forDay=getTasksForDate(selectedDate).sort((a,b)=>(a.done?1:0)-(b.done?1:0));
-  const others=data.tasks.filter(t=>t.date!==selectedDate).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
-  
-  let html='';
-  const lessons = getLessonsForDate(selectedDate);
-  const dateObj = new Date(selectedDate+'T12:00:00');
-  
-  html+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-    <h3 style="font-size:16px;margin:0">${dateObj.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3>
-  </div>`;
-
-  if(lessons.length) {
-    html += `<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Timetable (${getWeekNumber(selectedDate)===1?'Week 1':'Week 2'})</h4>`;
-    html += `<div class="timetable">`;
-    
-    const deadlinesToday = forDay.map(t => t.period).filter(Boolean);
-
-    lessons.forEach(l => {
-      const isFree = l.s === 'Free Period';
-      const hasDeadline = deadlinesToday.includes(String(l.p));
-      
-      html += `<div class="lesson-row ${hasDeadline ? 'has-deadline' : ''}">
-        <div class="lesson-info">
-          <strong>${isFree ? l.s : 'P'+l.p+': '+esc(l.s)}</strong>
-          ${isFree ? '' : `<span>${l.r ? l.r + ' · ' : ''}${l.t}</span>`}
-        </div>
-        ${isFree ? '' : `<div class="lesson-actions">
-          <button data-add-lesson-task="${l.p}" data-subject="${l.s}">＋ Deadline</button>
-        </div>`}
-      </div>`;
-    });
-    html += `</div>`;
-  }
-
-  html+=`<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:20px 0 8px">Tasks for this day</h4>`;
-  html+=forDay.length?forDay.map(taskHTML).join(''):'<div class="empty" style="padding:10px">No tasks on this date.</div>';
-  
-  if(others.length){
-    html+=`<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:20px 0 8px">All other tasks</h4>`;
-    html+=others.map(taskHTML).join('');
-  }
-  
-  $('allTasks').innerHTML=html;
-  wireTasks();
-  
-  document.querySelectorAll('[data-add-lesson-task]').forEach(b=>b.onclick=()=>{
-    const subjName = b.dataset.subject;
-    const period = b.dataset.addLessonTask;
-    openModal('Add deadline', `
-      <label class="field-label">Task</label>
-      <input class="field" id="taskText" placeholder="e.g. Finish essay">
-      <label class="field-label">Date</label>
-      <input class="field" type="date" id="taskDate" value="${selectedDate}" readonly>
-      <input type="hidden" id="taskSubject" value="${subjName}">
-      <input type="hidden" id="taskPeriod" value="${period}">
-    `, ()=>{
-      let v=$('taskText').value.trim();
-      if(v) {
-        data.tasks.push({
-          id:uid(),
-          text:v,
-          date:$('taskDate').value,
-          done:false,
-          subject: $('taskSubject').value,
-          period: $('taskPeriod').value
-        });
-        save();
-      }
-    });
-  });
-};
-
-// Override renderHome to use getTasksForDate logic for the next 3 tasks
-const originalRenderHome = renderHome;
-renderHome = function() {
-  // Generate a list of upcoming days (next 14 days) to find virtual repeating tasks
-  let upcomingTasks = [];
-  for(let i=0; i<14; i++) {
-    let d = new Date();
-    d.setDate(d.getDate() + i);
-    let iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    let tasks = getTasksForDate(iso).filter(t => !t.done);
-    upcomingTasks.push(...tasks);
-  }
-  // remove duplicates by id, sort by date, take 3
-  let unique = [...new Map(upcomingTasks.map(t => [t.id, t])).values()];
-  unique.sort((a,b) => a.date.localeCompare(b.date));
-  const top3 = unique.slice(0, 3);
-
-  $('todayTasks').innerHTML = top3.length
-    ? top3.map(taskHTML).join('')
-    : '<div class="empty">No upcoming tasks. Enjoy the breathing room.</div>';
-  
-  // Custom wireTasks for virtual tasks
-  document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{
-    let t=data.tasks.find(x=>x.id===c.dataset.check);
-    if(t) t.done=c.checked;
-    save();
-  });
-  document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{
-    data.tasks=data.tasks.filter(t=>t.id!==b.dataset.delete);
-    save();
-  });
-
-  let recent=[...data.notes].sort((a,b)=>b.updated-a.updated).slice(0,4);
-  $('recentNotes').innerHTML=recent.length
-    ? recent.map(n=>`<div class="task"><div class="task-text"><b>${esc(n.title||'Untitled note')}</b><small>${esc(data.subjects.find(s=>s.id===n.subject)?.name||'Subject')} · ${new Date(n.updated).toLocaleDateString()}</small></div><button class="delete" data-open="${n.id}">Open</button></div>`).join('')
-    : '<div class="empty">Your notes will appear here.</div>';
-
-  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{
-    let n=data.notes.find(x=>x.id===b.dataset.open);
-    currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;
-    showView('notes');renderAll();
-  });
-};
 
 function renderAll(){renderSidebarTree();renderStats();renderCalendar();renderHome();if($('notesView').classList.contains('active'))renderNotes();if($('plannerView').classList.contains('active'))renderTasks()}
 renderAll();
