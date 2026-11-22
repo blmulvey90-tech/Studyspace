@@ -8,7 +8,7 @@
 <meta name="apple-mobile-web-app-title" content="StudySpace">
 <title>StudySpace — Notes & Planner</title>
 <style>
-:root{--bg:#f4f5f8;--panel:#fff;--ink:#202536;--muted:#778096;--line:#e7e9ef;--accent:#5965d8;--soft:#eef0ff;--green:#25866b;--shadow:0 8px 28px #2226380b}
+:root{--bg:#f4f5f8;--panel:#fff;--ink:#202536;--muted:#778096;--line:#e7e9ef;--accent:#5965d8;--soft:#eef0ff;--green:#25866b;--shadow:0 8px 28px #2226380b;--lesson-bg:#f8f9fc;--lesson-border:#d1d6e6}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
 button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #8790ff;outline-offset:2px}
 .app{min-height:100vh;display:grid;grid-template-columns:265px 1fr}.sidebar{background:#fff;border-right:1px solid var(--line);padding:24px 14px;display:flex;flex-direction:column;gap:18px;overflow-y:auto;max-height:100vh}
@@ -21,8 +21,10 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px}.panel h2{font-size:15px;margin:0 0 15px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.stat strong{font-size:24px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:12px}.muted{color:var(--muted)}
 .task{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:4px;accent-color:var(--accent)}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:2px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px}.empty{color:#9aa1af;text-align:center;padding:24px 8px}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent);background:var(--soft)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}.day.has-done:after{background:#b8bdc9}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent);background:var(--soft)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}.day.has-done:after{background:#b8bdc9}.day.has-lessons:before{content:"";position:absolute;bottom:4px;left:calc(50% - 8px);width:4px;height:4px;border-radius:50%;background:var(--accent)}.day.has-lessons.has-task:before,.day.has-lessons.has-task:after{left:calc(50% - 6px)}.day.has-lessons.has-task:after{left:calc(50% + 2px)}
 .section{display:none}.section.active{display:block}
+/* Timetable & Tasks CSS */
+.timetable{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.lesson-row{background:var(--lesson-bg);border:1px solid var(--lesson-border);border-radius:10px;padding:12px 15px;display:flex;justify-content:space-between;align-items:flex-start}.lesson-info strong{display:block;font-size:14px;color:var(--ink)}.lesson-info span{font-size:12px;color:var(--muted)}.lesson-actions button{background:var(--soft);color:var(--accent);border:0;border-radius:6px;padding:6px 10px;font-size:11px;font-weight:600}
 .note-ws{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px}.tree-pane{background:#fafbfe;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:70vh;overflow-y:auto}
 .tree-node{margin:0}.tree-row{display:flex;align-items:center;gap:4px;padding:6px 6px;border-radius:7px;font-size:13px;color:#5b6478;cursor:pointer;position:relative;user-select:none}.tree-row:hover{background:#eff1f8}.tree-row.sel{background:var(--soft);color:var(--accent);font-weight:650}.tree-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.tree-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tree-row .addsub,.tree-row .deltopic,.tree-row .mvup,.tree-row .mvdn{background:transparent;color:#a1a7b3;font-size:13px;padding:0 2px;line-height:1;display:none}.tree-row:hover .addsub,.tree-row:hover .deltopic,.tree-row:hover .mvup,.tree-row:hover .mvdn,.tree-row.sel .addsub,.tree-row.sel .deltopic,.tree-row.sel .mvup,.tree-row.sel .mvdn{display:inline}.tree-row .addsub:hover{color:var(--accent)}.tree-row .deltopic:hover{color:#e05555}.tree-row .mvup:hover,.tree-row .mvdn:hover{color:var(--accent)}.tree-children{margin-left:14px;border-left:1px dashed #e1e4ec;padding-left:4px}
 .note-editor{min-width:0}.editor-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}.note-title-input{flex:1;font-size:20px;font-weight:700;border:0;border-bottom:1px solid transparent;padding:6px 2px;outline:none;background:transparent;color:var(--ink)}.note-title-input:focus{border-color:var(--line)}.dirty-dots{font-size:16px;letter-spacing:1px;color:#c7ccd6;opacity:0;transition:opacity .2s;flex:none}.dirty-dots.show{opacity:1}.editor{width:100%;min-height:340px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:15px;color:var(--ink);line-height:1.7;background:#fff}
@@ -50,6 +52,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
   </div>
   <div class="sidebar-bottom">
     <button class="side-action" id="syncPanelBtn" style="color:var(--green);border-color:#cfe8df">⇅ &nbsp; Sync & settings</button>
+    <button class="side-action" id="termDatesBtn">📅 &nbsp; Term Dates</button>
     <button class="side-action" id="exportBtn">↓ &nbsp; Export backup</button>
     <button class="side-action" id="importBtn">↑ &nbsp; Import backup</button>
     <input type="file" id="importFile" accept="application/json" hidden>
@@ -89,14 +92,43 @@ const $=id=>document.getElementById(id);
 const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 const uid=()=>Math.random().toString(36).slice(2,10);
 
-const defaults={subjects:[{id:'econ',name:'Economics',color:'#e2a34b',topics:[{id:'t1',name:'Theme 1',children:[{id:'s1',name:'Microeconomics',children:[]},{id:'s2',name:'Market failure',children:[]}]},{id:'t2',name:'Theme 2',children:[{id:'s3',name:'Macroeconomics',children:[]}]}]},{id:'media',name:'Media',color:'#49a88d',topics:[{id:'t4',name:'Theme 3',children:[{id:'s6',name:'Business growth',children:[]}]}]}],notes:[],tasks:[]};
+// --- TIMETABLE DATA ---
+const TIMETABLE = {
+  1: { // Week 1
+    1: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'},{p:3,s:'Assembly',r:'',t:'Mr P Lewis'},{p:4,s:'Directed Learning',r:'',t:''},{p:5,s:'Sociology',r:'M10',t:'Miss G Banton'}],
+    2: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'},{p:4,s:'PSHE',r:'M2',t:'Ms M Flynn'}],
+    3: [{p:1,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Directed Learning',r:'',t:''},{p:4,s:'Media Studies',r:'B15',t:'Miss C Seery'},{p:5,s:'Sociology',r:'M9',t:'Mr G Cresswell'}],
+    4: [{p:1,s:'Directed Learning',r:'',t:''},{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Economics',r:'A16',t:'Miss A McLean'},{p:5,s:'Directed Learning',r:'',t:''}],
+    5: [{p:1,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:2,s:'Sociology',r:'M5',t:'Miss N Hellen'},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Directed Learning',r:'',t:''}]
+  },
+  2: { // Week 2
+    1: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:4,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'},{p:5,s:'Directed Learning',r:''}],
+    2: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:3,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:4,s:'Directed Learning',r:''},{p:5,s:'Directed Learning',r:''}],
+    3: [{p:1,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:2,s:'Directed Learning',r:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:5,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'}],
+    4: [{p:1,s:'Directed Learning',r:''},{p:2,s:'Directed Learning',r:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:5,s:'Sociology',r:'M9',t:'Mr G Cresswell'}],
+    5: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:3,s:'Directed Learning',r:''},{p:4,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'},{p:5,s:'Economics',r:'A16',t:'Miss A McLean'}]
+  }
+};
+
+const defaults={
+  subjects:[
+    {id:'econ',name:'Economics',color:'#e2a34b',topics:[{id:'t1',name:'Theme 1',children:[]}]},
+    {id:'soc',name:'Sociology',color:'#7c83df',topics:[{id:'t2',name:'Theme 1',children:[]}]},
+    {id:'media',name:'Media Studies',color:'#49a88d',topics:[{id:'t3',name:'Theme 1',children:[]}]}
+  ],
+  notes:[],tasks:[],
+  settings:{ week2Start: nextMondayISO() }
+};
 
 let data;try{data=JSON.parse(localStorage.getItem('studyspace_data'))||defaults}catch{data=defaults}
+if(!data.settings) data.settings = defaults.settings;
 (function migrate(){data.subjects.forEach(s=>{if(!Array.isArray(s.topics))s.topics=[];s.topics.forEach(function fix(t){if(!Array.isArray(t.children))t.children=(t.subtopics||[]).map(st=>({id:st.id||uid(),name:st.name,children:[]}));t.children.forEach(fix)})});data.notes.forEach(n=>{if(!n.path)n.path=n.subtopicId?[n.topicId,n.subtopicId]:(n.topicId?[n.topicId]:[])})})();
 
 let currentSubject=data.subjects[0]?.id||null;
 let currentPath=[],currentNote=null,expanded=new Set(),expandedSubjects=new Set(),dirty=false;
 let calDate=new Date(),selectedDate=todayISO(),modalAction=null;
+
+function nextMondayISO(){let d=new Date();let day=d.getDay();let diff=day===1?7:(8-day)%7;if(diff===0)diff=7;d.setDate(d.getDate()+diff);return d.toISOString().split('T')[0]}
 
 function save(){localStorage.setItem('studyspace_data',JSON.stringify(data));renderAll()}
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -106,16 +138,24 @@ document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showView(b.dat
 $('menuBtn').onclick=(e)=>{e.stopPropagation();$('sidebar').classList.toggle('open')};
 $('mainOverlay').onclick=()=>$('sidebar').classList.remove('open');
 
-/* ---------- tree helpers ---------- */
-function findTopic(topics,path){let list=topics,node=null;for(const id of path){node=list.find(t=>t.id===id);if(!node)return null;list=node.children}return node}
-function topicName(subject,path){const t=findTopic(subject.topics,path);return t?t.name:''}
-function deleteTopicByPath(subject,path){if(!path.length)return;const parentPath=path.slice(0,-1),lastId=path[path.length-1];if(!parentPath.length){subject.topics=subject.topics.filter(t=>t.id!==lastId)}else{const p=findTopic(subject.topics,parentPath);if(p)p.children=p.children.filter(t=>t.id!==lastId)}}
-function getPath(subject,id,list=null,acc=[]){list=list||subject.topics;for(const t of list){if(t.id===id)return [...acc,t.id];const r=getPath(subject,id,t.children||[],[...acc,t.id]);if(r)return r}return null}
-function siblingsOf(subject,path){const parentPath=path.slice(0,-1);if(!parentPath.length)return subject.topics;const p=findTopic(subject.topics,parentPath);return p?p.children:[]}
-function moveTopic(subject,path,dir){
-  const sibs=siblingsOf(subject,path), id=path[path.length-1], i=sibs.findIndex(t=>t.id===id);
-  if(i<0)return; const j=i+dir; if(j<0||j>=sibs.length)return;
-  [sibs[i],sibs[j]]=[sibs[j],sibs[i]];
+/* ---------- TIMETABLE LOGIC ---------- */
+function getWeekNumber(isoDate){
+  const start = new Date(data.settings.week2Start+'T12:00:00');
+  const target = new Date(isoDate+'T12:00:00');
+  const diffDays = Math.round((target - start) / (1000*60*60*24));
+  if(diffDays < 0) return 1; // Before start, assume Week 1
+  const weeksPassed = Math.floor(diffDays / 7);
+  return (weeksPassed % 2 === 0) ? 2 : 1; 
+}
+
+function getLessonsForDate(isoDate){
+  const d = new Date(isoDate+'T12:00:00');
+  const dayOfWeek = d.getDay(); 
+  if(dayOfWeek === 0 || dayOfWeek === 6) return []; // Weekend
+  
+  const weekNum = getWeekNumber(isoDate);
+  const timetableDay = dayOfWeek === 6 ? 6 : dayOfWeek; // Mon=1...Fri=5
+  return TIMETABLE[weekNum][timetableDay] || [];
 }
 
 /* ---------- SIDEBAR ---------- */
@@ -155,6 +195,17 @@ function renderSbTopics(subject,topics){
 function noteCount(subject,path){return data.notes.filter(n=>n.subject===subject.id&&JSON.stringify(n.path)===JSON.stringify(path)).length}
 
 /* ---------- NOTES ---------- */
+function findTopic(topics,path){let list=topics,node=null;for(const id of path){node=list.find(t=>t.id===id);if(!node)return null;list=node.children}return node}
+function topicName(subject,path){const t=findTopic(subject.topics,path);return t?t.name:''}
+function deleteTopicByPath(subject,path){if(!path.length)return;const parentPath=path.slice(0,-1),lastId=path[path.length-1];if(!parentPath.length){subject.topics=subject.topics.filter(t=>t.id!==lastId)}else{const p=findTopic(subject.topics,parentPath);if(p)p.children=p.children.filter(t=>t.id!==lastId)}}
+function getPath(subject,id,list=null,acc=[]){list=list||subject.topics;for(const t of list){if(t.id===id)return [...acc,t.id];const r=getPath(subject,id,t.children||[],[...acc,t.id]);if(r)return r}return null}
+function siblingsOf(subject,path){const parentPath=path.slice(0,-1);if(!parentPath.length)return subject.topics;const p=findTopic(subject.topics,parentPath);return p?p.children:[]}
+function moveTopic(subject,path,dir){
+  const sibs=siblingsOf(subject,path), id=path[path.length-1], i=sibs.findIndex(t=>t.id===id);
+  if(i<0)return; const j=i+dir; if(j<0||j>=sibs.length)return;
+  [sibs[i],sibs[j]]=[sibs[j],sibs[i]];
+}
+
 function renderNotes(){
   const s=data.subjects.find(x=>x.id===currentSubject);
   if(!s){$('treePane').innerHTML='<div class="empty">Add a subject first</div>';$('noteEditorPane').innerHTML='';return}
@@ -309,15 +360,20 @@ function renderCalendar(){
     let d=i-start+1, dt=new Date(y,m,d);
     let iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
     let num = d<1 ? prev+d : d>days ? d-days : d;
+    
     const dayTasks = data.tasks.filter(t => t.date===iso);
     const hasOpen = dayTasks.some(t => !t.done);
     const hasDone = dayTasks.length && !hasOpen;
+    const lessons = getLessonsForDate(iso);
+    
     let cls = 'day';
     if(d<1||d>days) cls+=' other';
     if(iso===todayISO()) cls+=' today';
     if(selectedDate && iso===selectedDate) cls+=' selected';
     if(hasOpen) cls+=' has-task';
     if(hasDone) cls+=' has-done';
+    if(lessons.length) cls+=' has-lessons';
+    
     out+=`<button class="${cls}" data-date="${iso}">${num}</button>`;
   }
   $('calendar').innerHTML=out;
@@ -336,19 +392,72 @@ function renderTasks(){
   const all=[...data.tasks];
   const forDay=all.filter(t=>t.date===selectedDate).sort((a,b)=>(a.done?1:0)-(b.done?1:0));
   const others=all.filter(t=>t.date!==selectedDate).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
+  
   let html='';
-  html+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-    <h3 style="font-size:13px;margin:0">Tasks for ${new Date(selectedDate+'T12:00:00').toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3>
+  const lessons = getLessonsForDate(selectedDate);
+  const dateObj = new Date(selectedDate+'T12:00:00');
+  
+  html+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <h3 style="font-size:15px;margin:0">${dateObj.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3>
     <button class="btn small" id="clearDateFilter">Show all</button>
   </div>`;
+
+  if(lessons.length) {
+    html += `<h4 style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Timetable (${getWeekNumber(selectedDate)===1?'Week 1':'Week 2'})</h4>`;
+    html += `<div class="timetable">`;
+    lessons.forEach(l => {
+      html += `<div class="lesson-row">
+        <div class="lesson-info">
+          <strong>P${l.p}: ${esc(l.s)}</strong>
+          <span>${l.r ? l.r + ' · ' : ''}${l.t}</span>
+        </div>
+        <div class="lesson-actions">
+          <button data-add-lesson-task="${l.p}" data-subject="${l.s}">＋ Deadline</button>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  html+=`<h4 style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Tasks for this day</h4>`;
   html+=forDay.length?forDay.map(taskHTML).join(''):'<div class="empty" style="padding:10px">No tasks on this date.</div>';
+  
   if(others.length){
-    html+=`<h3 style="font-size:13px;margin:16px 0 8px">All other tasks</h3>`;
+    html+=`<h4 style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">All other tasks</h4>`;
     html+=others.map(taskHTML).join('');
   }
+  
   $('allTasks').innerHTML=html;
   wireTasks();
+  
   $('clearDateFilter').onclick=()=>{selectedDate='';renderCalendar();renderTasks()};
+  
+  // wire lesson deadline buttons
+  document.querySelectorAll('[data-add-lesson-task]').forEach(b=>b.onclick=()=>{
+    const subjName = b.dataset.subject;
+    const period = b.dataset.addLessonTask;
+    openModal('Add deadline', `
+      <label class="field-label">Task</label>
+      <input class="field" id="taskText" placeholder="e.g. Finish essay">
+      <label class="field-label">Date</label>
+      <input class="field" type="date" id="taskDate" value="${selectedDate}" readonly>
+      <input type="hidden" id="taskSubject" value="${subjName}">
+      <input type="hidden" id="taskPeriod" value="${period}">
+    `, ()=>{
+      let v=$('taskText').value.trim();
+      if(v) {
+        data.tasks.push({
+          id:uid(),
+          text:v,
+          date:$('taskDate').value,
+          done:false,
+          subject: $('taskSubject').value,
+          period: $('taskPeriod').value
+        });
+        save();
+      }
+    });
+  });
 }
 
 function renderHome(){
@@ -384,7 +493,6 @@ $('addSubject').onclick=()=>openModal('Add a subject',`<label class="field-label
 function addTask(){openModal('Add a task',`<label class="field-label">Task</label><input class="field" id="taskText" placeholder="What needs doing?"><label class="field-label">Due date</label><input class="field" type="date" id="taskDate" value="${selectedDate||todayISO()}">`,()=>{let v=$('taskText').value.trim();if(v)data.tasks.push({id:uid(),text:v,date:$('taskDate').value,done:false});save()})}
 $('addTask').onclick=addTask;$('quickTask').onclick=addTask;
 
-/* quick note: subject dropdown */
 $('quickNote').onclick=(e)=>{
   e.stopPropagation();
   const menu=$('quickNoteMenu');
@@ -403,9 +511,25 @@ $('quickNote').onclick=(e)=>{
 };
 document.addEventListener('click',(e)=>{ if(!e.target.closest('#quickNote') && !e.target.closest('#quickNoteMenu')) $('quickNoteMenu').classList.remove('show'); });
 
+/* ---------- SETTINGS & TERM DATES ---------- */
+$('termDatesBtn').onclick = () => {
+  openModal('Term Dates', `
+    <p class="muted" style="font-size:13px;margin-top:0">Enter the start date of a Week 2 Monday. The app will automatically alternate Weeks 1 & 2 from this date forward.</p>
+    <label class="field-label">Week 2 Start Date (Monday)</label>
+    <input class="field" type="date" id="week2Date" value="${data.settings.week2Start}">
+    <p class="muted" style="font-size:11px;margin-top:12px">Note: Holidays are not automatically removed from the timetable. If you are on half-term, the calendar will still show lessons. (To fix this, manually adjust the Week 2 Start Date after every holiday!)</p>
+  `, () => {
+    const v = $('week2Date').value;
+    if(v) {
+      data.settings.week2Start = v;
+      save();
+    }
+  });
+};
+
 /* ---------- IMPORT / EXPORT ---------- */
 $('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='studyspace-backup.json';a.click();URL.revokeObjectURL(a.href)};
-$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;currentSubject=data.subjects[0]?.id||null;currentPath=[];currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
+$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;if(!data.settings)data.settings={week2Start:nextMondayISO()};currentSubject=data.subjects[0]?.id||null;currentPath=[];currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
 
 $('syncPanelBtn').onclick=()=>openModal('Sync & settings','<p class="muted" style="font-size:13px">Online sync (offline + JSON backup) is coming in the next version. For now, use Export / Import backup to move data between devices.</p>',null);
 
