@@ -892,9 +892,35 @@ $('termDatesBtn').onclick = () => {
   });
 };
 
-/* ---------- IMPORT / EXPORT ---------- */
+/* ---------- IMPORT / EXPORT (LOCAL FILE) ---------- */
 $('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='studyspace-backup.json';a.click();URL.revokeObjectURL(a.href)};
-$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;if(!data.settings)data.settings={week2Start:nextMondayISO()};currentSubject=data.subjects[0]?.id||null;currentPath=[];currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
+
+$('importBtn').onclick=()=>$('importFile').click();
+
+$('importFile').onchange=async e=>{
+  const file = e.target.files[0];
+  if(!file) return;
+  try {
+    const text = await file.text();
+    let d = JSON.parse(text);
+    if(Array.isArray(d.subjects) && Array.isArray(d.notes) && Array.isArray(d.tasks)) {
+      data = d;
+      if(!data.settings) data.settings = {week2Start: nextMondayISO()};
+      currentSubject = data.subjects[0]?.id || null;
+      currentPath = [];
+      currentNote = null;
+      localStorage.setItem('studyspace_data', JSON.stringify(data)); // Save immediately
+      renderAll();
+      alert('Backup imported successfully!');
+    } else {
+      alert('That backup file does not look valid (missing subjects, notes, or tasks).');
+    }
+  } catch(err) {
+    alert('Could not read that backup file. Make sure it is a valid JSON file.');
+    console.error(err);
+  }
+  e.target.value=''; // Reset file input
+};
 
 $('syncPanelBtn').onclick=()=>{
   const cfg = getSyncConfig();
