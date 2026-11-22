@@ -133,123 +133,13 @@ let calDate=new Date(),selectedDate=todayISO(),modalAction=null;
 
 function nextMondayISO(){let d=new Date();let day=d.getDay();let diff=day===1?7:(8-day)%7;if(diff===0)diff=7;d.setDate(d.getDate()+diff);return d.toISOString().split('T')[0]}
 
-/* ---------- GITHUB SYNC LOGIC ---------- */
-function getSyncConfig() {
-  return {
-    user: localStorage.getItem('gh_user') || '',
-    repo: localStorage.getItem('gh_repo') || '',
-    token: localStorage.getItem('gh_token') || ''
-  };
-}
+function save(){localStorage.setItem('studyspace_data',JSON.stringify(data));renderAll()}
+function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
-let syncTimer = null;
-function triggerPush() {
-  clearTimeout(syncTimer);
-  syncTimer = setTimeout(() => {
-    pushToGitHub(true);
-  }, 2000); // Wait 2 seconds after last change to push
-}
-
-async function pushToGitHub(showToast = false) {
-  const cfg = getSyncConfig();
-  if(!cfg.user || !cfg.repo || !cfg.token) return;
-  if(!navigator.onLine) return; // silently skip if offline
-
-  const url = `https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/studyspace-backup.json`;
-  
-  try {
-    // 1. Get current file SHA (needed for update)
-    let sha = null;
-    const getRes = await fetch(url, { headers: { 'Authorization': `token ${cfg.token}` } });
-    if(getRes.ok) {
-      const fileData = await getRes.json();
-      sha = fileData.sha;
-    }
-
-    // 2. Push new content
-    const content = btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2))));
-    const body = {
-      message: "StudySpace auto-sync",
-      content: content,
-      sha: sha 
-    };
-
-    const putRes = await fetch(url, {
-      method: 'PUT',
-      headers: {
-        'Authorization': `token ${cfg.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-
-    if(!putRes.ok) throw new Error('Push failed');
-    
-    localStorage.setItem('last_sync', Date.now());
-    if(showToast) {
-      const btn = $('syncPanelBtn');
-      if(btn) {
-        btn.textContent = '✓ Synced to GitHub';
-        setTimeout(()=>{ btn.textContent = '⇅ Sync & settings'; }, 2000);
-      }
-    }
-  } catch(err) {
-    console.error('GitHub Sync Error:', err);
-  }
-}
-
-async function pullFromGitHub(manual = false) {
-  const cfg = getSyncConfig();
-  if(!cfg.user || !cfg.repo || !cfg.token) {
-    if(manual) alert('Please configure GitHub Sync settings first.');
-    return;
-  }
-  if(!navigator.onLine) {
-    if(manual) alert('You are offline. Will sync when connection returns.');
-    return;
-  }
-
-  const url = `https://api.github.com/repos/${cfg.user}/${cfg.repo}/contents/studyspace-backup.json`;
-  
-  try {
-    const res = await fetch(url, { headers: { 'Authorization': `token ${cfg.token}` } });
-    if(res.status === 404) {
-      if(manual) alert('No backup file found on GitHub yet. Add some data and it will sync automatically.');
-      return;
-    }
-    if(!res.ok) throw new Error('Fetch failed');
-    
-    const fileData = await res.json();
-    const content = decodeURIComponent(escape(atob(fileData.content)));
-    const remoteData = JSON.parse(content);
-
-    // Check if remote data is newer
-    const localSync = parseInt(localStorage.getItem('last_sync') || '0');
-    const remoteDate = new Date(fileData.committer.date).getTime();
-    
-    if(!manual && remoteDate <= localSync) {
-      // Local is newer or same, don't overwrite
-      return;
-    }
-
-    // Merge logic (just replace for now)
-    data = remoteData;
-    localStorage.setItem('studyspace_data', JSON.stringify(data));
-    localStorage.setItem('last_sync', Date.now());
-    
-    // Refresh UI
-    renderAll();
-    if(manual) alert('Successfully pulled latest data from GitHub!');
-
-  } catch(err) {
-    console.error('Pull Error:', err);
-    if(manual) alert('Could not pull from GitHub. Check your token/repo settings.');
-  }
-}
-
-// Check connection and sync on startup
-window.addEventListener('online', () => pullFromGitHub(false));
-setTimeout(() => pullFromGitHub(false), 1500);
+function showView(v){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));$(v+'View').classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));$('sidebar').classList.remove('open');if(v==='notes')renderNotes();if(v==='planner')renderTasks()}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showView(b.dataset.view));
+$('menuBtn').onclick=(e)=>{e.stopPropagation();$('sidebar').classList.toggle('open')};
+$('mainOverlay').onclick=()=>$('sidebar').classList.remove('open');
 
 /* ---------- NOTIFICATIONS ---------- */
 function requestNotifications() {
@@ -586,7 +476,6 @@ function autoSave(){
     if(status) status.textContent = 'Autosaved ' + new Date().toLocaleTimeString();
     
     renderSidebarTree(); 
-    triggerPush(); // Trigger GitHub Sync
   }, 600);
 }
 
@@ -608,7 +497,6 @@ function openFullscreen(note){
     n.updated = Date.now();
     localStorage.setItem('studyspace_data', JSON.stringify(data));
     $('fsMeta').textContent = 'Autosaved ' + new Date().toLocaleTimeString();
-    triggerPush(); // Trigger GitHub Sync
   };
 
   $('fsTitle').oninput = fsAutoSave;
@@ -892,73 +780,19 @@ $('termDatesBtn').onclick = () => {
   });
 };
 
-/* ---------- IMPORT / EXPORT (LOCAL FILE) ---------- */
+/* ---------- IMPORT / EXPORT ---------- */
 $('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='studyspace-backup.json';a.click();URL.revokeObjectURL(a.href)};
-
-$('importBtn').onclick=()=>$('importFile').click();
-
-$('importFile').onchange=async e=>{
-  const file = e.target.files[0];
-  if(!file) return;
-  try {
-    const text = await file.text();
-    let d = JSON.parse(text);
-    if(Array.isArray(d.subjects) && Array.isArray(d.notes) && Array.isArray(d.tasks)) {
-      data = d;
-      if(!data.settings) data.settings = {week2Start: nextMondayISO()};
-      currentSubject = data.subjects[0]?.id || null;
-      currentPath = [];
-      currentNote = null;
-      localStorage.setItem('studyspace_data', JSON.stringify(data)); // Save immediately
-      renderAll();
-      alert('Backup imported successfully!');
-    } else {
-      alert('That backup file does not look valid (missing subjects, notes, or tasks).');
-    }
-  } catch(err) {
-    alert('Could not read that backup file. Make sure it is a valid JSON file.');
-    console.error(err);
-  }
-  e.target.value=''; // Reset file input
-};
+$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;if(!data.settings)data.settings={week2Start:nextMondayISO()};currentSubject=data.subjects[0]?.id||null;currentPath=[];currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
 
 $('syncPanelBtn').onclick=()=>{
-  const cfg = getSyncConfig();
   openModal('Sync & settings', `
-    <p class="muted" style="font-size:13px;margin-top:0">Sync your data across devices using your own private GitHub repository. Everything saves automatically in the background.</p>
-    
-    <label class="field-label">GitHub Username</label>
-    <input class="field" id="syncUser" value="${cfg.user}" placeholder="e.g. brandon123">
-    
-    <label class="field-label">Repository Name</label>
-    <input class="field" id="syncRepo" value="${cfg.repo}" placeholder="e.g. studyspace-data">
-    
-    <label class="field-label">Personal Access Token (PAT)</label>
-    <input class="field" type="password" id="syncToken" value="${cfg.token}" placeholder="ghp_...">
-    
-    <div style="display:flex;gap:8px;margin-top:16px">
-      <button class="btn primary" id="saveSyncBtn" style="flex:1">Save Settings</button>
-      <button class="btn" id="manualPullBtn" style="flex:1">Force Pull</button>
-    </div>
-
+    <p class="muted" style="font-size:13px;margin-top:0">Online sync is coming in the next version. For now, use Export / Import backup to move data between devices.</p>
     <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
-    <p class="muted" style="font-size:13px;margin-top:0"><b>Notifications</b><br>Enable notifications to be reminded of tasks due today.</p>
-    <button class="btn" id="enableNotifsBtn" style="width:100%;margin-top:8px">Enable Notifications</button>
+    <p class="muted" style="font-size:13px;margin-top:0"><b>Notifications</b><br>Enable notifications to be reminded of tasks due today while the app is open.</p>
+    <button class="btn primary" id="enableNotifsBtn" style="width:100%;margin-top:8px">Enable Notifications</button>
   `, null);
-  
   setTimeout(()=>{
     if($('enableNotifsBtn')) $('enableNotifsBtn').onclick = requestNotifications;
-    if($('saveSyncBtn')) $('saveSyncBtn').onclick = () => {
-      localStorage.setItem('gh_user', $('syncUser').value.trim());
-      localStorage.setItem('gh_repo', $('syncRepo').value.trim());
-      localStorage.setItem('gh_token', $('syncToken').value.trim());
-      alert('Sync settings saved. Pulling latest data...');
-      pullFromGitHub(true);
-      closeModal();
-    };
-    if($('manualPullBtn')) $('manualPullBtn').onclick = () => {
-      pullFromGitHub(true);
-    };
   }, 100);
 };
 
