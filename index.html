@@ -12,7 +12,7 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
 button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #8790ff;outline-offset:2px}
 .app{min-height:100vh;display:grid;grid-template-columns:245px 1fr}.sidebar{background:#fff;border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:22px}
-.brand{font-size:19px;font-weight:800;letter-spacing:-.6px;padding:0 9px}.brand span{color:var(--accent)}.nav{display:grid;gap:5px}.nav button,.side-action{background:transparent;text-align:left;padding:10px 12px;border-radius:9px;color:#606a7e}.nav button.active,.nav button:hover{background:var(--soft);color:var(--accent);font-weight:650}.side-head{display:flex;justify-content:space-between;align-items:center;padding:0 9px;color:var(--muted);font-size:11px;font-weight:750;letter-spacing:1px;text-transform:uppercase}.tiny{background:var(--soft);color:var(--accent);border-radius:7px;padding:3px 8px;font-weight:700}.subject-list{display:grid;gap:4px}.subject-row{display:flex;align-items:center;gap:8px;padding:8px 9px;border-radius:8px;color:#505a6e;cursor:pointer}.subject-row:hover,.subject-row.selected{background:#f3f4fa}.dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--accent));flex:none}.subject-row .name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.subject-row small{color:#9aa1af}.sidebar-bottom{margin-top:auto;display:grid;gap:8px}.side-action{border:1px solid var(--line);text-align:center}.main{min-width:0;padding:28px clamp(18px,4vw,52px)}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:26px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);font-weight:750}.page-title{font-size:27px;letter-spacing:-.8px;margin:3px 0 0}.top-actions{display:flex;gap:9px}.btn{padding:9px 13px;border-radius:9px;background:#fff;border:1px solid var(--line);color:#4e586d;font-weight:600}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn:hover{filter:brightness(.97)}.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px}.panel h2{font-size:15px;margin:0 0 15px}.welcome{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.muted{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.stat strong{font-size:24px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:12px}.task{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:4px;accent-color:var(--accent)}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:2px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px}.empty{color:#9aa1af;text-align:center;padding:24px 8px}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}.section{display:none}.section.active{display:block}.subject-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}.subject-head h2{margin:0;font-size:20px}.subtopic-list{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px}.chip{background:#f2f3f8;border-radius:20px;padding:7px 11px;color:#687187}.chip.active{background:var(--soft);color:var(--accent);font-weight:700}.editor{width:100%;min-height:360px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:15px;color:var(--ink);line-height:1.7}.editor-title{width:100%;font-size:19px;font-weight:700;border:0;border-bottom:1px solid var(--line);padding:8px 2px;margin-bottom:12px;outline:none}.editor-title:focus{border-color:var(--accent)}.note-meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:var(--muted);font-size:12px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:white;color:var(--ink)}.field-label{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}.modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.mobile-menu{display:none}.sync-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;background:#e9f5f0;padding:5px 12px;border-radius:30px;color:var(--green);font-weight:600;margin-left:10px;border:1px solid #cfe8df}.sync-badge.off{background:#f0f1f5;color:#8a92a3;border-color:#e2e5ec}.main-click-overlay{position:fixed;inset:0;z-index:3;display:none}.main-click-overlay.active{display:block}
+.brand{font-size:19px;font-weight:800;letter-spacing:-.6px;padding:0 9px}.brand span{color:var(--accent)}.nav{display:grid;gap:5px}.nav button,.side-action{background:transparent;text-align:left;padding:10px 12px;border-radius:9px;color:#606a7e}.nav button.active,.nav button:hover{background:var(--soft);color:var(--accent);font-weight:650}.side-head{display:flex;justify-content:space-between;align-items:center;padding:0 9px;color:var(--muted);font-size:11px;font-weight:750;letter-spacing:1px;text-transform:uppercase}.tiny{background:var(--soft);color:var(--accent);border-radius:7px;padding:3px 8px;font-weight:700}.subject-list{display:grid;gap:4px}.subject-row{display:flex;align-items:center;gap:8px;padding:8px 9px;border-radius:8px;color:#505a6e;cursor:pointer}.subject-row:hover,.subject-row.selected{background:#f3f4fa}.dot{width:9px;height:9px;border-radius:50%;background:var(--c,var(--accent));flex:none}.subject-row .name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.subject-row small{color:#9aa1af}.sidebar-bottom{margin-top:auto;display:grid;gap:8px}.side-action{border:1px solid var(--line);text-align:center}.main{min-width:0;padding:28px clamp(18px,4vw,52px)}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:26px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);font-weight:750}.page-title{font-size:27px;letter-spacing:-.8px;margin:3px 0 0}.top-actions{display:flex;gap:9px}.btn{padding:9px 13px;border-radius:9px;background:#fff;border:1px solid var(--line);color:#4e586d;font-weight:600}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn:hover{filter:brightness(.97)}.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px}.panel h2{font-size:15px;margin:0 0 15px}.welcome{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.muted{color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.stat strong{font-size:24px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:12px}.task{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:4px;accent-color:var(--accent)}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:2px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px}.empty{color:#9aa1af;text-align:center;padding:24px 8px}.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}.section{display:none}.section.active{display:block}.subject-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}.subject-head h2{margin:0;font-size:20px}.topic-block{margin-bottom:18px;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fafbfe}.topic-title{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-weight:700;font-size:14px}.topic-title .del-topic{background:transparent;color:#b8bdc9;font-size:16px;padding:0 4px;margin-left:auto}.topic-title .del-topic:hover{color:#e05555}.subtopic-list{display:flex;flex-wrap:wrap;gap:6px;margin:0}.subtopic-chip{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:5px 10px;font-size:12px;color:#687187}.subtopic-chip.active{background:var(--soft);border-color:#cdd2ff;color:var(--accent);font-weight:700}.subtopic-chip .del-sub{background:transparent;color:#c1c5ce;font-size:13px;padding:0 1px;line-height:1}.subtopic-chip .del-sub:hover{color:#e05555}.editor{width:100%;min-height:320px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:15px;color:var(--ink);line-height:1.7}.editor-title{width:100%;font-size:19px;font-weight:700;border:0;border-bottom:1px solid var(--line);padding:8px 2px;margin-bottom:12px;outline:none}.editor-title:focus{border-color:var(--accent)}.note-meta{display:flex;justify-content:space-between;align-items:center;margin-top:10px;color:var(--muted);font-size:12px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:white;color:var(--ink)}.field-label{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}.modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.mobile-menu{display:none}.sync-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;background:#e9f5f0;padding:5px 12px;border-radius:30px;color:var(--green);font-weight:600;margin-left:10px;border:1px solid #cfe8df}.sync-badge.off{background:#f0f1f5;color:#8a92a3;border-color:#e2e5ec}.main-click-overlay{position:fixed;inset:0;z-index:3;display:none}.main-click-overlay.active{display:block}.add-wrap{position:relative;display:inline-block}.add-menu{position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:160px;z-index:6;display:none;overflow:hidden}.add-menu.show{display:block}.add-menu button{display:block;width:100%;text-align:left;padding:10px 14px;background:transparent;color:var(--ink);font-size:13px}.add-menu button:hover{background:var(--soft);color:var(--accent)}
 @media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{position:fixed;z-index:4;inset:0 auto 0 0;width:260px;transform:translateX(-105%);transition:transform .2s;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.mobile-menu{display:inline-block}.layout{grid-template-columns:1fr}.right-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.main{padding:20px 15px}.topbar{margin-bottom:18px}.page-title{font-size:23px}.sidebar.open ~ .main-click-overlay{display:block}}
 @media(max-width:540px){.right-col{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:20px}.top-actions .btn:not(.primary){display:none}.panel{padding:15px}}
 </style>
@@ -48,18 +48,46 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
     <div class="stats"><div class="stat"><strong id="statSubjects">0</strong><span>Subjects</span></div><div class="stat"><strong id="statNotes">0</strong><span>Notes saved</span></div><div class="stat"><strong id="statTasks">0</strong><span>Tasks remaining</span></div></div>
     <div class="layout"><div class="panel"><h2>Tasks for today</h2><div id="todayTasks"></div><button class="btn" style="margin-top:12px" onclick="showView('planner')">View all tasks →</button></div><div class="right-col"><div class="panel"><div class="calendar-head"><div class="month-label" id="monthLabel"></div><div class="cal-nav"><button id="prevMonth">‹</button><button id="nextMonth">›</button></div></div><div class="calendar" id="calendar"></div></div><div class="panel"><h2>Recently edited</h2><div id="recentNotes"></div></div></div></div>
   </section>
-  <section class="section" id="notesView"><div class="layout"><div class="panel" id="notesPanel"><div id="notesContent"></div></div><div class="panel"><h2>Notes in this subject</h2><div id="noteList"></div><button class="btn" style="margin-top:12px" id="newSubtopic">＋ Add subtopic</button></div></div></section>
+  <section class="section" id="notesView"><div class="layout"><div class="panel" id="notesPanel"><div id="notesContent"></div></div><div class="panel"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px"><h2 style="margin:0">Topics</h2><div class="add-wrap"><button class="btn primary" id="addBtn">＋ Add</button><div class="add-menu" id="addMenu"><button data-add="topic">New topic</button><button data-add="subtopic">New subtopic</button></div></div></div><div id="topicTree"></div></div></div></section>
   <section class="section" id="plannerView"><div class="layout"><div class="panel"><div style="display:flex;justify-content:space-between;align-items:center"><h2>My tasks</h2><button class="btn primary" id="addTask">＋ Add task</button></div><div id="allTasks"></div></div><div class="panel"><h2>Plan a task</h2><p class="muted">Choose a date in the calendar on Overview, or add a task with a due date.</p><button class="btn" onclick="showView('home')">Open calendar →</button></div></div></section>
 </main>
 </div>
-<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><h2 id="modalTitle">Add subject</h2><div id="modalBody"></div><div class="modal-actions"><button class="btn" id="modalCancel">Cancel</button><button class="btn primary" id="modalSave">Save</button></div></div></div>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><h2 id="modalTitle">Add</h2><div id="modalBody"></div><div class="modal-actions"><button class="btn" id="modalCancel">Cancel</button><button class="btn primary" id="modalSave">Save</button></div></div></div>
 <script>
 const $=id=>document.getElementById(id);
 const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 const uid=()=>Math.random().toString(36).slice(2,10);
-const defaults={subjects:[{id:'econ',name:'Economics',color:'#e2a34b',topics:['Microeconomics','Macroeconomics']},{id:'soc',name:'Sociology',color:'#7c83df',topics:['Education','Families']},{id:'media',name:'Media',color:'#49a88d',topics:['Media industries']}],notes:[],tasks:[]};
-let data;try{data=JSON.parse(localStorage.getItem('studyspace_data'))||defaults}catch{data=defaults}
-let currentSubject=data.subjects[0]?.id||null,currentTopic=null,currentNote=null,calDate=new Date(),selectedDate=todayISO(),modalAction=null;
+// Data shape: subjects[] {id,name,color, topics:[{id,name,subtopics:[{id,name}]}] }
+// notes[] {id, subject, topicId, subtopicId, title, body, updated}
+const defaults={
+  subjects:[
+    {id:'econ',name:'Economics',color:'#e2a34b',topics:[
+      {id:'t1',name:'Theme 1',subtopics:[{id:'s1',name:'Microeconomics'},{id:'s2',name:'Market failure'}]},
+      {id:'t2',name:'Theme 2',subtopics:[{id:'s3',name:'Macroeconomics'}]}
+    ]},
+    {id:'soc',name:'Sociology',color:'#7c83df',topics:[
+      {id:'t3',name:'Theme 1',subtopics:[{id:'s4',name:'Education'},{id:'s5',name:'Families'}]}
+    ]},
+    {id:'media',name:'Media',color:'#49a88d',topics:[
+      {id:'t4',name:'Theme 3',subtopics:[{id:'s6',name:'Business growth'},{id:'s7',name:'Media industries'}]}
+    ]}
+  ],
+  notes:[],tasks:[]
+};
+let data;try{
+  data=JSON.parse(localStorage.getItem('studyspace_data'))||defaults;
+  // migrate old shape if needed (topics were strings)
+  data.subjects.forEach(s=>{
+    if(Array.isArray(s.topics) && s.topics.length && typeof s.topics[0]==='string'){
+      s.topics = s.topics.map(t=>({id:uid(),name:t,subtopics:[]}));
+    }
+  });
+  data.notes.forEach(n=>{ if(n.topic && !n.topicId){ n.topicId=null; n.subtopicId=null; } });
+}catch{data=defaults}
+
+let currentSubject=data.subjects[0]?.id||null;
+let currentTopicId=null, currentSubtopicId=null, currentNote=null;
+let calDate=new Date(), selectedDate=todayISO(), modalAction=null;
 
 function save(){localStorage.setItem('studyspace_data',JSON.stringify(data));renderAll()}
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -70,42 +98,194 @@ $('mainOverlay').onclick=()=>$('sidebar').classList.remove('open');
 
 function updateSyncBadge(){const badge=$('syncBadge');if(!badge)return;const hasApple=localStorage.getItem('studyspace_apple_sync')==='true';badge.textContent=hasApple?' synced':' not synced';badge.className='sync-badge'+(hasApple?'':' off')}
 
-function renderSubjects(){$('subjectList').innerHTML=data.subjects.map(s=>`<div class="subject-row ${s.id===currentSubject?'selected':''}" data-id="${s.id}"><span class="dot" style="--c:${s.color}"></span><span class="name">${esc(s.name)}</span><small>${data.notes.filter(n=>n.subject===s.id).length}</small></div>`).join('')||'<div class="empty">Add your first subject</div>';document.querySelectorAll('.subject-row').forEach(el=>el.onclick=()=>{currentSubject=el.dataset.id;currentTopic=null;currentNote=null;showView('notes');renderAll()})}
+function renderSubjects(){$('subjectList').innerHTML=data.subjects.map(s=>`<div class="subject-row ${s.id===currentSubject?'selected':''}" data-id="${s.id}"><span class="dot" style="--c:${s.color}"></span><span class="name">${esc(s.name)}</span><small>${data.notes.filter(n=>n.subject===s.id).length}</small></div>`).join('')||'<div class="empty">Add your first subject</div>';document.querySelectorAll('.subject-row').forEach(el=>el.onclick=()=>{currentSubject=el.dataset.id;currentTopicId=null;currentSubtopicId=null;currentNote=null;showView('notes');renderAll()})}
 function renderStats(){$('statSubjects').textContent=data.subjects.length;$('statNotes').textContent=data.notes.length;$('statTasks').textContent=data.tasks.filter(t=>!t.done).length;$('todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}
 function renderCalendar(){const y=calDate.getFullYear(),m=calDate.getMonth();$('monthLabel').textContent=calDate.toLocaleDateString(undefined,{month:'long',year:'numeric'});const first=new Date(y,m,1),start=(first.getDay()+6)%7;const days=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate();let out=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="weekday">${x}</div>`).join('');for(let i=0;i<42;i++){let d=i-start+1,dt=new Date(y,m,d),iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`,num=d<1?prev+d:d>days?d-days:d;out+=`<button class="day ${d<1||d>days?'other':''} ${iso===todayISO()?'today':''} ${iso===selectedDate?'selected':''} ${data.tasks.some(t=>t.date===iso&&!t.done)?'has-task':''}" data-date="${iso}">${num}</button>`}$('calendar').innerHTML=out;document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{selectedDate=b.dataset.date;renderCalendar();showView('planner');renderTasks()})}
 $('prevMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};$('nextMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};
 function taskHTML(t){return `<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''}><div class="task-text">${esc(t.text)}<small>${t.date?new Date(t.date+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'No due date'} ${t.appleSynced?'· ':''}</small></div><button class="delete" data-delete="${t.id}" aria-label="Delete task">×</button></div>`}
 function wireTasks(){document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{let t=data.tasks.find(x=>x.id===c.dataset.check);if(t)t.done=c.checked;save()});document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{data.tasks=data.tasks.filter(t=>t.id!==b.dataset.delete);save()})}
 function renderTasks(){let tasks=[...data.tasks].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));$('allTasks').innerHTML=tasks.length?tasks.map(taskHTML).join(''):'<div class="empty">Nothing on your list yet. Add a task to get started.</div>';wireTasks()}
-function renderHome(){$('todayTasks').innerHTML=data.tasks.filter(t=>t.date===todayISO()&&!t.done).length?data.tasks.filter(t=>t.date===todayISO()&&!t.done).map(taskHTML).join(''):'<div class="empty">No tasks due today. Enjoy the breathing room.</div>';wireTasks();let recent=[...data.notes].sort((a,b)=>b.updated-a.updated).slice(0,4);$('recentNotes').innerHTML=recent.length?recent.map(n=>`<div class="task"><div class="task-text"><b>${esc(n.title||'Untitled note')}</b><small>${esc(data.subjects.find(s=>s.id===n.subject)?.name||'Subject')} · ${new Date(n.updated).toLocaleDateString()} ${n.appleSynced?'· ':''}</small></div><button class="delete" data-open="${n.id}">Open</button></div>`).join(''):'<div class="empty">Your notes will appear here.</div>';document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{let n=data.notes.find(x=>x.id===b.dataset.open);currentSubject=n.subject;currentTopic=n.topic;currentNote=n.id;showView('notes');renderAll()})}
-function renderNotes(){let s=data.subjects.find(x=>x.id===currentSubject);if(!s){$('notesContent').innerHTML='<div class="empty">Add a subject to start writing notes.</div>';$('noteList').innerHTML='';return}if(!currentTopic)currentTopic=s.topics[0]||null;let notes=data.notes.filter(n=>n.subject===s.id&&(!currentTopic||n.topic===currentTopic));if(!currentNote||!notes.some(n=>n.id===currentNote))currentNote=notes[0]?.id||null;let n=data.notes.find(x=>x.id===currentNote);$('notesContent').innerHTML=`<div class="subject-head"><span class="dot" style="--c:${s.color};width:13px;height:13px"></span><h2>${esc(s.name)}</h2></div><div class="subtopic-list">${s.topics.map(t=>`<button class="chip ${t===currentTopic?'active':''}" data-topic="${esc(t)}">${esc(t)}</button>`).join('')}<button class="chip" id="addTopicInline">＋ Topic</button></div>${n?`<input class="editor-title" id="noteTitle" value="${esc(n.title)}" placeholder="Note title"><textarea class="editor" id="noteBody" placeholder="Start writing...">${esc(n.body)}</textarea><div class="note-meta"><span>Autosaves as you type ${n.appleSynced?'·  synced':''}</span><button class="btn" id="deleteNote">Delete note</button></div>`:`<div class="empty">No notes in this topic yet.</div><button class="btn primary" id="createNote">＋ Write a note</button>`}`;$('noteList').innerHTML=notes.length?notes.map(x=>`<div class="task"><button class="delete" style="color:var(--accent)" data-selectnote="${x.id}">▤</button><div class="task-text"><b>${esc(x.title||'Untitled note')}</b><small>${new Date(x.updated).toLocaleDateString()} ${x.appleSynced?'· ':''}</small></div></div>`).join(''):'<div class="empty">No notes yet.</div>';document.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{currentTopic=b.dataset.topic;currentNote=null;renderNotes()});document.querySelectorAll('[data-selectnote]').forEach(b=>b.onclick=()=>{currentNote=b.dataset.selectnote;renderNotes()});$('addTopicInline').onclick=()=>addTopic();if($('createNote'))$('createNote').onclick=createNote;if($('deleteNote'))$('deleteNote').onclick=()=>{data.notes=data.notes.filter(x=>x.id!==currentNote);currentNote=null;save()};if(n){let timer;['noteTitle','noteBody'].forEach(id=>$(id).oninput=()=>{clearTimeout(timer);timer=setTimeout(()=>{n.title=$('noteTitle').value;n.body=$('noteBody').value;n.updated=Date.now();localStorage.setItem('studyspace_data',JSON.stringify(data));$('noteList').querySelectorAll('.task b')[0]?.replaceChildren(document.createTextNode(n.title||'Untitled note'));renderStats()},250)})}}
-function createNote(){if(!currentTopic){addTopic();return}let n={id:uid(),subject:currentSubject,topic:currentTopic,title:'',body:'',updated:Date.now()};data.notes.push(n);currentNote=n.id;save();setTimeout(()=>$('noteTitle')?.focus(),0)}
-function addTopic(){openModal('Add subtopic',`<label class="field-label">Subtopic name</label><input class="field" id="topicName" placeholder="e.g. Market failure">`,()=>{let v=$('topicName').value.trim(),s=data.subjects.find(x=>x.id===currentSubject);if(v&&s&&!s.topics.includes(v)){s.topics.push(v);currentTopic=v;currentNote=null;save()}})}
+function renderHome(){$('todayTasks').innerHTML=data.tasks.filter(t=>t.date===todayISO()&&!t.done).length?data.tasks.filter(t=>t.date===todayISO()&&!t.done).map(taskHTML).join(''):'<div class="empty">No tasks due today. Enjoy the breathing room.</div>';wireTasks();let recent=[...data.notes].sort((a,b)=>b.updated-a.updated).slice(0,4);$('recentNotes').innerHTML=recent.length?recent.map(n=>`<div class="task"><div class="task-text"><b>${esc(n.title||'Untitled note')}</b><small>${esc(data.subjects.find(s=>s.id===n.subject)?.name||'Subject')} · ${new Date(n.updated).toLocaleDateString()} ${n.appleSynced?'· ':''}</small></div><button class="delete" data-open="${n.id}">Open</button></div>`).join(''):'<div class="empty">Your notes will appear here.</div>';document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{let n=data.notes.find(x=>x.id===b.dataset.open);currentSubject=n.subject;currentTopicId=n.topicId;currentSubtopicId=n.subtopicId;currentNote=n.id;showView('notes');renderAll()})}
+
+// ===== NOTES (topic tree + editor) =====
+function renderNotes(){
+  let s=data.subjects.find(x=>x.id===currentSubject);
+  if(!s){$('notesContent').innerHTML='<div class="empty">Add a subject to start writing notes.</div>';$('topicTree').innerHTML='';return}
+  // ensure currentTopicId valid
+  if(!currentTopicId || !s.topics.some(t=>t.id===currentTopicId)) currentTopicId=s.topics[0]?.id||null;
+  let topic=s.topics.find(t=>t.id===currentTopicId);
+  if(!currentSubtopicId || !topic?.subtopics.some(st=>st.id===currentSubtopicId)) currentSubtopicId=topic?.subtopics[0]?.id||null;
+
+  // editor
+  let n=data.notes.find(x=>x.id===currentNote);
+  if(n && (n.subject!==currentSubject || n.topicId!==currentTopicId || n.subtopicId!==currentSubtopicId)) n=null;
+  if(!n){
+    // pick first note in this subtopic
+    let inSub=data.notes.filter(x=>x.subject===s.id && x.topicId===currentTopicId && x.subtopicId===currentSubtopicId);
+    n=inSub[0];
+    currentNote=n?.id||null;
+  }
+  $('notesContent').innerHTML=`
+    <div class="subject-head"><span class="dot" style="--c:${s.color};width:13px;height:13px"></span><h2>${esc(s.name)}</h2></div>
+    ${topic?`<div class="muted" style="margin-bottom:8px;font-size:12px">${esc(topic.name)}${currentSubtopicId?' → '+esc(topic.subtopics.find(x=>x.id===currentSubtopicId)?.name||''):''}</div>`:''}
+    ${n?`
+      <input class="editor-title" id="noteTitle" value="${esc(n.title)}" placeholder="Note title">
+      <textarea class="editor" id="noteBody" placeholder="Start writing...">${esc(n.body)}</textarea>
+      <div class="note-meta"><span>Autosaves as you type ${n.appleSynced?'·  synced':''}</span><button class="btn" id="deleteNote">Delete note</button></div>
+    `:`
+      <div class="empty">No notes in this subtopic yet.</div>
+      <button class="btn primary" id="createNote">＋ Write a note</button>
+    `}
+  `;
+
+  // topic tree (right column)
+  $('topicTree').innerHTML = s.topics.length ? s.topics.map(t=>`
+    <div class="topic-block">
+      <div class="topic-title">
+        <span>${esc(t.name)}</span>
+        <button class="del-topic" data-deltopic="${t.id}" title="Delete topic">×</button>
+      </div>
+      <div class="subtopic-list">
+        ${t.subtopics.length?t.subtopics.map(st=>`
+          <span class="subtopic-chip ${st.id===currentSubtopicId?'active':''}">
+            <button data-open-sub="${st.id}" data-topic="${t.id}" style="background:transparent;color:inherit;padding:0;font:inherit">${esc(st.name)}</button>
+            <button class="del-sub" data-delsub="${st.id}" data-topic="${t.id}" title="Delete subtopic">×</button>
+          </span>
+        `).join(''):'<span class="muted" style="font-size:11px">No subtopics yet</span>'}
+      </div>
+    </div>
+  `).join('') : '<div class="empty">No topics yet. Tap ＋ Add → New topic.</div>';
+
+  // wire editor
+  if($('createNote')) $('createNote').onclick=createNote;
+  if($('deleteNote')) $('deleteNote').onclick=()=>{data.notes=data.notes.filter(x=>x.id!==currentNote);currentNote=null;save()};
+  if(n){
+    let timer;
+    ['noteTitle','noteBody'].forEach(id=>$(id).oninput=()=>{
+      clearTimeout(timer);
+      timer=setTimeout(()=>{
+        n.title=$('noteTitle').value;
+        n.body=$('noteBody').value;
+        n.updated=Date.now();
+        localStorage.setItem('studyspace_data',JSON.stringify(data));
+        renderStats();
+      },250);
+    });
+  }
+
+  // wire subtopic open / delete
+  document.querySelectorAll('[data-open-sub]').forEach(b=>b.onclick=()=>{
+    currentTopicId=b.dataset.topic;
+    currentSubtopicId=b.dataset.openSub;
+    currentNote=null;
+    renderNotes();
+  });
+  document.querySelectorAll('[data-delsub]').forEach(b=>b.onclick=()=>{
+    const tId=b.dataset.topic, stId=b.dataset.delsub;
+    if(!confirm('Delete this subtopic and its notes?')) return;
+    const t=s.topics.find(x=>x.id===tId);
+    if(!t) return;
+    t.subtopics=t.subtopics.filter(st=>st.id!==stId);
+    data.notes=data.notes.filter(n=>!(n.topicId===tId && n.subtopicId===stId));
+    if(currentSubtopicId===stId) currentSubtopicId=t.subtopics[0]?.id||null;
+    save();
+  });
+  document.querySelectorAll('[data-deltopic]').forEach(b=>b.onclick=()=>{
+    const tId=b.dataset.deltopic;
+    if(!confirm('Delete this topic, its subtopics, and all its notes?')) return;
+    s.topics=s.topics.filter(t=>t.id!==tId);
+    data.notes=data.notes.filter(n=>!(n.subject===s.id && n.topicId===tId));
+    if(currentTopicId===tId){currentTopicId=s.topics[0]?.id||null;currentSubtopicId=null;currentNote=null}
+    save();
+  });
+}
+
+function createNote(){
+  if(!currentSubject){return}
+  let s=data.subjects.find(x=>x.id===currentSubject);
+  if(!s) return;
+  if(!currentTopicId){ // no topics -> create one
+    addTopic();
+    return;
+  }
+  let t=s.topics.find(x=>x.id===currentTopicId);
+  if(!currentSubtopicId){ // no subtopics -> create one
+    addSubtopic();
+    return;
+  }
+  let n={id:uid(),subject:s.id,topicId:currentTopicId,subtopicId:currentSubtopicId,title:'',body:'',updated:Date.now()};
+  data.notes.push(n);
+  currentNote=n.id;
+  save();
+  setTimeout(()=>$('noteTitle')?.focus(),0);
+}
+
+function addTopic(){
+  if(!currentSubject) return;
+  openModal('New topic',`<label class="field-label">Topic name</label><input class="field" id="topicName" placeholder="e.g. Theme 3">`,()=>{
+    let v=$('topicName').value.trim();
+    let s=data.subjects.find(x=>x.id===currentSubject);
+    if(v&&s){
+      let t={id:uid(),name:v,subtopics:[]};
+      s.topics.push(t);
+      currentTopicId=t.id;
+      currentSubtopicId=null;
+      currentNote=null;
+      save();
+    }
+  });
+}
+function addSubtopic(){
+  if(!currentSubject) return;
+  let s=data.subjects.find(x=>x.id===currentSubject);
+  if(!s) return;
+  if(!currentTopicId){ addTopic(); return; }
+  openModal('New subtopic',`<label class="field-label">Subtopic name</label><input class="field" id="subName" placeholder="e.g. Business growth">`,()=>{
+    let v=$('subName').value.trim();
+    let t=s.topics.find(x=>x.id===currentTopicId);
+    if(v&&t){
+      let st={id:uid(),name:v};
+      t.subtopics.push(st);
+      currentSubtopicId=st.id;
+      currentNote=null;
+      save();
+    }
+  });
+}
+
+// Add menu button (single ＋ Add)
+$('addBtn').onclick=(e)=>{e.stopPropagation();$('addMenu').classList.toggle('show')};
+$('addMenu').addEventListener('click',(e)=>{
+  let b=e.target.closest('[data-add]');
+  if(!b) return;
+  $('addMenu').classList.remove('show');
+  if(b.dataset.add==='topic') addTopic();
+  else addSubtopic();
+});
+document.addEventListener('click',(e)=>{
+  if(!e.target.closest('.add-wrap')) $('addMenu').classList.remove('show');
+});
+
+// ===== MODAL =====
 function openModal(title,body,action){$('modalTitle').textContent=title;$('modalBody').innerHTML=body;$('modalBackdrop').classList.add('show');modalAction=action}
 function closeModal(){$('modalBackdrop').classList.remove('show');modalAction=null}
 $('modalCancel').onclick=closeModal;$('modalSave').onclick=()=>{if(modalAction)modalAction();closeModal()};
-$('addSubject').onclick=()=>openModal('Add a subject',`<label class="field-label">Subject name</label><input class="field" id="subjectName" placeholder="e.g. Psychology">`,()=>{let v=$('subjectName').value.trim();if(v){let s={id:uid(),name:v,color:['#e2a34b','#7c83df','#49a88d','#d77c9b','#5c9bc4'][data.subjects.length%5],topics:['General']};data.subjects.push(s);currentSubject=s.id;currentTopic='General';currentNote=null;save()}});
-function addTask(){openModal('Add a task',`<label class="field-label">Task</label><input class="field" id="taskText" placeholder="What needs doing?"><label class="field-label">Due date</label><input class="field" type="date" id="taskDate" value="${selectedDate}">`,()=>{let v=$('taskText').value.trim();if(v)data.tasks.push({id:uid(),text:v,date:$('taskDate').value,done:false});save()})}
-$('addTask').onclick=addTask;$('quickTask').onclick=addTask;$('quickNote').onclick=()=>{if(!currentSubject){showView('notes');return}showView('notes');createNote()};$('newSubtopic').onclick=addTopic;
-$('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='studyspace-backup.json';a.click();URL.revokeObjectURL(a.href)};
-$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;currentSubject=data.subjects[0]?.id||null;currentTopic=null;currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
 
-// ===== APPLE SYNC (iOS-safe) =====
-function buildICS(items, type){
+// ===== SUBJECTS / TASKS =====
+$('addSubject').onclick=()=>openModal('Add a subject',`<label class="field-label">Subject name</label><input class="field" id="subjectName" placeholder="e.g. Psychology">`,()=>{let v=$('subjectName').value.trim();if(v){let s={id:uid(),name:v,color:['#e2a34b','#7c83df','#49a88d','#d77c9b','#5c9bc4'][data.subjects.length%5],topics:[]};data.subjects.push(s);currentSubject=s.id;currentTopicId=null;currentSubtopicId=null;currentNote=null;save()}});
+function addTask(){openModal('Add a task',`<label class="field-label">Task</label><input class="field" id="taskText" placeholder="What needs doing?"><label class="field-label">Due date</label><input class="field" type="date" id="taskDate" value="${selectedDate}">`,()=>{let v=$('taskText').value.trim();if(v)data.tasks.push({id:uid(),text:v,date:$('taskDate').value,done:false});save()})}
+$('addTask').onclick=addTask;$('quickTask').onclick=addTask;$('quickNote').onclick=()=>{if(!currentSubject){showView('notes');return}showView('notes');createNote()};
+
+// ===== IMPORT / EXPORT / SYNC =====
+$('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='studyspace-backup.json';a.click();URL.revokeObjectURL(a.href)};
+$('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;currentSubject=data.subjects[0]?.id||null;currentTopicId=null;currentSubtopicId=null;currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
+
+function buildICS(items,type){
   let ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//StudySpace//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
   items.forEach(it=>{
-    let dateStr, summary, description;
-    if(type==='task'){
-      if(!it.date) return;
-      dateStr = it.date.replace(/-/g,'');
-      summary = it.text;
-      description = 'StudySpace task'+(it.done?' (done)':'');
-    } else {
-      if(!it.updated) return;
-      dateStr = new Date(it.updated).toISOString().slice(0,10).replace(/-/g,'');
-      summary = 'Note: '+(it.title||'Untitled');
-      description = (it.body||'').slice(0,200);
-    }
+    let dateStr,summary,description;
+    if(type==='task'){ if(!it.date) return; dateStr=it.date.replace(/-/g,''); summary=it.text; description='StudySpace task'+(it.done?' (done)':''); }
+    else { if(!it.updated) return; dateStr=new Date(it.updated).toISOString().slice(0,10).replace(/-/g,''); summary='Note: '+(it.title||'Untitled'); description=(it.body||'').slice(0,200); }
     ics.push('BEGIN:VEVENT');
     ics.push('UID:'+it.id+'@studyspace');
     ics.push('DTSTAMP:'+new Date().toISOString().replace(/[-:]/g,'').split('.')[0]+'Z');
@@ -118,69 +298,21 @@ function buildICS(items, type){
   ics.push('END:VCALENDAR');
   return ics.join('\r\n');
 }
-
-async function shareICS(content, filename, label){
-  const file = new File([content], filename, {type:'text/calendar'});
-  // 1) Try native iOS share sheet (offers "Add to Calendar")
-  if(navigator.canShare && navigator.canShare({files:[file]})){
-    try{
-      await navigator.share({files:[file], title:label});
-      return true;
-    }catch(err){
-      if(err.name==='AbortError') return true; // user cancelled
-      // fall through
-    }
+async function shareICS(content,filename,label){
+  const file=new File([content],filename,{type:'text/calendar'});
+  if(navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({files:[file],title:label});return true}catch(err){if(err.name==='AbortError')return true}
   }
-  // 2) iOS Safari: open as data URL (Safari can preview .ics inline)
-  try{
-    const dataUrl = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(content);
-    const w = window.open(dataUrl, '_blank');
-    if(w) return true;
-  }catch(e){}
-  // 3) Desktop fallback: blob download
-  try{
-    const blob = new Blob([content], {type:'text/calendar;charset=utf-8'});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(()=>URL.revokeObjectURL(a.href), 3000);
-    return true;
-  }catch(e){ return false; }
+  try{const w=window.open('data:text/calendar;charset=utf-8,'+encodeURIComponent(content),'_blank');if(w)return true}catch(e){}
+  try{const blob=new Blob([content],{type:'text/calendar;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=filename;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(a.href),3000);return true}catch(e){return false}
 }
-
-$('syncAppleBtn').onclick = async () => {
-  const tasks = data.tasks.filter(t=>t.date);
-  const notes = data.notes.filter(n=>n.updated);
-  if(!tasks.length && !notes.length){ alert('Nothing to sync yet — add a task or note first.'); return; }
-
-  // Build combined ICS (tasks as events + notes as events)
-  const taskICS = buildICS(tasks,'task');
-  const noteICS = buildICS(notes,'note');
-
-  // Send tasks first
-  if(tasks.length){
-    await shareICS(taskICS, 'studyspace-tasks.ics', 'StudySpace tasks');
-    tasks.forEach(t=>t.appleSynced=true);
-  }
-  // Then notes (slight delay so share sheet doesn't collide)
-  if(notes.length){
-    setTimeout(async ()=>{
-      await shareICS(noteICS, 'studyspace-notes.ics', 'StudySpace notes');
-      notes.forEach(n=>n.appleSynced=true);
-      localStorage.setItem('studyspace_apple_sync','true');
-      updateSyncBadge();
-      save();
-      alert('Tap “Add to Calendar” / “Add to Reminders” in the share sheet to import. Synced items now show a  badge.');
-    }, tasks.length ? 800 : 0);
-  } else {
-    localStorage.setItem('studyspace_apple_sync','true');
-    updateSyncBadge();
-    save();
-    alert('Tap “Add to Calendar” in the share sheet to import your tasks.');
-  }
+$('syncAppleBtn').onclick=async()=>{
+  const tasks=data.tasks.filter(t=>t.date);
+  const notes=data.notes.filter(n=>n.updated);
+  if(!tasks.length&&!notes.length){alert('Nothing to sync yet — add a task or note first.');return}
+  if(tasks.length){await shareICS(buildICS(tasks,'task'),'studyspace-tasks.ics','StudySpace tasks');tasks.forEach(t=>t.appleSynced=true)}
+  if(notes.length){setTimeout(async()=>{await shareICS(buildICS(notes,'note'),'studyspace-notes.ics','StudySpace notes');notes.forEach(n=>n.appleSynced=true);localStorage.setItem('studyspace_apple_sync','true');updateSyncBadge();save();alert('Tap “Add to Calendar” in the share sheet to import. Synced items now show a  badge.')},tasks.length?800:0)}
+  else{localStorage.setItem('studyspace_apple_sync','true');updateSyncBadge();save()}
 };
 
 function renderAll(){renderSubjects();renderStats();renderCalendar();renderHome();updateSyncBadge();if($('notesView').classList.contains('active'))renderNotes();if($('plannerView').classList.contains('active'))renderTasks()}
