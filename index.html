@@ -26,7 +26,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 /* Timetable & Tasks CSS */
 .timetable{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.lesson-row{background:var(--lesson-bg);border:1px solid var(--lesson-border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start}.lesson-row.has-deadline{background:var(--red-soft);border-color:var(--red)}.lesson-info strong{display:block;font-size:15px;color:var(--ink);margin-bottom:2px}.lesson-info span{font-size:13px;color:var(--muted)}.lesson-row.has-deadline .lesson-info strong{color:var(--red)}.lesson-actions button{background:var(--soft);color:var(--accent);border:0;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:600}.lesson-actions button:hover{filter:brightness(.95)}
 .note-ws{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px}.tree-pane{background:#fafbfe;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:70vh;overflow-y:auto}
-.tree-node{margin:0}.tree-row{display:flex;align-items:center;gap:4px;padding:7px 6px;border-radius:7px;font-size:14px;color:#5b6478;cursor:pointer;position:relative;user-select:none}.tree-row:hover{background:#eff1f8}.tree-row.sel{background:var(--soft);color:var(--accent);font-weight:650}.tree-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.tree-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tree-row .addsub,.tree-row .deltopic,.tree-row .mvup,.tree-row .mvdn{background:transparent;color:#a1a7b3;font-size:14px;padding:0 3px;line-height:1;display:none}.tree-row:hover .addsub,.tree-row:hover .deltopic,.tree-row:hover .mvup,.tree-row:hover .mvdn,.tree-row.sel .addsub,.tree-row.sel .deltopic,.tree-row.sel .mvup,.tree-row.sel .mvdn{display:inline}.tree-row .addsub:hover{color:var(--accent)}.tree-row .deltopic:hover{color:#e05555}.tree-row .mvup:hover,.tree-row .mvdn:hover{color:var(--accent)}.tree-children{margin-left:14px;border-left:1px dashed #e1e4ec;padding-left:4px}
+.tree-node{margin:0}.tree-row{display:flex;align-items:center;gap:4px;padding:7px 6px;border-radius:7px;font-size:14px;color:#5b6478;cursor:pointer;position:relative;user-select:none}.tree-row:hover{background:#eff1f8}.tree-row.sel{background:var(--soft);color:var(--accent);font-weight:650}.tree-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.tree-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tree-row .addsub,.tree-row .deltopic,.tree-row .mvup,.tree-row .mvdn,.tree-row .renametopic,.tree-row .movetopic{background:transparent;color:#a1a7b3;font-size:13px;padding:0 2px;line-height:1;display:none}.tree-row:hover .addsub,.tree-row:hover .deltopic,.tree-row:hover .mvup,.tree-row:hover .mvdn,.tree-row:hover .renametopic,.tree-row:hover .movetopic,.tree-row.sel .addsub,.tree-row.sel .deltopic,.tree-row.sel .mvup,.tree-row.sel .mvdn,.tree-row.sel .renametopic,.tree-row.sel .movetopic{display:inline}.tree-row .addsub:hover{color:var(--accent)}.tree-row .deltopic:hover{color:#e05555}.tree-row .mvup:hover,.tree-row .mvdn:hover{color:var(--accent)}.tree-row .renametopic:hover,.tree-row .movetopic:hover{color:var(--accent)}.tree-children{margin-left:14px;border-left:1px dashed #e1e4ec;padding-left:4px}
 .note-editor{min-width:0}.editor-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}.note-title-input{flex:1;font-size:22px;font-weight:700;border:0;border-bottom:1px solid transparent;padding:6px 2px;outline:none;background:transparent;color:var(--ink)}.note-title-input:focus{border-color:var(--line)}.editor{width:100%;min-height:340px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:16px;color:var(--ink);line-height:1.7;background:#fff;font-size:15px}
 .editor-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}.editor-foot .meta{font-size:13px;color:var(--muted)}
 .note-list{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}.note-list h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 8px}.note-item{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:14px;color:#4e586d}.note-item:hover{background:#f5f6fb}.note-item.sel{background:var(--soft);color:var(--accent);font-weight:650}.note-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.note-item .del{background:transparent;color:#b8bdc9;padding:0 4px;font-size:16px}.note-item .del:hover{color:#e05555}
@@ -95,69 +95,21 @@ const $=id=>document.getElementById(id);
 const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 const uid=()=>Math.random().toString(36).slice(2,10);
 
-// --- EXACT TIMETABLE DATA ---
+// --- TIMETABLE DATA ---
 const TIMETABLE = {
   1: { // Week 1
-    1: [
-      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:2,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'},
-      {p:3,s:'Assembly',r:'',t:'Mr P Lewis'},
-      {p:4,s:'Directed Learning',r:'',t:''},
-      {p:5,s:'Sociology',r:'M10',t:'Miss G Banton'}
-    ],
-    2: [
-      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:2,s:'Directed Learning',r:'',t:''},
-      {p:3,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'},
-      {p:4,s:'PSHE',r:'M2',t:'Ms M Flynn'}
-    ],
-    3: [
-      {p:2,s:'Sociology',r:'M9',t:'Mr G Cresswell'},
-      {p:3,s:'Directed Learning',r:'',t:''},
-      {p:5,s:'Media Studies',r:'B15',t:'Miss C Seery'}
-    ],
-    4: [
-      {p:1,s:'Directed Learning',r:'',t:''},
-      {p:3,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:5,s:'Directed Learning',r:'',t:''}
-    ],
-    5: [
-      {p:2,s:'Media Studies',r:'B14',t:'Miss C Seery'},
-      {p:3,s:'Sociology',r:'M5',t:'Miss N Hellen'},
-      {p:4,s:'Economics',r:'A16',t:'Miss A McLean'}
-    ]
+    1: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'},{p:3,s:'Assembly',r:'',t:'Mr P Lewis'},{p:4,s:'Directed Learning',r:'',t:''},{p:5,s:'Sociology',r:'M10',t:'Miss G Banton'}],
+    2: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'},{p:4,s:'PSHE',r:'M2',t:'Ms M Flynn'}],
+    3: [{p:2,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:3,s:'Directed Learning',r:'',t:''},{p:5,s:'Media Studies',r:'B15',t:'Miss C Seery'}],
+    4: [{p:1,s:'Directed Learning',r:'',t:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:5,s:'Directed Learning',r:'',t:''}],
+    5: [{p:2,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:3,s:'Sociology',r:'M5',t:'Miss N Hellen'},{p:4,s:'Economics',r:'A16',t:'Miss A McLean'}]
   },
   2: { // Week 2
-    1: [
-      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},
-      {p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},
-      {p:4,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'}
-    ],
-    2: [
-      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},
-      {p:3,s:'Sociology',r:'M10',t:'Miss G Banton'},
-      {p:5,s:'Directed Learning',r:'',t:''}
-    ],
-    3: [
-      {p:1,s:'Media Studies',r:'B14',t:'Miss C Seery'},
-      {p:2,s:'Directed Learning',r:'',t:''},
-      {p:4,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:5,s:'Sociology',r:'M9',t:'Mr G Cresswell'}
-    ],
-    4: [
-      {p:2,s:'Directed Learning',r:'',t:''},
-      {p:3,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:4,s:'Media Studies',r:'B14',t:'Miss C Seery'},
-      {p:5,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'}
-    ],
-    5: [
-      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
-      {p:2,s:'Media Studies',r:'A11',t:'Mrs A Hewitt'},
-      {p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},
-      {p:4,s:'Directed Learning',r:'',t:''}
-    ]
+    1: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:4,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'}],
+    2: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:3,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:5,s:'Directed Learning',r:'',t:''}],
+    3: [{p:1,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:2,s:'Directed Learning',r:'',t:''},{p:4,s:'Economics',r:'A16',t:'Miss A McLean'},{p:5,s:'Sociology',r:'M9',t:'Mr G Cresswell'}],
+    4: [{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:5,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'}],
+    5: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Media Studies',r:'A11',t:'Mrs A Hewitt'},{p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:4,s:'Directed Learning',r:'',t:''}]
   }
 };
 
@@ -189,12 +141,41 @@ document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showView(b.dat
 $('menuBtn').onclick=(e)=>{e.stopPropagation();$('sidebar').classList.toggle('open')};
 $('mainOverlay').onclick=()=>$('sidebar').classList.remove('open');
 
+/* ---------- NOTIFICATIONS ---------- */
+function requestNotifications() {
+  if (!("Notification" in window)) {
+    alert("This browser does not support desktop notification");
+  } else if (Notification.permission === "granted") {
+    new Notification("StudySpace Notifications are ON", { body: "We will remind you of tasks due today while the app is open." });
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(function (permission) {
+      if (permission === "granted") {
+        new Notification("StudySpace Notifications are ON", { body: "We will remind you of tasks due today while the app is open." });
+      }
+    });
+  }
+}
+
+function checkNotifications() {
+  if (Notification.permission === "granted") {
+    const today = todayISO();
+    const tasksToday = data.tasks.filter(t => !t.done && t.date === today);
+    if (tasksToday.length > 0) {
+      new Notification("Tasks due today", {
+        body: `You have ${tasksToday.length} task(s) due today. Open StudySpace to view them.`
+      });
+    }
+  }
+}
+// Run check once when app loads (if they already granted permission)
+setTimeout(checkNotifications, 2000);
+
 /* ---------- TIMETABLE LOGIC ---------- */
 function getWeekNumber(isoDate){
   const start = new Date(data.settings.week2Start+'T12:00:00');
   const target = new Date(isoDate+'T12:00:00');
   const diffDays = Math.round((target - start) / (1000*60*60*24));
-  if(diffDays < 0) return 1; // Before start, assume Week 1
+  if(diffDays < 0) return 1;
   const weeksPassed = Math.floor(diffDays / 7);
   return (weeksPassed % 2 === 0) ? 2 : 1; 
 }
@@ -202,24 +183,130 @@ function getWeekNumber(isoDate){
 function getLessonsForDate(isoDate){
   const d = new Date(isoDate+'T12:00:00');
   const dayOfWeek = d.getDay(); 
-  if(dayOfWeek === 0 || dayOfWeek === 6) return []; // Weekend
+  if(dayOfWeek === 0 || dayOfWeek === 6) return [];
   
   const weekNum = getWeekNumber(isoDate);
-  const timetableDay = dayOfWeek === 6 ? 6 : dayOfWeek; // Mon=1...Fri=5
-  
+  const timetableDay = dayOfWeek === 6 ? 6 : dayOfWeek;
   const rawLessons = TIMETABLE[weekNum][timetableDay] || [];
   
-  // Fill in missing periods up to 5
   const fullDay = [];
   for(let p=1; p<=5; p++) {
     const existing = rawLessons.find(l => l.p === p);
-    if(existing) {
-      fullDay.push(existing);
-    } else {
-      fullDay.push({p: p, s: 'Free Period', r: '', t: ''});
-    }
+    if(existing) fullDay.push(existing);
+    else fullDay.push({p: p, s: 'Free Period', r: '', t: ''});
   }
   return fullDay;
+}
+
+/* ---------- TREE HELPERS ---------- */
+function findTopic(topics,path){let list=topics,node=null;for(const id of path){node=list.find(t=>t.id===id);if(!node)return null;list=node.children}return node}
+function getPath(subject,id,list=null,acc=[]){list=list||subject.topics;for(const t of list){if(t.id===id)return [...acc,t.id];const r=getPath(subject,id,t.children||[],[...acc,t.id]);if(r)return r}return null}
+function topicName(subject,path){const t=findTopic(subject.topics,path);return t?t.name:''}
+function siblingsOf(subject,path){const parentPath=path.slice(0,-1);if(!parentPath.length)return subject.topics;const p=findTopic(subject.topics,parentPath);return p?p.children:[]}
+function moveTopic(subject,path,dir){
+  const sibs=siblingsOf(subject,path), id=path[path.length-1], i=sibs.findIndex(t=>t.id===id);
+  if(i<0)return; const j=i+dir; if(j<0||j>=sibs.length)return;
+  [sibs[i],sibs[j]]=[sibs[j],sibs[i]];
+}
+function deleteTopicByPath(subject,path){if(!path.length)return;const parentPath=path.slice(0,-1),lastId=path[path.length-1];if(!parentPath.length){subject.topics=subject.topics.filter(t=>t.id!==lastId)}else{const p=findTopic(subject.topics,parentPath);if(p)p.children=p.children.filter(t=>t.id!==lastId)}}
+
+/* ---------- RENAME & MOVE LOGIC ---------- */
+function renameTopic(s, path) {
+  const t = findTopic(s.topics, path);
+  if(!t) return;
+  openModal('Rename', `<label class="field-label">New name</label><input class="field" id="renameInput" value="${esc(t.name)}">`, ()=>{
+    const v = $('renameInput').value.trim();
+    if(v) { t.name = v; save(); }
+  });
+  setTimeout(()=>{ const i=$('renameInput'); if(i){i.focus(); i.select();} }, 100);
+}
+
+function renameNote(id) {
+  const n = data.notes.find(x=>x.id===id);
+  if(!n) return;
+  openModal('Rename note', `<label class="field-label">New title</label><input class="field" id="renameInput" value="${esc(n.title)}">`, ()=>{
+    const v = $('renameInput').value.trim();
+    if(v) { n.title = v; n.updated = Date.now(); save(); }
+  });
+  setTimeout(()=>{ const i=$('renameInput'); if(i){i.focus(); i.select();} }, 100);
+}
+
+function moveTopicUI(s, path) {
+  const t = findTopic(s.topics, path);
+  if(!t) return;
+  
+  let options = `<option value="">-- Top Level --</option>`;
+  function buildOptions(nodes, parentPath, depth) {
+    nodes.forEach(node => {
+      if (node.id === t.id || isDescendant(t, node.id)) return;
+      const p = [...parentPath, node.id];
+      const pad = '&nbsp;'.repeat(depth * 4);
+      options += `<option value="${JSON.stringify(p)}">${pad}${esc(node.name)}</option>`;
+      if(node.children) buildOptions(node.children, p, depth + 1);
+    });
+  }
+  buildOptions(s.topics, [], 0);
+  
+  openModal('Move Topic', `
+    <p class="muted" style="font-size:13px;margin-top:0">Move "<b>${esc(t.name)}</b>" into a new parent:</p>
+    <select class="field" id="moveSelect" style="height:auto; padding:10px">${options}</select>
+  `, ()=>{
+    const val = $('moveSelect').value;
+    const newParentPath = val ? JSON.parse(val) : [];
+    
+    const oldSibs = siblingsOf(s, path);
+    const idx = oldSibs.findIndex(x=>x.id===t.id);
+    if(idx > -1) oldSibs.splice(idx, 1);
+    
+    if(newParentPath.length === 0) {
+      s.topics.push(t);
+    } else {
+      const newParent = findTopic(s.topics, newParentPath);
+      if(newParent) newParent.children.push(t);
+    }
+    
+    currentPath = [...newParentPath, t.id];
+    save();
+  });
+}
+
+function moveNoteUI(noteId) {
+  const n = data.notes.find(x=>x.id===noteId);
+  if(!n) return;
+  const s = data.subjects.find(x=>x.id===n.subject);
+  if(!s) return;
+  
+  let options = '';
+  function buildOptions(nodes, parentPath, depth) {
+    nodes.forEach(node => {
+      const p = [...parentPath, node.id];
+      const pad = '&nbsp;'.repeat(depth * 4);
+      const isSelected = JSON.stringify(p) === JSON.stringify(n.path);
+      options += `<option value="${JSON.stringify(p)}" ${isSelected?'selected':''}>${pad}${esc(node.name)}</option>`;
+      if(node.children) buildOptions(node.children, p, depth + 1);
+    });
+  }
+  buildOptions(s.topics, [], 0);
+  
+  openModal('Move Note', `
+    <p class="muted" style="font-size:13px;margin-top:0">Move "<b>${esc(n.title||'Untitled note')}</b>" into another topic:</p>
+    <select class="field" id="moveSelect" style="height:auto; padding:10px">${options}</select>
+  `, ()=>{
+    const val = $('moveSelect').value;
+    if(val) {
+      n.path = JSON.parse(val);
+      n.updated = Date.now();
+      save();
+    }
+  });
+}
+
+function isDescendant(parentNode, childId) {
+  if(!parentNode.children) return false;
+  for(let c of parentNode.children) {
+    if(c.id === childId || isDescendant(c, childId)) return true;
+  }
+  return false;
 }
 
 /* ---------- SIDEBAR ---------- */
@@ -259,17 +346,6 @@ function renderSbTopics(subject,topics){
 function noteCount(subject,path){return data.notes.filter(n=>n.subject===subject.id&&JSON.stringify(n.path)===JSON.stringify(path)).length}
 
 /* ---------- NOTES ---------- */
-function findTopic(topics,path){let list=topics,node=null;for(const id of path){node=list.find(t=>t.id===id);if(!node)return null;list=node.children}return node}
-function topicName(subject,path){const t=findTopic(subject.topics,path);return t?t.name:''}
-function deleteTopicByPath(subject,path){if(!path.length)return;const parentPath=path.slice(0,-1),lastId=path[path.length-1];if(!parentPath.length){subject.topics=subject.topics.filter(t=>t.id!==lastId)}else{const p=findTopic(subject.topics,parentPath);if(p)p.children=p.children.filter(t=>t.id!==lastId)}}
-function getPath(subject,id,list=null,acc=[]){list=list||subject.topics;for(const t of list){if(t.id===id)return [...acc,t.id];const r=getPath(subject,id,t.children||[],[...acc,t.id]);if(r)return r}return null}
-function siblingsOf(subject,path){const parentPath=path.slice(0,-1);if(!parentPath.length)return subject.topics;const p=findTopic(subject.topics,parentPath);return p?p.children:[]}
-function moveTopic(subject,path,dir){
-  const sibs=siblingsOf(subject,path), id=path[path.length-1], i=sibs.findIndex(t=>t.id===id);
-  if(i<0)return; const j=i+dir; if(j<0||j>=sibs.length)return;
-  [sibs[i],sibs[j]]=[sibs[j],sibs[i]];
-}
-
 function renderNotes(){
   const s=data.subjects.find(x=>x.id===currentSubject);
   if(!s){$('treePane').innerHTML='<div class="empty">Add a subject first</div>';$('noteEditorPane').innerHTML='';return}
@@ -277,7 +353,7 @@ function renderNotes(){
   if(currentPath.length&&!findTopic(s.topics,currentPath)){currentPath=[];currentNote=null}
   $('treePane').innerHTML=renderTree(s,s.topics,[]);
   document.querySelectorAll('[data-topen]').forEach(el=>el.onclick=(ev)=>{
-    if(ev.target.closest('[data-deltopic]')||ev.target.closest('[data-addsub]')||ev.target.closest('[data-tcaret]')||ev.target.closest('[data-mv]'))return;
+    if(ev.target.closest('[data-deltopic]')||ev.target.closest('[data-addsub]')||ev.target.closest('[data-tcaret]')||ev.target.closest('[data-mv]')||ev.target.closest('[data-renametopic]')||ev.target.closest('[data-movetopic]'))return;
     const path=JSON.parse(el.dataset.topen);
     if(JSON.stringify(path)===JSON.stringify(currentPath)){
       const id=path[path.length-1];
@@ -292,6 +368,10 @@ function renderNotes(){
   document.querySelectorAll('[data-addsub]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();currentPath=JSON.parse(el.dataset.addsub);addSubtopicHere()});
   document.querySelectorAll('[data-deltopic]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();const path=JSON.parse(el.dataset.deltopic);if(!confirm('Delete this topic and everything inside it?'))return;deleteTopicByPath(s,path);data.notes=data.notes.filter(n=>!(n.subject===s.id&&n.path.slice(0,path.length).join()===path.join()));if(currentPath.slice(0,path.length).join()===path.join()){currentPath=path.slice(0,-1);currentNote=null}save()});
   document.querySelectorAll('[data-mv]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();const path=JSON.parse(el.dataset.mv);moveTopic(s,path,el.dataset.dir==='up'?-1:1);save()});
+  
+  document.querySelectorAll('[data-renametopic]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();renameTopic(s, JSON.parse(el.dataset.renametopic))});
+  document.querySelectorAll('[data-movetopic]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();moveTopicUI(s, JSON.parse(el.dataset.movetopic))});
+  
   renderNoteEditor(s);
 }
 function renderTree(s,topics,parentPath){
@@ -302,14 +382,33 @@ function renderTree(s,topics,parentPath){
     const sel=JSON.stringify(path)===JSON.stringify(currentPath);
     const open=expanded.has(t.id);
     const canUp=idx>0, canDown=idx<topics.length-1;
-    out+=`<div class="tree-node"><div class="tree-row ${sel?'sel':''}" data-topen='${JSON.stringify(path)}'><span class="caret" data-tcaret="${t.id}">${t.children.length||noteCount(s,path)?(open?'▾':'▸'):'·'}</span><span class="nm">${esc(t.name)}</span>${canUp?`<button class="mvup" data-mv='${JSON.stringify(path)}' data-dir="up" title="Move up">▲</button>`:''}${canDown?`<button class="mvdn" data-mv='${JSON.stringify(path)}' data-dir="down" title="Move down">▼</button>`:''}<button class="addsub" data-addsub='${JSON.stringify(path)}' title="Add subtopic">＋</button><button class="deltopic" data-deltopic='${JSON.stringify(path)}' title="Delete">×</button></div>${open&&t.children.length?`<div class="tree-children">${renderTree(s,t.children,path)}</div>`:''}${open?renderNoteChildren(s,path):''}</div>`;
+    out+=`<div class="tree-node">
+      <div class="tree-row ${sel?'sel':''}" data-topen='${JSON.stringify(path)}'>
+        <span class="caret" data-tcaret="${t.id}">${t.children.length||noteCount(s,path)?(open?'▾':'▸'):'·'}</span>
+        <span class="nm">${esc(t.name)}</span>
+        <button class="renametopic" data-renametopic='${JSON.stringify(path)}' title="Rename">✎</button>
+        <button class="movetopic" data-movetopic='${JSON.stringify(path)}' title="Move">⇄</button>
+        ${canUp?`<button class="mvup" data-mv='${JSON.stringify(path)}' data-dir="up" title="Move up">▲</button>`:''}
+        ${canDown?`<button class="mvdn" data-mv='${JSON.stringify(path)}' data-dir="down" title="Move down">▼</button>`:''}
+        <button class="addsub" data-addsub='${JSON.stringify(path)}' title="Add subtopic">＋</button>
+        <button class="deltopic" data-deltopic='${JSON.stringify(path)}' title="Delete">×</button>
+      </div>
+      ${open&&t.children.length?`<div class="tree-children">${renderTree(s,t.children,path)}</div>`:''}
+      ${open?renderNoteChildren(s,path):''}
+    </div>`;
   });
   return out;
 }
 function renderNoteChildren(s,path){
   const ns=data.notes.filter(n=>n.subject===s.id&&JSON.stringify(n.path)===JSON.stringify(path));
   if(!ns.length)return '';
-  return ns.map(n=>`<div class="tree-row" style="padding-left:22px;font-size:13px" data-open-note="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span></div>`).join('');
+  return ns.map(n=>`
+    <div class="tree-row" style="padding-left:22px;font-size:13px" data-open-note="${n.id}">
+      <span class="nm">${esc(n.title||'Untitled note')}</span>
+      <button class="renametopic" data-rename-note="${n.id}" title="Rename">✎</button>
+      <button class="movetopic" data-move-note="${n.id}" title="Move">⇄</button>
+    </div>
+  `).join('');
 }
 function renderNoteEditor(s){
   const host=$('noteEditorPane');
@@ -323,9 +422,9 @@ function renderNoteEditor(s){
       <div class="add-wrap"><button class="btn primary small" id="addBtn">＋ Add</button><div class="add-menu" id="addMenu"><button data-add="topic">New topic (top level)</button><button data-add="subtopic">New subtopic here</button><button data-add="note">New note here</button></div></div>
     </div>
     ${note?`
-      <div class="editor-head">
-        <input class="note-title-input" id="noteTitle" value="${esc(note.title)}" placeholder="Untitled note" oninput="autoSave()">
-        <button class="btn small" id="fsBtn" title="Full screen" style="padding:8px 12px; font-size:16px">⤢</button>
+      <div class="editor-head" style="align-items:flex-start">
+        <input class="note-title-input" id="noteTitle" value="${esc(note.title)}" placeholder="Untitled note" oninput="autoSave()" style="margin-top:4px">
+        <button class="btn small" id="fsBtn" title="Full screen" style="padding:10px 14px; font-size:18px; margin-top:2px;">⤢</button>
       </div>
       <textarea class="editor" id="noteBody" placeholder="Start writing..." oninput="autoSave()">${esc(note.body)}</textarea>
       <div class="editor-foot"><div class="meta" id="saveStatus">Autosaved</div><div style="display:flex;gap:6px"><button class="btn" id="deleteNote">Delete</button></div></div>
@@ -344,7 +443,7 @@ function renderNoteEditor(s){
   if($('deleteNote'))$('deleteNote').onclick=()=>{if(!confirm('Delete this note?'))return;data.notes=data.notes.filter(n=>n.id!==currentNote);currentNote=null;save()};
   if($('createNote'))$('createNote').onclick=()=>addNoteHere();
   document.querySelectorAll('[data-open-note]').forEach(el=>el.onclick=(e)=>{
-    if(e.target.closest('[data-del-note]'))return;
+    if(e.target.closest('[data-del-note]')||e.target.closest('[data-rename-note]')||e.target.closest('[data-move-note]'))return;
     currentNote=el.dataset.openNote;renderNotes();
   });
   document.querySelectorAll('[data-del-note]').forEach(el=>el.onclick=(e)=>{
@@ -354,9 +453,12 @@ function renderNoteEditor(s){
     if(currentNote===el.dataset.delNote)currentNote=null;
     save();
   });
+  
+  document.querySelectorAll('[data-rename-note]').forEach(el=>el.onclick=(e)=>{e.stopPropagation();renameNote(el.dataset.renameNote)});
+  document.querySelectorAll('[data-move-note]').forEach(el=>el.onclick=(e)=>{e.stopPropagation();moveNoteUI(el.dataset.moveNote)});
 }
 
-/* ---------- AUTOSAVE LOGIC ---------- */
+/* ---------- AUTOSAVE ---------- */
 let autoSaveTimer;
 function autoSave(){
   const status = $('saveStatus');
@@ -367,18 +469,15 @@ function autoSave(){
     let note = data.notes.find(n=>n.id===currentNote);
     if(!note) return;
     
-    // Update note data
     if($('noteTitle')) note.title = $('noteTitle').value;
     if($('noteBody')) note.body = $('noteBody').value;
     note.updated = Date.now();
     
-    // Save to local storage directly without full re-render
     localStorage.setItem('studyspace_data', JSON.stringify(data));
     if(status) status.textContent = 'Autosaved ' + new Date().toLocaleTimeString();
     
-    // Update the sidebar/note list silently
     renderSidebarTree(); 
-  }, 600); // saves half a second after you stop typing
+  }, 600);
 }
 
 /* ---------- FULLSCREEN NOTE ---------- */
@@ -407,7 +506,7 @@ function openFullscreen(note){
   $('fsClose').onclick=()=>{
     $('fsNote').classList.remove('show');
     fsNoteId=null;
-    renderNotes(); // Re-render standard view to show updated text
+    renderNotes();
     renderSidebarTree();
   };
 }
@@ -477,7 +576,14 @@ function renderCalendar(){
   });
 }
 $('prevMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};$('nextMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};
-function taskHTML(t){return `<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''}><div class="task-text">${esc(t.text)}<small>${t.date?new Date(t.date+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'No due date'}</small></div><button class="delete" data-delete="${t.id}" aria-label="Delete task">×</button></div>`}
+function taskHTML(t){
+  let repeatTxt = '';
+  if(t.repeat === 'weekly') repeatTxt = ' · repeats weekly';
+  if(t.repeat === 'fortnightly') repeatTxt = ' · repeats fortnightly';
+  if(t.repeat === 'monthly') repeatTxt = ' · repeats monthly';
+
+  return `<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''}><div class="task-text">${esc(t.text)}<small>${t.date?new Date(t.date+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'No due date'}${repeatTxt}</small></div><button class="delete" data-delete="${t.id}" aria-label="Delete task">×</button></div>`;
+}
 function wireTasks(){document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{let t=data.tasks.find(x=>x.id===c.dataset.check);if(t)t.done=c.checked;save()});document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{data.tasks=data.tasks.filter(t=>t.id!==b.dataset.delete);save()})}
 
 function renderTasks(){
@@ -497,7 +603,6 @@ function renderTasks(){
     html += `<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Timetable (${getWeekNumber(selectedDate)===1?'Week 1':'Week 2'})</h4>`;
     html += `<div class="timetable">`;
     
-    // Find which periods have deadlines today
     const deadlinesToday = forDay.map(t => t.period).filter(Boolean);
 
     lessons.forEach(l => {
@@ -528,7 +633,6 @@ function renderTasks(){
   $('allTasks').innerHTML=html;
   wireTasks();
   
-  // wire lesson deadline buttons
   document.querySelectorAll('[data-add-lesson-task]').forEach(b=>b.onclick=()=>{
     const subjName = b.dataset.subject;
     const period = b.dataset.addLessonTask;
@@ -586,7 +690,32 @@ $('modalCancel').onclick=closeModal;$('modalSave').onclick=()=>{if(modalAction)m
 
 /* ---------- SUBJECTS / TASKS ---------- */
 $('addSubject').onclick=()=>openModal('Add a subject',`<label class="field-label">Subject name</label><input class="field" id="subjectName" placeholder="e.g. Psychology">`,()=>{let v=$('subjectName').value.trim();if(v){let s={id:uid(),name:v,color:['#e2a34b','#7c83df','#49a88d','#d77c9b','#5c9bc4'][data.subjects.length%5],topics:[]};data.subjects.push(s);currentSubject=s.id;currentPath=[];currentNote=null;save()}});
-function addTask(){openModal('Add a task',`<label class="field-label">Task</label><input class="field" id="taskText" placeholder="What needs doing?"><label class="field-label">Due date</label><input class="field" type="date" id="taskDate" value="${selectedDate||todayISO()}">`,()=>{let v=$('taskText').value.trim();if(v)data.tasks.push({id:uid(),text:v,date:$('taskDate').value,done:false});save()})}
+
+function addTask(){
+  openModal('Add a task',`
+    <label class="field-label">Task</label>
+    <input class="field" id="taskText" placeholder="What needs doing?">
+    <label class="field-label">Due date</label>
+    <input class="field" type="date" id="taskDate" value="${selectedDate||todayISO()}">
+    <label class="field-label">Repeat</label>
+    <select class="field" id="taskRepeat">
+      <option value="none">Does not repeat</option>
+      <option value="weekly">Every week</option>
+      <option value="fortnightly">Every 2 weeks (fortnightly)</option>
+      <option value="monthly">Every month</option>
+    </select>
+  `, ()=>{
+    let v=$('taskText').value.trim();
+    if(v) data.tasks.push({
+      id:uid(),
+      text:v,
+      date:$('taskDate').value,
+      done:false,
+      repeat: $('taskRepeat').value
+    });
+    save();
+  });
+}
 $('addTask').onclick=addTask;$('quickTask').onclick=addTask;
 
 $('quickNote').onclick=(e)=>{
@@ -627,7 +756,206 @@ $('termDatesBtn').onclick = () => {
 $('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='studyspace-backup.json';a.click();URL.revokeObjectURL(a.href)};
 $('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;if(!data.settings)data.settings={week2Start:nextMondayISO()};currentSubject=data.subjects[0]?.id||null;currentPath=[];currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
 
-$('syncPanelBtn').onclick=()=>openModal('Sync & settings','<p class="muted" style="font-size:13px">Online sync (offline + JSON backup) is coming in the next version. For now, use Export / Import backup to move data between devices.</p>',null);
+$('syncPanelBtn').onclick=()=>{
+  openModal('Sync & settings', `
+    <p class="muted" style="font-size:13px;margin-top:0">Online sync is coming in the next version. For now, use Export / Import backup to move data between devices.</p>
+    <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
+    <p class="muted" style="font-size:13px;margin-top:0"><b>Notifications</b><br>Enable notifications to be reminded of tasks due today while the app is open.</p>
+    <button class="btn primary" id="enableNotifsBtn" style="width:100%;margin-top:8px">Enable Notifications</button>
+  `, null);
+  setTimeout(()=>{
+    if($('enableNotifsBtn')) $('enableNotifsBtn').onclick = requestNotifications;
+  }, 100);
+};
+
+/* ---------- GENERATE REPEATING TASKS ---------- */
+// This function dynamically generates repeat tasks based on the current month so the calendar always shows them.
+// The user's original "template" task stays in the list and generates copies in the calendar view.
+// *For a pure HTML app, this is the most efficient way to handle repeats without duplicating data endlessly.*
+
+function getTasksForDate(isoDate) {
+  let dayTasks = data.tasks.filter(t => t.date === isoDate);
+  const d = new Date(isoDate+'T12:00:00');
+  
+  data.tasks.forEach(t => {
+    if(!t.repeat || t.repeat === 'none' || t.date === isoDate) return;
+    const start = new Date(t.date+'T12:00:00');
+    if(d < start) return; // Date is before the task started
+    
+    let match = false;
+    if(t.repeat === 'weekly') {
+      match = (d.getDay() === start.getDay());
+    } else if(t.repeat === 'fortnightly') {
+      const diffDays = Math.round((d - start) / (1000*60*60*24));
+      match = (diffDays % 14 === 0);
+    } else if(t.repeat === 'monthly') {
+      match = (d.getDate() === start.getDate());
+    }
+    
+    if(match) {
+      // Add a virtual copy for the calendar view
+      dayTasks.push({...t, id: t.id + '_' + isoDate, originalId: t.id, date: isoDate});
+    }
+  });
+  
+  return dayTasks;
+}
+
+// Override renderCalendar to use getTasksForDate
+const originalRenderCalendar = renderCalendar;
+renderCalendar = function() {
+  const y=calDate.getFullYear(), m=calDate.getMonth();
+  $('monthLabel').textContent = calDate.toLocaleDateString(undefined,{month:'long',year:'numeric'});
+  const first=new Date(y,m,1), start=(first.getDay()+6)%7;
+  const days=new Date(y,m+1,0).getDate(), prev=new Date(y,m,0).getDate();
+  let out=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="weekday">${x}</div>`).join('');
+  for(let i=0;i<42;i++){
+    let d=i-start+1, dt=new Date(y,m,d);
+    let iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+    let num = d<1 ? prev+d : d>days ? d-days : d;
+    
+    const dayTasks = getTasksForDate(iso);
+    const hasOpen = dayTasks.some(t => !t.done);
+    const hasDone = dayTasks.length > 0 && !hasOpen;
+    const lessons = getLessonsForDate(iso);
+    
+    let cls = 'day';
+    if(d<1||d>days) cls+=' other';
+    if(iso===todayISO()) cls+=' today';
+    if(selectedDate && iso===selectedDate) cls+=' selected';
+    if(hasOpen) cls+=' has-task';
+    else if(hasDone) cls+=' has-done';
+    if(lessons.length) cls+=' has-lessons';
+    
+    out+=`<button class="${cls}" data-date="${iso}">${num}</button>`;
+  }
+  $('calendar').innerHTML=out;
+  document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{
+    selectedDate=b.dataset.date;
+    renderCalendar();
+    showView('planner');
+    renderTasks();
+  });
+};
+
+// Override renderTasks to use getTasksForDate
+const originalRenderTasks = renderTasks;
+renderTasks = function() {
+  const forDay=getTasksForDate(selectedDate).sort((a,b)=>(a.done?1:0)-(b.done?1:0));
+  const others=data.tasks.filter(t=>t.date!==selectedDate).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
+  
+  let html='';
+  const lessons = getLessonsForDate(selectedDate);
+  const dateObj = new Date(selectedDate+'T12:00:00');
+  
+  html+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <h3 style="font-size:16px;margin:0">${dateObj.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3>
+  </div>`;
+
+  if(lessons.length) {
+    html += `<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Timetable (${getWeekNumber(selectedDate)===1?'Week 1':'Week 2'})</h4>`;
+    html += `<div class="timetable">`;
+    
+    const deadlinesToday = forDay.map(t => t.period).filter(Boolean);
+
+    lessons.forEach(l => {
+      const isFree = l.s === 'Free Period';
+      const hasDeadline = deadlinesToday.includes(String(l.p));
+      
+      html += `<div class="lesson-row ${hasDeadline ? 'has-deadline' : ''}">
+        <div class="lesson-info">
+          <strong>${isFree ? l.s : 'P'+l.p+': '+esc(l.s)}</strong>
+          ${isFree ? '' : `<span>${l.r ? l.r + ' · ' : ''}${l.t}</span>`}
+        </div>
+        ${isFree ? '' : `<div class="lesson-actions">
+          <button data-add-lesson-task="${l.p}" data-subject="${l.s}">＋ Deadline</button>
+        </div>`}
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  html+=`<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:20px 0 8px">Tasks for this day</h4>`;
+  html+=forDay.length?forDay.map(taskHTML).join(''):'<div class="empty" style="padding:10px">No tasks on this date.</div>';
+  
+  if(others.length){
+    html+=`<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:20px 0 8px">All other tasks</h4>`;
+    html+=others.map(taskHTML).join('');
+  }
+  
+  $('allTasks').innerHTML=html;
+  wireTasks();
+  
+  document.querySelectorAll('[data-add-lesson-task]').forEach(b=>b.onclick=()=>{
+    const subjName = b.dataset.subject;
+    const period = b.dataset.addLessonTask;
+    openModal('Add deadline', `
+      <label class="field-label">Task</label>
+      <input class="field" id="taskText" placeholder="e.g. Finish essay">
+      <label class="field-label">Date</label>
+      <input class="field" type="date" id="taskDate" value="${selectedDate}" readonly>
+      <input type="hidden" id="taskSubject" value="${subjName}">
+      <input type="hidden" id="taskPeriod" value="${period}">
+    `, ()=>{
+      let v=$('taskText').value.trim();
+      if(v) {
+        data.tasks.push({
+          id:uid(),
+          text:v,
+          date:$('taskDate').value,
+          done:false,
+          subject: $('taskSubject').value,
+          period: $('taskPeriod').value
+        });
+        save();
+      }
+    });
+  });
+};
+
+// Override renderHome to use getTasksForDate logic for the next 3 tasks
+const originalRenderHome = renderHome;
+renderHome = function() {
+  // Generate a list of upcoming days (next 14 days) to find virtual repeating tasks
+  let upcomingTasks = [];
+  for(let i=0; i<14; i++) {
+    let d = new Date();
+    d.setDate(d.getDate() + i);
+    let iso = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    let tasks = getTasksForDate(iso).filter(t => !t.done);
+    upcomingTasks.push(...tasks);
+  }
+  // remove duplicates by id, sort by date, take 3
+  let unique = [...new Map(upcomingTasks.map(t => [t.id, t])).values()];
+  unique.sort((a,b) => a.date.localeCompare(b.date));
+  const top3 = unique.slice(0, 3);
+
+  $('todayTasks').innerHTML = top3.length
+    ? top3.map(taskHTML).join('')
+    : '<div class="empty">No upcoming tasks. Enjoy the breathing room.</div>';
+  
+  // Custom wireTasks for virtual tasks
+  document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{
+    let t=data.tasks.find(x=>x.id===c.dataset.check);
+    if(t) t.done=c.checked;
+    save();
+  });
+  document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{
+    data.tasks=data.tasks.filter(t=>t.id!==b.dataset.delete);
+    save();
+  });
+
+  let recent=[...data.notes].sort((a,b)=>b.updated-a.updated).slice(0,4);
+  $('recentNotes').innerHTML=recent.length
+    ? recent.map(n=>`<div class="task"><div class="task-text"><b>${esc(n.title||'Untitled note')}</b><small>${esc(data.subjects.find(s=>s.id===n.subject)?.name||'Subject')} · ${new Date(n.updated).toLocaleDateString()}</small></div><button class="delete" data-open="${n.id}">Open</button></div>`).join('')
+    : '<div class="empty">Your notes will appear here.</div>';
+
+  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{
+    let n=data.notes.find(x=>x.id===b.dataset.open);
+    currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;
+    showView('notes');renderAll();
+  });
+};
 
 function renderAll(){renderSidebarTree();renderStats();renderCalendar();renderHome();if($('notesView').classList.contains('active'))renderNotes();if($('plannerView').classList.contains('active'))renderTasks()}
 renderAll();
