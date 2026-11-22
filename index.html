@@ -31,7 +31,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .editor-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}.editor-foot .meta{font-size:13px;color:var(--muted)}
 .note-list{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}.note-list h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 8px}.note-item{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:14px;color:#4e586d}.note-item:hover{background:#f5f6fb}.note-item.sel{background:var(--soft);color:var(--accent);font-weight:650}.note-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.note-item .del{background:transparent;color:#b8bdc9;padding:0 4px;font-size:16px}.note-item .del:hover{color:#e05555}
 .add-wrap{position:relative;display:inline-block}.add-menu{position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:190px;max-height:260px;overflow-y:auto;z-index:6;display:none}.add-menu.show{display:block}.add-menu button{display:block;width:100%;text-align:left;padding:12px 16px;background:transparent;color:var(--ink);font-size:14px}.add-menu button:hover{background:var(--soft);color:var(--accent)}
-/* Note Tools Menu (formerly dirty dots) */
+/* Note Tools Menu */
 .note-tools-wrap{position:relative;display:inline-block}.note-tools-btn{background:transparent;color:#c7ccd6;font-size:20px;letter-spacing:2px;padding:0 4px;cursor:pointer;line-height:1;transition:color .2s;font-weight:800}.note-tools-btn:hover,.note-tools-btn.show{color:var(--accent)}.note-tools-menu{position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:160px;z-index:6;display:none;overflow:hidden;margin-top:4px}.note-tools-menu.show{display:block}.note-tools-menu button{display:block;width:100%;text-align:left;padding:10px 14px;background:transparent;color:var(--ink);font-size:13px}.note-tools-menu button:hover{background:var(--soft);color:var(--accent)}
 .fullscreen-note{position:fixed;inset:0;background:#fff;z-index:20;display:none;flex-direction:column;padding:18px}.fullscreen-note.show{display:flex}.fs-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.fs-head .note-title-input{font-size:24px}.fs-editor{flex:1;width:100%;border:1px solid var(--line);border-radius:10px;padding:18px;font-size:16px;line-height:1.7;resize:none;color:var(--ink)}.fs-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
 .modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:7}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px;font-size:18px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px;background:white;color:var(--ink);font-size:15px}.field-label{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
@@ -94,21 +94,70 @@ const $=id=>document.getElementById(id);
 const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 const uid=()=>Math.random().toString(36).slice(2,10);
 
-// --- TIMETABLE DATA ---
+// --- EXACT TIMETABLE DATA FROM IMAGE ---
+// Mon=1, Tue=2, Wed=3, Thu=4, Fri=5
 const TIMETABLE = {
   1: { // Week 1
-    1: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'},{p:3,s:'Assembly',r:'',t:'Mr P Lewis'},{p:4,s:'Directed Learning',r:'',t:''},{p:5,s:'Sociology',r:'M10',t:'Miss G Banton'}],
-    2: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'},{p:4,s:'PSHE',r:'M2',t:'Ms M Flynn'}],
-    3: [{p:1,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Directed Learning',r:'',t:''},{p:4,s:'Media Studies',r:'B15',t:'Miss C Seery'},{p:5,s:'Sociology',r:'M9',t:'Mr G Cresswell'}],
-    4: [{p:1,s:'Directed Learning',r:'',t:''},{p:2,s:'Directed Learning',r:'',t:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Economics',r:'A16',t:'Miss A McLean'},{p:5,s:'Directed Learning',r:'',t:''}],
-    5: [{p:1,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:2,s:'Sociology',r:'M5',t:'Miss N Hellen'},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Directed Learning',r:'',t:''}]
+    1: [
+      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:2,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'},
+      {p:3,s:'Assembly',r:'',t:'Mr P Lewis'},
+      {p:4,s:'Directed Learning',r:'',t:''},
+      {p:5,s:'Sociology',r:'M10',t:'Miss G Banton'}
+    ],
+    2: [
+      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:2,s:'Directed Learning',r:'',t:''},
+      {p:3,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'},
+      {p:4,s:'PSHE',r:'M2',t:'Ms M Flynn'}
+    ],
+    3: [
+      {p:2,s:'Sociology',r:'M9',t:'Mr G Cresswell'},
+      {p:3,s:'Directed Learning',r:'',t:''},
+      {p:5,s:'Media Studies',r:'B15',t:'Miss C Seery'}
+    ],
+    4: [
+      {p:1,s:'Directed Learning',r:'',t:''},
+      {p:3,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:5,s:'Directed Learning',r:'',t:''}
+    ],
+    5: [
+      {p:2,s:'Media Studies',r:'B14',t:'Miss C Seery'},
+      {p:3,s:'Sociology',r:'M5',t:'Miss N Hellen'},
+      {p:4,s:'Economics',r:'A16',t:'Miss A McLean'}
+    ]
   },
   2: { // Week 2
-    1: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:4,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'},{p:5,s:'Directed Learning',r:''}],
-    2: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:3,s:'Sociology',r:'M10',t:'Miss G Banton'},{p:4,s:'Directed Learning',r:''},{p:5,s:'Directed Learning',r:''}],
-    3: [{p:1,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:2,s:'Directed Learning',r:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:5,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'}],
-    4: [{p:1,s:'Directed Learning',r:''},{p:2,s:'Directed Learning',r:''},{p:3,s:'Economics',r:'A16',t:'Miss A McLean'},{p:4,s:'Media Studies',r:'B14',t:'Miss C Seery'},{p:5,s:'Sociology',r:'M9',t:'Mr G Cresswell'}],
-    5: [{p:1,s:'Economics',r:'A16',t:'Miss A McLean'},{p:2,s:'Sociology',r:'M9',t:'Mr G Cresswell'},{p:3,s:'Directed Learning',r:''},{p:4,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'},{p:5,s:'Economics',r:'A16',t:'Miss A McLean'}]
+    1: [
+      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},
+      {p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},
+      {p:4,s:'Media Studies',r:'B14',t:'Mrs A Hewitt'}
+    ],
+    2: [
+      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:2,s:'Sociology',r:'M10',t:'Miss G Banton'},
+      {p:3,s:'Sociology',r:'M10',t:'Miss G Banton'},
+      {p:5,s:'Directed Learning',r:'',t:''}
+    ],
+    3: [
+      {p:1,s:'Media Studies',r:'B14',t:'Miss C Seery'},
+      {p:2,s:'Directed Learning',r:'',t:''},
+      {p:4,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:5,s:'Sociology',r:'M9',t:'Mr G Cresswell'}
+    ],
+    4: [
+      {p:2,s:'Directed Learning',r:'',t:''},
+      {p:3,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:4,s:'Media Studies',r:'B14',t:'Miss C Seery'},
+      {p:5,s:'Media Studies',r:'B15',t:'Mrs A Hewitt'}
+    ],
+    5: [
+      {p:1,s:'Economics',r:'A16',t:'Miss A McLean'},
+      {p:2,s:'Media Studies',r:'A11',t:'Mrs A Hewitt'},
+      {p:3,s:'Sociology',r:'M9',t:'Mr G Cresswell'},
+      {p:4,s:'Directed Learning',r:'',t:''}
+    ]
   }
 };
 
