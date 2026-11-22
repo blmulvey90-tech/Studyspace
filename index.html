@@ -8,34 +8,36 @@
 <meta name="apple-mobile-web-app-title" content="StudySpace">
 <title>StudySpace — Notes & Planner</title>
 <style>
-:root{--bg:#f4f5f8;--panel:#fff;--ink:#202536;--muted:#778096;--line:#e7e9ef;--accent:#5965d8;--soft:#eef0ff;--green:#25866b;--shadow:0 8px 28px #2226380b;--lesson-bg:#f8f9fc;--lesson-border:#d1d6e6}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
+:root{--bg:#f4f5f8;--panel:#fff;--ink:#202536;--muted:#778096;--line:#e7e9ef;--accent:#5965d8;--soft:#eef0ff;--green:#25866b;--red:#d94a4a;--red-soft:#fdf0f0;--shadow:0 8px 28px #2226380b;--lesson-bg:#f8f9fc;--lesson-border:#d1d6e6}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
 button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #8790ff;outline-offset:2px}
 .app{min-height:100vh;display:grid;grid-template-columns:265px 1fr}.sidebar{background:#fff;border-right:1px solid var(--line);padding:24px 14px;display:flex;flex-direction:column;gap:18px;overflow-y:auto;max-height:100vh}
-.brand{font-size:19px;font-weight:800;letter-spacing:-.6px;padding:0 9px}.brand span{color:var(--accent)}.nav{display:grid;gap:5px}.nav button,.side-action{background:transparent;text-align:left;padding:9px 12px;border-radius:9px;color:#606a7e}.nav button.active,.nav button:hover{background:var(--soft);color:var(--accent);font-weight:650}.side-head{display:flex;justify-content:space-between;align-items:center;padding:0 9px;color:var(--muted);font-size:11px;font-weight:750;letter-spacing:1px;text-transform:uppercase}.tiny{background:var(--soft);color:var(--accent);border-radius:7px;padding:3px 8px;font-weight:700}
-.sidebar-bottom{margin-top:auto;display:grid;gap:8px}.side-action{border:1px solid var(--line);text-align:center}
-.sb-tree{display:grid;gap:2px}.sb-subject{padding:7px 8px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;font-size:13px;color:#505a6e}.sb-subject:hover,.sb-subject.sel{background:#f3f4fa}.sb-subject.sel{font-weight:650;color:var(--accent)}.sb-subject .dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}.sb-subject .caret{margin-left:auto;font-size:10px;color:#9aa1af;width:16px;text-align:center}
-.sb-node{padding-left:14px}.sb-row{display:flex;align-items:center;gap:4px;padding:4px 6px;border-radius:6px;font-size:12px;color:#5b6478;cursor:pointer}.sb-row:hover{background:#f6f7fb}.sb-row .caret{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;color:#9aa1af;flex:none}.sb-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sb-row.sel{background:var(--soft);color:var(--accent);font-weight:650}
-.sb-note{padding-left:26px;display:flex;align-items:center;gap:4px;padding:4px 6px;border-radius:6px;font-size:12px;color:#5b6478;cursor:pointer}.sb-note:hover{background:#f6f7fb}.sb-note.sel{background:var(--soft);color:var(--accent);font-weight:650}.sb-note .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.main{min-width:0;padding:20px clamp(18px,4vw,52px)}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.top-actions{display:flex;gap:9px}.btn{padding:9px 13px;border-radius:9px;background:#fff;border:1px solid var(--line);color:#4e586d;font-weight:600}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn.small{padding:6px 10px;font-size:12px}.btn:hover{filter:brightness(.97)}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px}.panel h2{font-size:15px;margin:0 0 15px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.stat strong{font-size:24px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:12px}.muted{color:var(--muted)}
-.task{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:4px;accent-color:var(--accent)}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:2px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px}.empty{color:#9aa1af;text-align:center;padding:24px 8px}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent);background:var(--soft)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}.day.has-done:after{background:#b8bdc9}.day.has-lessons:before{content:"";position:absolute;bottom:4px;left:calc(50% - 8px);width:4px;height:4px;border-radius:50%;background:var(--accent)}.day.has-lessons.has-task:before,.day.has-lessons.has-task:after{left:calc(50% - 6px)}.day.has-lessons.has-task:after{left:calc(50% + 2px)}
+.brand{font-size:20px;font-weight:800;letter-spacing:-.6px;padding:0 9px}.brand span{color:var(--accent)}.nav{display:grid;gap:5px}.nav button,.side-action{background:transparent;text-align:left;padding:11px 14px;border-radius:9px;color:#606a7e;font-size:14px}.nav button.active,.nav button:hover{background:var(--soft);color:var(--accent);font-weight:650}.side-head{display:flex;justify-content:space-between;align-items:center;padding:0 9px;color:var(--muted);font-size:12px;font-weight:750;letter-spacing:1px;text-transform:uppercase}.tiny{background:var(--soft);color:var(--accent);border-radius:7px;padding:4px 9px;font-weight:700;font-size:14px}
+.sidebar-bottom{margin-top:auto;display:grid;gap:8px}.side-action{border:1px solid var(--line);text-align:center;font-size:13px}
+.sb-tree{display:grid;gap:2px}.sb-subject{padding:9px 8px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:8px;font-size:14px;color:#505a6e}.sb-subject:hover,.sb-subject.sel{background:#f3f4fa}.sb-subject.sel{font-weight:650;color:var(--accent)}.sb-subject .dot{width:9px;height:9px;border-radius:50%;background:var(--c);flex:none}.sb-subject .caret{margin-left:auto;font-size:11px;color:#9aa1af;width:16px;text-align:center}
+.sb-node{padding-left:14px}.sb-row{display:flex;align-items:center;gap:5px;padding:6px 6px;border-radius:6px;font-size:13px;color:#5b6478;cursor:pointer}.sb-row:hover{background:#f6f7fb}.sb-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.sb-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sb-row.sel{background:var(--soft);color:var(--accent);font-weight:650}
+.sb-note{padding-left:26px;display:flex;align-items:center;gap:4px;padding:5px 6px;border-radius:6px;font-size:13px;color:#5b6478;cursor:pointer}.sb-note:hover{background:#f6f7fb}.sb-note.sel{background:var(--soft);color:var(--accent);font-weight:650}.sb-note .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.main{min-width:0;padding:20px clamp(18px,4vw,52px)}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.top-actions{display:flex;gap:9px}.btn{padding:10px 15px;border-radius:9px;background:#fff;border:1px solid var(--line);color:#4e586d;font-weight:600;font-size:14px}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn.small{padding:7px 12px;font-size:13px}.btn:hover{filter:brightness(.97)}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px}.panel h2{font-size:16px;margin:0 0 15px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}.stat strong{font-size:26px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:13px}.muted{color:var(--muted)}
+.task{display:flex;align-items:flex-start;gap:10px;padding:12px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:5px;accent-color:var(--accent);width:16px;height:16px}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:3px;font-size:13px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px;font-size:16px}.empty{color:#9aa1af;text-align:center;padding:24px 8px;font-size:14px}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700;font-size:15px}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:6px 11px;font-size:15px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:12px;padding:6px 0}.day{min-height:40px;border-radius:8px;background:transparent;color:#515b6e;position:relative;font-size:14px}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent);background:var(--soft)}.day.has-task:after{content:"";position:absolute;bottom:5px;left:calc(50% - 2px);width:5px;height:5px;border-radius:50%;background:var(--green)}.day.has-done:after{background:#b8bdc9}.day.has-lessons:before{content:"";position:absolute;bottom:5px;left:calc(50% - 9px);width:5px;height:5px;border-radius:50%;background:var(--accent)}.day.has-lessons.has-task:before,.day.has-lessons.has-task:after{left:calc(50% - 7px)}.day.has-lessons.has-task:after{left:calc(50% + 3px)}
 .section{display:none}.section.active{display:block}
 /* Timetable & Tasks CSS */
-.timetable{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.lesson-row{background:var(--lesson-bg);border:1px solid var(--lesson-border);border-radius:10px;padding:12px 15px;display:flex;justify-content:space-between;align-items:flex-start}.lesson-info strong{display:block;font-size:14px;color:var(--ink)}.lesson-info span{font-size:12px;color:var(--muted)}.lesson-actions button{background:var(--soft);color:var(--accent);border:0;border-radius:6px;padding:6px 10px;font-size:11px;font-weight:600}
+.timetable{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.lesson-row{background:var(--lesson-bg);border:1px solid var(--lesson-border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start}.lesson-row.has-deadline{background:var(--red-soft);border-color:var(--red)}.lesson-info strong{display:block;font-size:15px;color:var(--ink);margin-bottom:2px}.lesson-info span{font-size:13px;color:var(--muted)}.lesson-row.has-deadline .lesson-info strong{color:var(--red)}.lesson-actions button{background:var(--soft);color:var(--accent);border:0;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:600}.lesson-actions button:hover{filter:brightness(.95)}
 .note-ws{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px}.tree-pane{background:#fafbfe;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:70vh;overflow-y:auto}
-.tree-node{margin:0}.tree-row{display:flex;align-items:center;gap:4px;padding:6px 6px;border-radius:7px;font-size:13px;color:#5b6478;cursor:pointer;position:relative;user-select:none}.tree-row:hover{background:#eff1f8}.tree-row.sel{background:var(--soft);color:var(--accent);font-weight:650}.tree-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.tree-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tree-row .addsub,.tree-row .deltopic,.tree-row .mvup,.tree-row .mvdn{background:transparent;color:#a1a7b3;font-size:13px;padding:0 2px;line-height:1;display:none}.tree-row:hover .addsub,.tree-row:hover .deltopic,.tree-row:hover .mvup,.tree-row:hover .mvdn,.tree-row.sel .addsub,.tree-row.sel .deltopic,.tree-row.sel .mvup,.tree-row.sel .mvdn{display:inline}.tree-row .addsub:hover{color:var(--accent)}.tree-row .deltopic:hover{color:#e05555}.tree-row .mvup:hover,.tree-row .mvdn:hover{color:var(--accent)}.tree-children{margin-left:14px;border-left:1px dashed #e1e4ec;padding-left:4px}
-.note-editor{min-width:0}.editor-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}.note-title-input{flex:1;font-size:20px;font-weight:700;border:0;border-bottom:1px solid transparent;padding:6px 2px;outline:none;background:transparent;color:var(--ink)}.note-title-input:focus{border-color:var(--line)}.dirty-dots{font-size:16px;letter-spacing:1px;color:#c7ccd6;opacity:0;transition:opacity .2s;flex:none}.dirty-dots.show{opacity:1}.editor{width:100%;min-height:340px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:15px;color:var(--ink);line-height:1.7;background:#fff}
-.editor-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}.editor-foot .meta{font-size:12px;color:var(--muted)}
-.note-list{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}.note-list h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 8px}.note-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:#4e586d}.note-item:hover{background:#f5f6fb}.note-item.sel{background:var(--soft);color:var(--accent);font-weight:650}.note-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.note-item .del{background:transparent;color:#b8bdc9;padding:0 4px}.note-item .del:hover{color:#e05555}
-.add-wrap{position:relative;display:inline-block}.add-menu{position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:190px;max-height:260px;overflow-y:auto;z-index:6;display:none}.add-menu.show{display:block}.add-menu button{display:block;width:100%;text-align:left;padding:10px 14px;background:transparent;color:var(--ink);font-size:13px}.add-menu button:hover{background:var(--soft);color:var(--accent)}
+.tree-node{margin:0}.tree-row{display:flex;align-items:center;gap:4px;padding:7px 6px;border-radius:7px;font-size:14px;color:#5b6478;cursor:pointer;position:relative;user-select:none}.tree-row:hover{background:#eff1f8}.tree-row.sel{background:var(--soft);color:var(--accent);font-weight:650}.tree-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.tree-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tree-row .addsub,.tree-row .deltopic,.tree-row .mvup,.tree-row .mvdn{background:transparent;color:#a1a7b3;font-size:14px;padding:0 3px;line-height:1;display:none}.tree-row:hover .addsub,.tree-row:hover .deltopic,.tree-row:hover .mvup,.tree-row:hover .mvdn,.tree-row.sel .addsub,.tree-row.sel .deltopic,.tree-row.sel .mvup,.tree-row.sel .mvdn{display:inline}.tree-row .addsub:hover{color:var(--accent)}.tree-row .deltopic:hover{color:#e05555}.tree-row .mvup:hover,.tree-row .mvdn:hover{color:var(--accent)}.tree-children{margin-left:14px;border-left:1px dashed #e1e4ec;padding-left:4px}
+.note-editor{min-width:0}.editor-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}.note-title-input{flex:1;font-size:22px;font-weight:700;border:0;border-bottom:1px solid transparent;padding:6px 2px;outline:none;background:transparent;color:var(--ink)}.note-title-input:focus{border-color:var(--line)}.editor{width:100%;min-height:340px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:16px;color:var(--ink);line-height:1.7;background:#fff;font-size:15px}
+.editor-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}.editor-foot .meta{font-size:13px;color:var(--muted)}
+.note-list{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}.note-list h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 8px}.note-item{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:14px;color:#4e586d}.note-item:hover{background:#f5f6fb}.note-item.sel{background:var(--soft);color:var(--accent);font-weight:650}.note-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.note-item .del{background:transparent;color:#b8bdc9;padding:0 4px;font-size:16px}.note-item .del:hover{color:#e05555}
+.add-wrap{position:relative;display:inline-block}.add-menu{position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:190px;max-height:260px;overflow-y:auto;z-index:6;display:none}.add-menu.show{display:block}.add-menu button{display:block;width:100%;text-align:left;padding:12px 16px;background:transparent;color:var(--ink);font-size:14px}.add-menu button:hover{background:var(--soft);color:var(--accent)}
+/* Note Tools Menu (formerly dirty dots) */
+.note-tools-wrap{position:relative;display:inline-block}.note-tools-btn{background:transparent;color:#c7ccd6;font-size:20px;letter-spacing:2px;padding:0 4px;cursor:pointer;line-height:1;transition:color .2s;font-weight:800}.note-tools-btn:hover,.note-tools-btn.show{color:var(--accent)}.note-tools-menu{position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:160px;z-index:6;display:none;overflow:hidden;margin-top:4px}.note-tools-menu.show{display:block}.note-tools-menu button{display:block;width:100%;text-align:left;padding:10px 14px;background:transparent;color:var(--ink);font-size:13px}.note-tools-menu button:hover{background:var(--soft);color:var(--accent)}
 .fullscreen-note{position:fixed;inset:0;background:#fff;z-index:20;display:none;flex-direction:column;padding:18px}.fullscreen-note.show{display:flex}.fs-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.fs-head .note-title-input{font-size:24px}.fs-editor{flex:1;width:100%;border:1px solid var(--line);border-radius:10px;padding:18px;font-size:16px;line-height:1.7;resize:none;color:var(--ink)}.fs-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
-.modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:7}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:white;color:var(--ink)}.field-label{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}
+.modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:7}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px;font-size:18px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px;background:white;color:var(--ink);font-size:15px}.field-label{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
 .mobile-menu{display:none}.main-click-overlay{position:fixed;inset:0;z-index:3;display:none}.main-click-overlay.active{display:block}
 @media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{position:fixed;z-index:4;inset:0 auto 0 0;width:280px;transform:translateX(-105%);transition:transform .2s;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.mobile-menu{display:inline-block}.layout{grid-template-columns:1fr}.right-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.main{padding:16px 15px}.topbar{margin-bottom:14px}.sidebar.open ~ .main-click-overlay{display:block}.note-ws{grid-template-columns:1fr}.tree-pane{max-height:40vh}}
-@media(max-width:540px){.right-col{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:20px}.top-actions .btn:not(.primary){display:none}.panel{padding:15px}}
+@media(max-width:540px){.right-col{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:14px}.stat strong{font-size:22px}.top-actions .btn:not(.primary){display:none}.panel{padding:16px}}
 </style>
 </head>
 <body>
@@ -73,16 +75,16 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
     <div class="layout"><div class="panel"><h2>Next 3 tasks</h2><div id="todayTasks"></div><button class="btn" style="margin-top:12px" onclick="showView('planner')">View all tasks →</button></div><div class="right-col"><div class="panel"><div class="calendar-head"><div class="month-label" id="monthLabel"></div><div class="cal-nav"><button id="prevMonth">‹</button><button id="nextMonth">›</button></div></div><div class="calendar" id="calendar"></div></div><div class="panel"><h2>Recently edited</h2><div id="recentNotes"></div></div></div></div>
   </section>
 
-  <section class="section" id="notesView"><div class="panel" style="padding:16px"><div class="note-ws"><div class="tree-pane" id="treePane"></div><div class="note-editor" id="noteEditorPane"></div></div></div></section>
+  <section class="section" id="notesView"><div class="panel" style="padding:18px"><div class="note-ws"><div class="tree-pane" id="treePane"></div><div class="note-editor" id="noteEditorPane"></div></div></div></section>
 
   <section class="section" id="plannerView"><div class="layout"><div class="panel"><div style="display:flex;justify-content:space-between;align-items:center"><h2>My tasks</h2><button class="btn primary" id="addTask">＋ Add task</button></div><div id="allTasks"></div></div><div class="panel"><h2>Plan a task</h2><p class="muted">Choose a date in the calendar on Overview, or add a task with a due date.</p><button class="btn" onclick="showView('home')">Open calendar →</button></div></div></section>
 </main>
 </div>
 
 <div class="fullscreen-note" id="fsNote">
-  <div class="fs-head"><input class="note-title-input" id="fsTitle" placeholder="Untitled note"><span class="dirty-dots" id="fsDirty">•••</span></div>
+  <div class="fs-head"><input class="note-title-input" id="fsTitle" placeholder="Untitled note"></div>
   <textarea class="fs-editor" id="fsBody" placeholder="Start writing..."></textarea>
-  <div class="fs-foot"><div class="meta muted" id="fsMeta" style="font-size:12px"></div><div style="display:flex;gap:6px"><button class="btn" id="fsClose">⤡ Close</button><button class="btn primary" id="fsSave">Save note</button></div></div>
+  <div class="fs-foot"><div class="meta muted" id="fsMeta" style="font-size:13px"></div><div style="display:flex;gap:6px"><button class="btn" id="fsClose">⤡ Close</button><button class="btn primary" id="fsSave">Save note</button></div></div>
 </div>
 
 <div class="modal-backdrop" id="modalBackdrop"><div class="modal"><h2 id="modalTitle">Add</h2><div id="modalBody"></div><div class="modal-actions"><button class="btn" id="modalCancel">Cancel</button><button class="btn primary" id="modalSave">Save</button></div></div></div>
@@ -155,7 +157,20 @@ function getLessonsForDate(isoDate){
   
   const weekNum = getWeekNumber(isoDate);
   const timetableDay = dayOfWeek === 6 ? 6 : dayOfWeek; // Mon=1...Fri=5
-  return TIMETABLE[weekNum][timetableDay] || [];
+  
+  const rawLessons = TIMETABLE[weekNum][timetableDay] || [];
+  
+  // Fill in missing periods up to 5
+  const fullDay = [];
+  for(let p=1; p<=5; p++) {
+    const existing = rawLessons.find(l => l.p === p);
+    if(existing) {
+      fullDay.push(existing);
+    } else {
+      fullDay.push({p: p, s: 'Free Period', r: '', t: ''});
+    }
+  }
+  return fullDay;
 }
 
 /* ---------- SIDEBAR ---------- */
@@ -245,7 +260,7 @@ function renderTree(s,topics,parentPath){
 function renderNoteChildren(s,path){
   const ns=data.notes.filter(n=>n.subject===s.id&&JSON.stringify(n.path)===JSON.stringify(path));
   if(!ns.length)return '';
-  return ns.map(n=>`<div class="tree-row" style="padding-left:22px;font-size:12px" data-open-note="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span></div>`).join('');
+  return ns.map(n=>`<div class="tree-row" style="padding-left:22px;font-size:13px" data-open-note="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span></div>`).join('');
 }
 function renderNoteEditor(s){
   const host=$('noteEditorPane');
@@ -253,26 +268,77 @@ function renderNoteEditor(s){
   const list=data.notes.filter(n=>n.subject===s.id&&JSON.stringify(n.path)===JSON.stringify(currentPath)).sort((a,b)=>b.updated-a.updated);
   let note=data.notes.find(n=>n.id===currentNote);
   if(note&&!(note.subject===s.id&&JSON.stringify(note.path)===JSON.stringify(currentPath)))note=null;
+  
   host.innerHTML=`
-    <div class="editor-head"><div style="flex:1"><div class="muted" style="font-size:12px">${currentPath.length?esc(topicLabel):'Select a topic on the left, or ＋ Add below'}</div></div>
+    <div class="editor-head"><div style="flex:1"><div class="muted" style="font-size:13px">${currentPath.length?esc(topicLabel):'Select a topic on the left, or ＋ Add below'}</div></div>
       <div class="add-wrap"><button class="btn primary small" id="addBtn">＋ Add</button><div class="add-menu" id="addMenu"><button data-add="topic">New topic (top level)</button><button data-add="subtopic">New subtopic here</button><button data-add="note">New note here</button></div></div>
     </div>
     ${note?`
-      <div class="editor-head"><input class="note-title-input" id="noteTitle" value="${esc(note.title)}" placeholder="Untitled note"><span class="dirty-dots ${dirty?'show':''}" id="dirtyDots">•••</span><button class="btn small" id="fsBtn" title="Fullscreen">⤢</button></div>
+      <div class="editor-head">
+        <input class="note-title-input" id="noteTitle" value="${esc(note.title)}" placeholder="Untitled note">
+        <div class="note-tools-wrap">
+          <button class="note-tools-btn ${dirty?'show':''}" id="noteToolsBtn">•••</button>
+          <div class="note-tools-menu" id="noteToolsMenu">
+            <button id="toolBold">Make bold</button>
+            <button id="toolFS">Full screen</button>
+          </div>
+        </div>
+      </div>
       <textarea class="editor" id="noteBody" placeholder="Start writing...">${esc(note.body)}</textarea>
       <div class="editor-foot"><div class="meta">${note.updated?'Updated '+new Date(note.updated).toLocaleString():'New note'}</div><div style="display:flex;gap:6px"><button class="btn" id="deleteNote">Delete</button><button class="btn primary" id="saveNote">Save note</button></div></div>
-      <div class="note-list"><h3>Notes in this ${currentPath.length>1?'subtopic':'topic'}</h3>${list.length?list.map(n=>`<div class="note-item ${n.id===currentNote?'sel':''}" data-open-note="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span><button class="del" data-del-note="${n.id}">×</button></div>`).join(''):'<div class="muted" style="font-size:12px;padding:6px 0">No other notes yet.</div>'}</div>
+      <div class="note-list"><h3>Notes in this ${currentPath.length>1?'subtopic':'topic'}</h3>${list.length?list.map(n=>`<div class="note-item ${n.id===currentNote?'sel':''}" data-open-note="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span><button class="del" data-del-note="${n.id}">×</button></div>`).join(''):'<div class="muted" style="font-size:13px;padding:6px 0">No other notes yet.</div>'}</div>
     `:`
       <div class="empty">${currentPath.length?'No note selected.':'Pick a topic first.'}</div>
       ${currentPath.length?'<button class="btn primary" id="createNote">＋ Write a note here</button>':''}
       ${list.length?`<div class="note-list"><h3>Notes in this topic</h3>${list.map(n=>`<div class="note-item ${n.id===currentNote?'sel':''}" data-open-note="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span><button class="del" data-del-note="${n.id}">×</button></div>`).join('')}</div>`:''}
     `}`;
+    
   const addBtn=$('addBtn'),addMenu=$('addMenu');
   addBtn.onclick=(e)=>{e.stopPropagation();addMenu.classList.toggle('show')};
   addMenu.querySelectorAll('[data-add]').forEach(b=>b.onclick=(e)=>{e.stopPropagation();addMenu.classList.remove('show');if(b.dataset.add==='topic')addTopic();else if(b.dataset.add==='subtopic')addSubtopicHere();else addNoteHere()});
+  
   if($('noteTitle')){$('noteTitle').oninput=()=>markDirty(true);$('noteBody').oninput=()=>markDirty(true)}
+  
+  // Note Tools Menu
+  const toolsBtn = $('noteToolsBtn');
+  const toolsMenu = $('noteToolsMenu');
+  if(toolsBtn) {
+    toolsBtn.onclick=(e)=>{
+      e.stopPropagation();
+      toolsBtn.classList.add('show');
+      toolsMenu.classList.toggle('show');
+    };
+    // Make Bold
+    $('toolBold').onclick=(e)=>{
+      e.stopPropagation();
+      toolsMenu.classList.remove('show');
+      const body = $('noteBody');
+      const start = body.selectionStart;
+      const end = body.selectionEnd;
+      const text = body.value;
+      // Wrap selection in ** or insert if nothing selected
+      const boldText = text.substring(start, end) || 'bold text';
+      body.value = text.substring(0, start) + '**' + boldText + '**' + text.substring(end);
+      body.focus();
+      body.setSelectionRange(start + 2, start + 2 + boldText.length);
+      markDirty(true);
+    };
+    // Full screen
+    $('toolFS').onclick=(e)=>{
+      e.stopPropagation();
+      toolsMenu.classList.remove('show');
+      openFullscreen(note);
+    };
+    // Close menu on outside click
+    document.addEventListener('click', function closeTools(e) {
+      if(!e.target.closest('.note-tools-wrap')) {
+        toolsMenu.classList.remove('show');
+        toolsBtn.classList.remove('show');
+      }
+    });
+  }
+
   if($('saveNote'))$('saveNote').onclick=()=>saveNote();
-  if($('fsBtn'))$('fsBtn').onclick=()=>openFullscreen(note);
   if($('deleteNote'))$('deleteNote').onclick=()=>{if(!confirm('Delete this note?'))return;data.notes=data.notes.filter(n=>n.id!==currentNote);currentNote=null;dirty=false;save()};
   if($('createNote'))$('createNote').onclick=()=>addNoteHere();
   document.querySelectorAll('[data-open-note]').forEach(el=>el.onclick=(e)=>{
@@ -287,7 +353,14 @@ function renderNoteEditor(s){
     save();
   });
 }
-function markDirty(v){dirty=v;const d=$('dirtyDots');if(d)d.classList.toggle('show',v)}
+function markDirty(v){
+  dirty=v;
+  const d=$('noteToolsBtn');
+  if(d){
+    if(v) d.classList.add('show');
+    else d.classList.remove('show');
+  }
+}
 
 function saveNote(){
   if(!currentSubject||!currentPath.length){alert('Pick a topic first.');return}
@@ -332,15 +405,12 @@ function openFullscreen(note){
   $('fsTitle').value=note.title||'';
   $('fsBody').value=note.body||'';
   $('fsMeta').textContent=note.updated?'Updated '+new Date(note.updated).toLocaleString():'New note';
-  $('fsDirty').classList.remove('show');
   $('fsNote').classList.add('show');
   setTimeout(()=>$('fsTitle').focus(),0);
-  $('fsTitle').oninput=()=>$('fsDirty').classList.add('show');
-  $('fsBody').oninput=()=>$('fsDirty').classList.add('show');
   $('fsSave').onclick=()=>{
     const n=data.notes.find(x=>x.id===fsNoteId); if(!n)return;
     n.title=$('fsTitle').value; n.body=$('fsBody').value; n.updated=Date.now();
-    $('fsDirty').classList.remove('show'); $('fsMeta').textContent='Updated '+new Date(n.updated).toLocaleString();
+    $('fsMeta').textContent='Updated '+new Date(n.updated).toLocaleString();
     save();
   };
   $('fsClose').onclick=()=>{$('fsNote').classList.remove('show');fsNoteId=null;renderNotes()};
@@ -398,39 +468,43 @@ function renderTasks(){
   const dateObj = new Date(selectedDate+'T12:00:00');
   
   html+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-    <h3 style="font-size:15px;margin:0">${dateObj.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3>
-    <button class="btn small" id="clearDateFilter">Show all</button>
+    <h3 style="font-size:16px;margin:0">${dateObj.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3>
   </div>`;
 
   if(lessons.length) {
-    html += `<h4 style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Timetable (${getWeekNumber(selectedDate)===1?'Week 1':'Week 2'})</h4>`;
+    html += `<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Timetable (${getWeekNumber(selectedDate)===1?'Week 1':'Week 2'})</h4>`;
     html += `<div class="timetable">`;
+    
+    // Find which periods have deadlines today
+    const deadlinesToday = forDay.map(t => t.period).filter(Boolean);
+
     lessons.forEach(l => {
-      html += `<div class="lesson-row">
+      const isFree = l.s === 'Free Period';
+      const hasDeadline = deadlinesToday.includes(String(l.p));
+      
+      html += `<div class="lesson-row ${hasDeadline ? 'has-deadline' : ''}">
         <div class="lesson-info">
-          <strong>P${l.p}: ${esc(l.s)}</strong>
-          <span>${l.r ? l.r + ' · ' : ''}${l.t}</span>
+          <strong>${isFree ? l.s : 'P'+l.p+': '+esc(l.s)}</strong>
+          ${isFree ? '' : `<span>${l.r ? l.r + ' · ' : ''}${l.t}</span>`}
         </div>
-        <div class="lesson-actions">
+        ${isFree ? '' : `<div class="lesson-actions">
           <button data-add-lesson-task="${l.p}" data-subject="${l.s}">＋ Deadline</button>
-        </div>
+        </div>`}
       </div>`;
     });
     html += `</div>`;
   }
 
-  html+=`<h4 style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">Tasks for this day</h4>`;
+  html+=`<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:20px 0 8px">Tasks for this day</h4>`;
   html+=forDay.length?forDay.map(taskHTML).join(''):'<div class="empty" style="padding:10px">No tasks on this date.</div>';
   
   if(others.length){
-    html+=`<h4 style="font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:16px 0 8px">All other tasks</h4>`;
+    html+=`<h4 style="font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:20px 0 8px">All other tasks</h4>`;
     html+=others.map(taskHTML).join('');
   }
   
   $('allTasks').innerHTML=html;
   wireTasks();
-  
-  $('clearDateFilter').onclick=()=>{selectedDate='';renderCalendar();renderTasks()};
   
   // wire lesson deadline buttons
   document.querySelectorAll('[data-add-lesson-task]').forEach(b=>b.onclick=()=>{
@@ -517,7 +591,7 @@ $('termDatesBtn').onclick = () => {
     <p class="muted" style="font-size:13px;margin-top:0">Enter the start date of a Week 2 Monday. The app will automatically alternate Weeks 1 & 2 from this date forward.</p>
     <label class="field-label">Week 2 Start Date (Monday)</label>
     <input class="field" type="date" id="week2Date" value="${data.settings.week2Start}">
-    <p class="muted" style="font-size:11px;margin-top:12px">Note: Holidays are not automatically removed from the timetable. If you are on half-term, the calendar will still show lessons. (To fix this, manually adjust the Week 2 Start Date after every holiday!)</p>
+    <p class="muted" style="font-size:12px;margin-top:12px">Note: Holidays are not automatically removed from the timetable. If you are on half-term, the calendar will still show lessons. (To fix this, manually adjust the Week 2 Start Date after every holiday!)</p>
   `, () => {
     const v = $('week2Date').value;
     if(v) {
