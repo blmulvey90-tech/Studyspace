@@ -21,7 +21,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px}.panel h2{font-size:15px;margin:0 0 15px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.stat strong{font-size:24px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:12px}.muted{color:var(--muted)}
 .task{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:4px;accent-color:var(--accent)}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:2px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px}.empty{color:#9aa1af;text-align:center;padding:24px 8px}
-.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}
+.calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent);background:var(--soft)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}.day.has-done:after{background:#b8bdc9}
 .section{display:none}.section.active{display:block}
 .note-ws{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px}.tree-pane{background:#fafbfe;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:70vh;overflow-y:auto}
 .tree-node{margin:0}.tree-row{display:flex;align-items:center;gap:4px;padding:6px 6px;border-radius:7px;font-size:13px;color:#5b6478;cursor:pointer;position:relative;user-select:none}.tree-row:hover{background:#eff1f8}.tree-row.sel{background:var(--soft);color:var(--accent);font-weight:650}.tree-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.tree-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tree-row .addsub,.tree-row .deltopic,.tree-row .mvup,.tree-row .mvdn{background:transparent;color:#a1a7b3;font-size:13px;padding:0 2px;line-height:1;display:none}.tree-row:hover .addsub,.tree-row:hover .deltopic,.tree-row:hover .mvup,.tree-row:hover .mvdn,.tree-row.sel .addsub,.tree-row.sel .deltopic,.tree-row.sel .mvup,.tree-row.sel .mvdn{display:inline}.tree-row .addsub:hover{color:var(--accent)}.tree-row .deltopic:hover{color:#e05555}.tree-row .mvup:hover,.tree-row .mvdn:hover{color:var(--accent)}.tree-children{margin-left:14px;border-left:1px dashed #e1e4ec;padding-left:4px}
@@ -29,7 +29,6 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .editor-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}.editor-foot .meta{font-size:12px;color:var(--muted)}
 .note-list{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}.note-list h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 8px}.note-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:#4e586d}.note-item:hover{background:#f5f6fb}.note-item.sel{background:var(--soft);color:var(--accent);font-weight:650}.note-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.note-item .del{background:transparent;color:#b8bdc9;padding:0 4px}.note-item .del:hover{color:#e05555}
 .add-wrap{position:relative;display:inline-block}.add-menu{position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:190px;max-height:260px;overflow-y:auto;z-index:6;display:none}.add-menu.show{display:block}.add-menu button{display:block;width:100%;text-align:left;padding:10px 14px;background:transparent;color:var(--ink);font-size:13px}.add-menu button:hover{background:var(--soft);color:var(--accent)}
-/* fullscreen note */
 .fullscreen-note{position:fixed;inset:0;background:#fff;z-index:20;display:none;flex-direction:column;padding:18px}.fullscreen-note.show{display:flex}.fs-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.fs-head .note-title-input{font-size:24px}.fs-editor{flex:1;width:100%;border:1px solid var(--line);border-radius:10px;padding:18px;font-size:16px;line-height:1.7;resize:none;color:var(--ink)}.fs-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
 .modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:7}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:white;color:var(--ink)}.field-label{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}
 .mobile-menu{display:none}.main-click-overlay{position:fixed;inset:0;z-index:3;display:none}.main-click-overlay.active{display:block}
@@ -68,7 +67,7 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 
   <section class="section active" id="homeView">
     <div class="stats"><div class="stat"><strong id="statSubjects">0</strong><span>Subjects</span></div><div class="stat"><strong id="statNotes">0</strong><span>Notes saved</span></div><div class="stat"><strong id="statTasks">0</strong><span>Tasks remaining</span></div></div>
-    <div class="layout"><div class="panel"><h2>Tasks for today</h2><div id="todayTasks"></div><button class="btn" style="margin-top:12px" onclick="showView('planner')">View all tasks →</button></div><div class="right-col"><div class="panel"><div class="calendar-head"><div class="month-label" id="monthLabel"></div><div class="cal-nav"><button id="prevMonth">‹</button><button id="nextMonth">›</button></div></div><div class="calendar" id="calendar"></div></div><div class="panel"><h2>Recently edited</h2><div id="recentNotes"></div></div></div></div>
+    <div class="layout"><div class="panel"><h2>Next 3 tasks</h2><div id="todayTasks"></div><button class="btn" style="margin-top:12px" onclick="showView('planner')">View all tasks →</button></div><div class="right-col"><div class="panel"><div class="calendar-head"><div class="month-label" id="monthLabel"></div><div class="cal-nav"><button id="prevMonth">‹</button><button id="nextMonth">›</button></div></div><div class="calendar" id="calendar"></div></div><div class="panel"><h2>Recently edited</h2><div id="recentNotes"></div></div></div></div>
   </section>
 
   <section class="section" id="notesView"><div class="panel" style="padding:16px"><div class="note-ws"><div class="tree-pane" id="treePane"></div><div class="note-editor" id="noteEditorPane"></div></div></div></section>
@@ -145,7 +144,6 @@ function renderSbTopics(subject,topics){
     out+=`<div class="sb-row" data-sbnav='${JSON.stringify(path)}' data-subj="${subject.id}"><span class="caret" data-sbcaret="${t.id}">${t.children.length||noteCount(subject,path)?(isOpen?'▾':'▸'):'·'}</span><span class="nm">${esc(t.name)}</span></div>`;
     if(isOpen){
       if(t.children.length)out+=renderSbTopics(subject,t.children);
-      // notes at this level
       data.notes.filter(n=>n.subject===subject.id&&JSON.stringify(n.path)===JSON.stringify(path)).forEach(n=>{
         out+=`<div class="sb-note" data-sbnote="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span></div>`;
       });
@@ -300,12 +298,81 @@ document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&$('fsNote').class
 
 /* ---------- HOME / TASKS / CALENDAR ---------- */
 function renderStats(){$('statSubjects').textContent=data.subjects.length;$('statNotes').textContent=data.notes.length;$('statTasks').textContent=data.tasks.filter(t=>!t.done).length}
-function renderCalendar(){const y=calDate.getFullYear(),m=calDate.getMonth();$('monthLabel').textContent=calDate.toLocaleDateString(undefined,{month:'long',year:'numeric'});const first=new Date(y,m,1),start=(first.getDay()+6)%7;const days=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate();let out=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="weekday">${x}</div>`).join('');for(let i=0;i<42;i++){let d=i-start+1,dt=new Date(y,m,d),iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`,num=d<1?prev+d:d>days?d-days:d;out+=`<button class="day ${d<1||d>days?'other':''} ${iso===todayISO()?'today':''} ${iso===selectedDate?'selected':''} ${data.tasks.some(t=>t.date===iso&&!t.done)?'has-task':''}" data-date="${iso}">${num}</button>`}$('calendar').innerHTML=out;document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{selectedDate=b.dataset.date;renderCalendar();showView('planner');renderTasks()})}
+
+function renderCalendar(){
+  const y=calDate.getFullYear(), m=calDate.getMonth();
+  $('monthLabel').textContent = calDate.toLocaleDateString(undefined,{month:'long',year:'numeric'});
+  const first=new Date(y,m,1), start=(first.getDay()+6)%7;
+  const days=new Date(y,m+1,0).getDate(), prev=new Date(y,m,0).getDate();
+  let out=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="weekday">${x}</div>`).join('');
+  for(let i=0;i<42;i++){
+    let d=i-start+1, dt=new Date(y,m,d);
+    let iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+    let num = d<1 ? prev+d : d>days ? d-days : d;
+    const dayTasks = data.tasks.filter(t => t.date===iso);
+    const hasOpen = dayTasks.some(t => !t.done);
+    const hasDone = dayTasks.length && !hasOpen;
+    let cls = 'day';
+    if(d<1||d>days) cls+=' other';
+    if(iso===todayISO()) cls+=' today';
+    if(selectedDate && iso===selectedDate) cls+=' selected';
+    if(hasOpen) cls+=' has-task';
+    if(hasDone) cls+=' has-done';
+    out+=`<button class="${cls}" data-date="${iso}">${num}</button>`;
+  }
+  $('calendar').innerHTML=out;
+  document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{
+    selectedDate=b.dataset.date;
+    renderCalendar();
+    showView('planner');
+    renderTasks();
+  });
+}
 $('prevMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};$('nextMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};
 function taskHTML(t){return `<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''}><div class="task-text">${esc(t.text)}<small>${t.date?new Date(t.date+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'No due date'}</small></div><button class="delete" data-delete="${t.id}" aria-label="Delete task">×</button></div>`}
 function wireTasks(){document.querySelectorAll('[data-check]').forEach(c=>c.onchange=()=>{let t=data.tasks.find(x=>x.id===c.dataset.check);if(t)t.done=c.checked;save()});document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{data.tasks=data.tasks.filter(t=>t.id!==b.dataset.delete);save()})}
-function renderTasks(){let tasks=[...data.tasks].sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));$('allTasks').innerHTML=tasks.length?tasks.map(taskHTML).join(''):'<div class="empty">Nothing on your list yet. Add a task to get started.</div>';wireTasks()}
-function renderHome(){$('todayTasks').innerHTML=data.tasks.filter(t=>t.date===todayISO()&&!t.done).length?data.tasks.filter(t=>t.date===todayISO()&&!t.done).map(taskHTML).join(''):'<div class="empty">No tasks due today. Enjoy the breathing room.</div>';wireTasks();let recent=[...data.notes].sort((a,b)=>b.updated-a.updated).slice(0,4);$('recentNotes').innerHTML=recent.length?recent.map(n=>`<div class="task"><div class="task-text"><b>${esc(n.title||'Untitled note')}</b><small>${esc(data.subjects.find(s=>s.id===n.subject)?.name||'Subject')} · ${new Date(n.updated).toLocaleDateString()}</small></div><button class="delete" data-open="${n.id}">Open</button></div>`).join(''):'<div class="empty">Your notes will appear here.</div>';document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{let n=data.notes.find(x=>x.id===b.dataset.open);currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;dirty=false;showView('notes');renderAll()})}
+
+function renderTasks(){
+  const all=[...data.tasks];
+  const forDay=all.filter(t=>t.date===selectedDate).sort((a,b)=>(a.done?1:0)-(b.done?1:0));
+  const others=all.filter(t=>t.date!==selectedDate).sort((a,b)=>(a.date||'9999').localeCompare(b.date||'9999'));
+  let html='';
+  html+=`<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+    <h3 style="font-size:13px;margin:0">Tasks for ${new Date(selectedDate+'T12:00:00').toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}</h3>
+    <button class="btn small" id="clearDateFilter">Show all</button>
+  </div>`;
+  html+=forDay.length?forDay.map(taskHTML).join(''):'<div class="empty" style="padding:10px">No tasks on this date.</div>';
+  if(others.length){
+    html+=`<h3 style="font-size:13px;margin:16px 0 8px">All other tasks</h3>`;
+    html+=others.map(taskHTML).join('');
+  }
+  $('allTasks').innerHTML=html;
+  wireTasks();
+  $('clearDateFilter').onclick=()=>{selectedDate='';renderCalendar();renderTasks()};
+}
+
+function renderHome(){
+  const upcoming=data.tasks
+    .filter(t=>!t.done&&t.date&&t.date>=todayISO())
+    .sort((a,b)=>a.date.localeCompare(b.date))
+    .slice(0,3);
+
+  $('todayTasks').innerHTML=upcoming.length
+    ? upcoming.map(taskHTML).join('')
+    : '<div class="empty">No upcoming tasks. Enjoy the breathing room.</div>';
+  wireTasks();
+
+  let recent=[...data.notes].sort((a,b)=>b.updated-a.updated).slice(0,4);
+  $('recentNotes').innerHTML=recent.length
+    ? recent.map(n=>`<div class="task"><div class="task-text"><b>${esc(n.title||'Untitled note')}</b><small>${esc(data.subjects.find(s=>s.id===n.subject)?.name||'Subject')} · ${new Date(n.updated).toLocaleDateString()}</small></div><button class="delete" data-open="${n.id}">Open</button></div>`).join('')
+    : '<div class="empty">Your notes will appear here.</div>';
+
+  document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{
+    let n=data.notes.find(x=>x.id===b.dataset.open);
+    currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;dirty=false;
+    showView('notes');renderAll();
+  });
+}
 
 /* ---------- MODAL ---------- */
 function openModal(title,body,action){$('modalTitle').textContent=title;$('modalBody').innerHTML=body;$('modalBackdrop').classList.add('show');modalAction=action}
@@ -314,21 +381,20 @@ $('modalCancel').onclick=closeModal;$('modalSave').onclick=()=>{if(modalAction)m
 
 /* ---------- SUBJECTS / TASKS ---------- */
 $('addSubject').onclick=()=>openModal('Add a subject',`<label class="field-label">Subject name</label><input class="field" id="subjectName" placeholder="e.g. Psychology">`,()=>{let v=$('subjectName').value.trim();if(v){let s={id:uid(),name:v,color:['#e2a34b','#7c83df','#49a88d','#d77c9b','#5c9bc4'][data.subjects.length%5],topics:[]};data.subjects.push(s);currentSubject=s.id;currentPath=[];currentNote=null;save()}});
-function addTask(){openModal('Add a task',`<label class="field-label">Task</label><input class="field" id="taskText" placeholder="What needs doing?"><label class="field-label">Due date</label><input class="field" type="date" id="taskDate" value="${selectedDate}">`,()=>{let v=$('taskText').value.trim();if(v)data.tasks.push({id:uid(),text:v,date:$('taskDate').value,done:false});save()})}
+function addTask(){openModal('Add a task',`<label class="field-label">Task</label><input class="field" id="taskText" placeholder="What needs doing?"><label class="field-label">Due date</label><input class="field" type="date" id="taskDate" value="${selectedDate||todayISO()}">`,()=>{let v=$('taskText').value.trim();if(v)data.tasks.push({id:uid(),text:v,date:$('taskDate').value,done:false});save()})}
 $('addTask').onclick=addTask;$('quickTask').onclick=addTask;
 
 /* quick note: subject dropdown */
 $('quickNote').onclick=(e)=>{
   e.stopPropagation();
   const menu=$('quickNoteMenu');
-  menu.innerHTML=data.subjects.map(s=>`<button data-qsub="${s.id}"><span class="dot" style="--c:${s.color};display:inline-block;width:8px;height:8px;border-radius:50%;background:${s.color};margin-right:6px"></span>${esc(s.name)}</button>`).join('')||'<div style="padding:10px 14px" class="muted">No subjects yet</div>';
+  menu.innerHTML=data.subjects.map(s=>`<button data-qsub="${s.id}"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${s.color};margin-right:6px"></span>${esc(s.name)}</button>`).join('')||'<div style="padding:10px 14px" class="muted">No subjects yet</div>';
   menu.classList.toggle('show');
   menu.querySelectorAll('[data-qsub]').forEach(b=>b.onclick=(ev)=>{
     ev.stopPropagation();
     menu.classList.remove('show');
     currentSubject=b.dataset.qsub;currentPath=[];currentNote=null;dirty=false;
-    showView('notes');renderAll();
-    // pick first topic if any, else prompt to add topic
+    showView('notes');
     const s=data.subjects.find(x=>x.id===currentSubject);
     if(s&&s.topics.length){currentPath=[s.topics[0].id];expanded.add(s.topics[0].id)}
     renderAll();
