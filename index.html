@@ -162,4 +162,29 @@ $('syncAppleBtn').onclick = async () => {
 
   // Send tasks first
   if(tasks.length){
-    await shareICS(taskICS, 'studyspace-tasks.ics', '
+    await shareICS(taskICS, 'studyspace-tasks.ics', 'StudySpace tasks');
+    tasks.forEach(t=>t.appleSynced=true);
+  }
+  // Then notes (slight delay so share sheet doesn't collide)
+  if(notes.length){
+    setTimeout(async ()=>{
+      await shareICS(noteICS, 'studyspace-notes.ics', 'StudySpace notes');
+      notes.forEach(n=>n.appleSynced=true);
+      localStorage.setItem('studyspace_apple_sync','true');
+      updateSyncBadge();
+      save();
+      alert('Tap “Add to Calendar” / “Add to Reminders” in the share sheet to import. Synced items now show a  badge.');
+    }, tasks.length ? 800 : 0);
+  } else {
+    localStorage.setItem('studyspace_apple_sync','true');
+    updateSyncBadge();
+    save();
+    alert('Tap “Add to Calendar” in the share sheet to import your tasks.');
+  }
+};
+
+function renderAll(){renderSubjects();renderStats();renderCalendar();renderHome();updateSyncBadge();if($('notesView').classList.contains('active'))renderNotes();if($('plannerView').classList.contains('active'))renderTasks()}
+renderAll();
+</script>
+</body>
+</html>
