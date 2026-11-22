@@ -16,9 +16,9 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .sidebar-bottom{margin-top:auto;display:grid;gap:8px}.side-action{border:1px solid var(--line);text-align:center}
 .sb-tree{display:grid;gap:2px}.sb-subject{padding:7px 8px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:7px;font-size:13px;color:#505a6e}.sb-subject:hover,.sb-subject.sel{background:#f3f4fa}.sb-subject.sel{font-weight:650;color:var(--accent)}.sb-subject .dot{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none}
 .sb-node{padding-left:14px}.sb-row{display:flex;align-items:center;gap:4px;padding:4px 6px;border-radius:6px;font-size:12px;color:#5b6478;cursor:pointer}.sb-row:hover{background:#f6f7fb}.sb-row .caret{width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;font-size:9px;color:#9aa1af;flex:none}.sb-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sb-row.sel{background:var(--soft);color:var(--accent);font-weight:650}
-.main{min-width:0;padding:28px clamp(18px,4vw,52px)}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:22px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--muted);font-weight:750}.page-title{font-size:27px;letter-spacing:-.8px;margin:3px 0 0}.top-actions{display:flex;gap:9px}.btn{padding:9px 13px;border-radius:9px;background:#fff;border:1px solid var(--line);color:#4e586d;font-weight:600}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn.small{padding:6px 10px;font-size:12px}.btn:hover{filter:brightness(.97)}
+.main{min-width:0;padding:20px clamp(18px,4vw,52px)}.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:18px}.top-actions{display:flex;gap:9px}.btn{padding:9px 13px;border-radius:9px;background:#fff;border:1px solid var(--line);color:#4e586d;font-weight:600}.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}.btn.small{padding:6px 10px;font-size:12px}.btn:hover{filter:brightness(.97)}
 .layout{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:20px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px}.panel h2{font-size:15px;margin:0 0 15px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.stat strong{font-size:24px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:12px}.welcome{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.muted{color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}.stat strong{font-size:24px;display:block;letter-spacing:-.6px}.stat span{color:var(--muted);font-size:12px}.muted{color:var(--muted)}
 .task{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid #f0f1f5}.task:last-child{border:0}.task input{margin-top:4px;accent-color:var(--accent)}.task-text{flex:1}.task.done .task-text{text-decoration:line-through;color:#a2a8b4}.task small{display:block;color:var(--muted);margin-top:2px}.task .delete{background:transparent;color:#a1a7b3;padding:0 4px}.empty{color:#9aa1af;text-align:center;padding:24px 8px}
 .calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.month-label{font-weight:700}.cal-nav{display:flex;gap:5px}.cal-nav button{background:#f4f5f9;border-radius:7px;padding:5px 9px}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.weekday{text-align:center;color:#9299a8;font-size:11px;padding:5px 0}.day{min-height:35px;border-radius:8px;background:transparent;color:#515b6e;position:relative}.day:hover{background:#f1f2f8}.day.other{color:#c1c5ce}.day.today{background:var(--soft);color:var(--accent);font-weight:800}.day.selected{box-shadow:inset 0 0 0 1.5px var(--accent)}.day.has-task:after{content:"";position:absolute;bottom:4px;left:calc(50% - 2px);width:4px;height:4px;border-radius:50%;background:var(--green)}
 .section{display:none}.section.active{display:block}
@@ -29,8 +29,8 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .note-list{margin-top:14px;border-top:1px solid var(--line);padding-top:10px}.note-list h3{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 8px}.note-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;font-size:13px;color:#4e586d}.note-item:hover{background:#f5f6fb}.note-item.sel{background:var(--soft);color:var(--accent);font-weight:650}.note-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.note-item .del{background:transparent;color:#b8bdc9;padding:0 4px}.note-item .del:hover{color:#e05555}
 .add-wrap{position:relative;display:inline-block}.add-menu{position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:170px;z-index:6;display:none;overflow:hidden}.add-menu.show{display:block}.add-menu button{display:block;width:100%;text-align:left;padding:10px 14px;background:transparent;color:var(--ink);font-size:13px}.add-menu button:hover{background:var(--soft);color:var(--accent)}
 .modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:7}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:white;color:var(--ink)}.field-label{display:block;font-size:12px;color:var(--muted);margin:12px 0 5px}
-.mobile-menu{display:none}.sync-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;background:#e9f5f0;padding:5px 12px;border-radius:30px;color:var(--green);font-weight:600;margin-left:10px;border:1px solid #cfe8df}.sync-badge.off{background:#f0f1f5;color:#8a92a3;border-color:#e2e5ec}.main-click-overlay{position:fixed;inset:0;z-index:3;display:none}.main-click-overlay.active{display:block}
-@media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{position:fixed;z-index:4;inset:0 auto 0 0;width:280px;transform:translateX(-105%);transition:transform .2s;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.mobile-menu{display:inline-block}.layout{grid-template-columns:1fr}.right-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.main{padding:20px 15px}.topbar{margin-bottom:18px}.page-title{font-size:23px}.sidebar.open ~ .main-click-overlay{display:block}.note-ws{grid-template-columns:1fr}.tree-pane{max-height:40vh}}
+.mobile-menu{display:none}.main-click-overlay{position:fixed;inset:0;z-index:3;display:none}.main-click-overlay.active{display:block}
+@media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{position:fixed;z-index:4;inset:0 auto 0 0;width:280px;transform:translateX(-105%);transition:transform .2s;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.mobile-menu{display:inline-block}.layout{grid-template-columns:1fr}.right-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}.main{padding:16px 15px}.topbar{margin-bottom:14px}.sidebar.open ~ .main-click-overlay{display:block}.note-ws{grid-template-columns:1fr}.tree-pane{max-height:40vh}}
 @media(max-width:540px){.right-col{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:20px}.top-actions .btn:not(.primary){display:none}.panel{padding:15px}}
 </style>
 </head>
@@ -57,12 +57,11 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 <div class="main-click-overlay" id="mainOverlay"></div>
 <main class="main" id="mainContent">
   <header class="topbar">
-    <div style="display:flex;align-items:center;gap:12px"><button class="btn mobile-menu" id="menuBtn">☰</button><div><div class="eyebrow">Your personal workspace</div><h1 class="page-title" id="pageTitle">Overview <span class="sync-badge off" id="syncBadge">☁ synced</span></h1></div></div>
+    <button class="btn mobile-menu" id="menuBtn">☰</button>
     <div class="top-actions"><button class="btn" id="quickTask">＋ Task</button><button class="btn primary" id="quickNote">＋ New note</button></div>
   </header>
 
   <section class="section active" id="homeView">
-    <div class="welcome"><div><div style="font-size:19px;font-weight:700">A little progress adds up.</div><div class="muted">Your study space, all in one place.</div></div><div class="eyebrow" id="todayLabel"></div></div>
     <div class="stats"><div class="stat"><strong id="statSubjects">0</strong><span>Subjects</span></div><div class="stat"><strong id="statNotes">0</strong><span>Notes saved</span></div><div class="stat"><strong id="statTasks">0</strong><span>Tasks remaining</span></div></div>
     <div class="layout"><div class="panel"><h2>Tasks for today</h2><div id="todayTasks"></div><button class="btn" style="margin-top:12px" onclick="showView('planner')">View all tasks →</button></div><div class="right-col"><div class="panel"><div class="calendar-head"><div class="month-label" id="monthLabel"></div><div class="cal-nav"><button id="prevMonth">‹</button><button id="nextMonth">›</button></div></div><div class="calendar" id="calendar"></div></div><div class="panel"><h2>Recently edited</h2><div id="recentNotes"></div></div></div></div>
   </section>
@@ -89,11 +88,10 @@ let currentSubject=data.subjects[0]?.id||null;
 let currentPath=[],currentNote=null,expanded=new Set(),dirty=false;
 let calDate=new Date(),selectedDate=todayISO(),modalAction=null;
 
-/* local save only; no auto-sync yet */
 function save(){localStorage.setItem('studyspace_data',JSON.stringify(data));renderAll()}
 function esc(s=''){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 
-function showView(v){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));$(v+'View').classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));$('pageTitle').childNodes[0].nodeValue={home:'Overview ',notes:'My notes ',planner:'To-do list '}[v];$('sidebar').classList.remove('open');if(v==='notes')renderNotes();if(v==='planner')renderTasks()}
+function showView(v){document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));$(v+'View').classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));$('sidebar').classList.remove('open');if(v==='notes')renderNotes();if(v==='planner')renderTasks()}
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>showView(b.dataset.view));
 $('menuBtn').onclick=(e)=>{e.stopPropagation();$('sidebar').classList.toggle('open')};
 $('mainOverlay').onclick=()=>$('sidebar').classList.remove('open');
@@ -116,7 +114,6 @@ function renderSidebarTree(){
   host.innerHTML=html;
   host.querySelectorAll('[data-subj]').forEach(el=>el.onclick=()=>{currentSubject=el.dataset.subj;currentPath=[];currentNote=null;dirty=false;showView('notes');renderAll()});
   host.querySelectorAll('[data-sbnav]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();currentSubject=el.dataset.subj;currentPath=JSON.parse(el.dataset.sbnav);currentNote=null;dirty=false;showView('notes');renderAll()});
-  // single-tap caret toggle (same as tapping the row is fine here, but caret only toggles)
   host.querySelectorAll('[data-sbcaret]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();const id=el.dataset.sbcaret;if(expanded.has(id))expanded.delete(id);else expanded.add(id);renderSidebarTree()});
 }
 function renderSbTopics(subject,topics){
@@ -138,13 +135,10 @@ function renderNotes(){
   currentPath.forEach(id=>expanded.add(id));
   if(currentPath.length&&!findTopic(s.topics,currentPath)){currentPath=[];currentNote=null}
   $('treePane').innerHTML=renderTree(s,s.topics,[]);
-  // wire tree — single tap everywhere
   document.querySelectorAll('[data-topen]').forEach(el=>el.onclick=(ev)=>{
     if(ev.target.closest('[data-deltopic]')||ev.target.closest('[data-addsub]')||ev.target.closest('[data-tcaret]'))return;
     const path=JSON.parse(el.dataset.topen);
-    // toggle: if already selected, collapse; else select+expand
-    if(JSON.stringify(path)===JSON.stringify(currentPath)) {
-      // collapse its children
+    if(JSON.stringify(path)===JSON.stringify(currentPath)){
       const id=path[path.length-1];
       if(expanded.has(id)) expanded.delete(id); else expanded.add(id);
     } else {
@@ -180,7 +174,6 @@ function renderNoteEditor(s){
   const list=data.notes.filter(n=>n.subject===s.id&&JSON.stringify(n.path)===JSON.stringify(currentPath)).sort((a,b)=>b.updated-a.updated);
   let note=data.notes.find(n=>n.id===currentNote);
   if(note&&!(note.subject===s.id&&JSON.stringify(note.path)===JSON.stringify(currentPath)))note=null;
-  // if no currentNote, don't auto-select on this render — respects "new note should be new"
   host.innerHTML=`
     <div class="editor-head"><div style="flex:1"><div class="muted" style="font-size:12px">${currentPath.length?esc(topicLabel):'Select a topic on the left, or ＋ Add below'}</div></div>
       <div class="add-wrap"><button class="btn primary small" id="addBtn">＋ Add</button><div class="add-menu" id="addMenu"><button data-add="topic">New topic (top level)</button><button data-add="subtopic">New subtopic here</button><button data-add="note">New note here</button></div></div>
@@ -198,7 +191,6 @@ function renderNoteEditor(s){
   const addBtn=$('addBtn'),addMenu=$('addMenu');
   addBtn.onclick=(e)=>{e.stopPropagation();addMenu.classList.toggle('show')};
   addMenu.querySelectorAll('[data-add]').forEach(b=>b.onclick=(e)=>{e.stopPropagation();addMenu.classList.remove('show');if(b.dataset.add==='topic')addTopic();else if(b.dataset.add==='subtopic')addSubtopicHere();else addNoteHere()});
-  document.addEventListener('click',()=>{ if(addMenu)addMenu.classList.remove('show'); },{once:true});
   if($('noteTitle')){$('noteTitle').oninput=()=>markDirty(true);$('noteBody').oninput=()=>markDirty(true)}
   if($('saveNote'))$('saveNote').onclick=()=>saveNote();
   if($('deleteNote'))$('deleteNote').onclick=()=>{if(!confirm('Delete this note?'))return;data.notes=data.notes.filter(n=>n.id!==currentNote);currentNote=null;dirty=false;save()};
@@ -229,10 +221,9 @@ function saveNote(){
 function addNoteHere(){
   if(!currentSubject)return;
   if(!currentPath.length){alert('Select or create a topic first.');return}
-  // if there is an unsaved dirty note, we keep it (user can save or discard)
   const note={id:uid(),subject:currentSubject,path:[...currentPath],title:'',body:'',updated:Date.now()};
   data.notes.push(note);currentNote=note.id;dirty=false;
-  save(); // save triggers renderAll which will render notes with the new currentNote
+  save();
   setTimeout(()=>{$('noteTitle')?.focus();markDirty(false)},0);
 }
 function addTopic(){
@@ -254,7 +245,7 @@ function addSubtopicHere(){
 }
 
 /* ---------- HOME / TASKS / CALENDAR ---------- */
-function renderStats(){$('statSubjects').textContent=data.subjects.length;$('statNotes').textContent=data.notes.length;$('statTasks').textContent=data.tasks.filter(t=>!t.done).length;$('todayLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'})}
+function renderStats(){$('statSubjects').textContent=data.subjects.length;$('statNotes').textContent=data.notes.length;$('statTasks').textContent=data.tasks.filter(t=>!t.done).length}
 function renderCalendar(){const y=calDate.getFullYear(),m=calDate.getMonth();$('monthLabel').textContent=calDate.toLocaleDateString(undefined,{month:'long',year:'numeric'});const first=new Date(y,m,1),start=(first.getDay()+6)%7;const days=new Date(y,m+1,0).getDate(),prev=new Date(y,m,0).getDate();let out=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="weekday">${x}</div>`).join('');for(let i=0;i<42;i++){let d=i-start+1,dt=new Date(y,m,d),iso=`${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`,num=d<1?prev+d:d>days?d-days:d;out+=`<button class="day ${d<1||d>days?'other':''} ${iso===todayISO()?'today':''} ${iso===selectedDate?'selected':''} ${data.tasks.some(t=>t.date===iso&&!t.done)?'has-task':''}" data-date="${iso}">${num}</button>`}$('calendar').innerHTML=out;document.querySelectorAll('.day').forEach(b=>b.onclick=()=>{selectedDate=b.dataset.date;renderCalendar();showView('planner');renderTasks()})}
 $('prevMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()-1);renderCalendar()};$('nextMonth').onclick=()=>{calDate.setMonth(calDate.getMonth()+1);renderCalendar()};
 function taskHTML(t){return `<div class="task ${t.done?'done':''}"><input type="checkbox" data-check="${t.id}" ${t.done?'checked':''}><div class="task-text">${esc(t.text)}<small>${t.date?new Date(t.date+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'No due date'}</small></div><button class="delete" data-delete="${t.id}" aria-label="Delete task">×</button></div>`}
@@ -276,7 +267,6 @@ $('addTask').onclick=addTask;$('quickTask').onclick=addTask;$('quickNote').oncli
 $('exportBtn').onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='studyspace-backup.json';a.click();URL.revokeObjectURL(a.href)};
 $('importBtn').onclick=()=>$('importFile').click();$('importFile').onchange=async e=>{try{let d=JSON.parse(await e.target.files[0].text());if(Array.isArray(d.subjects)&&Array.isArray(d.notes)&&Array.isArray(d.tasks)){data=d;currentSubject=data.subjects[0]?.id||null;currentPath=[];currentNote=null;save()}else alert('That backup file does not look valid.')}catch{alert('Could not read that backup file.')}e.target.value=''};
 
-/* sync button currently opens a placeholder modal */
 $('syncPanelBtn').onclick=()=>openModal('Sync & settings','<p class="muted" style="font-size:13px">Online sync (offline + JSON backup) is coming in the next version. For now, use Export / Import backup to move data between devices.</p>',null);
 
 function renderAll(){renderSidebarTree();renderStats();renderCalendar();renderHome();if($('notesView').classList.contains('active'))renderNotes();if($('plannerView').classList.contains('active'))renderTasks()}
