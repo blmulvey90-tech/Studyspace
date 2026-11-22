@@ -1,0 +1,169 @@
+{
+  "subjects": [
+    {
+      "id": "econ",
+      "name": "Economics",
+      "color": "#e2a34b",
+      "topics": [
+        {
+          "id": "h66ongbw",
+          "name": "Microeconomics",
+          "subtopics": [],
+          "children": [
+            {
+              "id": "l29ivmh9",
+              "name": "Theme 3",
+              "children": []
+            },
+            {
+              "id": "feupousr",
+              "name": "Theme 1",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "eywfoqks",
+          "name": "Macroeconomics",
+          "subtopics": [],
+          "children": [
+            {
+              "id": "c5lyek8i",
+              "name": "Theme 2",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "t7f2ppj7",
+          "name": "Theme 4",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "soc",
+      "name": "Sociology",
+      "color": "#7c83df",
+      "topics": [
+        {
+          "id": "wuqj24em",
+          "name": "Education",
+          "subtopics": [],
+          "children": []
+        },
+        {
+          "id": "4k7mxi1h",
+          "name": "Families",
+          "subtopics": [],
+          "children": []
+        },
+        {
+          "id": "wsnxo9s9",
+          "name": "Theory’s",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "name": "Media",
+      "color": "#49a88d",
+      "topics": [
+        {
+          "id": "r8whxs6c",
+          "name": "Theory",
+          "children": []
+        },
+        {
+          "id": "rev5qj23",
+          "name": "Music Videos",
+          "subtopics": [
+            {
+              "id": "5k4ffkzy",
+              "name": "Ghost Town"
+            },
+            {
+              "id": "n4mk6cfk",
+              "name": "Old Town Road"
+            }
+          ],
+          "children": [
+            {
+              "id": "5k4ffkzy",
+              "name": "Ghost Town",
+              "children": []
+            },
+            {
+              "id": "n4mk6cfk",
+              "name": "Old Town Road",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "1rhqmnds",
+          "name": "TV",
+          "children": []
+        },
+        {
+          "id": "wopcko1u",
+          "name": "Radio",
+          "children": []
+        },
+        {
+          "id": "ftrmfhj3",
+          "name": "Film",
+          "children": []
+        },
+        {
+          "id": "rfc4hxfg",
+          "name": "Newspapers",
+          "children": []
+        }
+      ]
+    }
+  ],
+  "notes": [
+    {
+      "id": "hon5304m",
+      "subject": "media",
+      "topicId": "rev5qj23",
+      "subtopicId": "5k4ffkzy",
+      "title": "Ghost Town basic facts",
+      "body": "Released in June 1981\nFilmed in London\nHit number one in July\nPurposefully mixed race group",
+      "updated": 1795309750137,
+      "path": [
+        "rev5qj23",
+        "5k4ffkzy"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "yk1jek7k",
+      "text": "3 essay plans",
+      "date": "2026-12-04",
+      "done": false,
+      "subject": "Sociology",
+      "period": "3"
+    },
+    {
+      "id": "3d4oxvu2",
+      "text": "Uplearn",
+      "date": "2026-11-24",
+      "done": false,
+      "repeat": "weekly"
+    },
+    {
+      "id": "a46e9be6",
+      "text": "Seneca",
+      "date": "2026-11-27",
+      "done": false,
+      "repeat": "weekly"
+    }
+  ],
+  "settings": {
+    "week2Start": "2026-11-23"
+  }
+}
