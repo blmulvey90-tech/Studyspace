@@ -27,12 +27,10 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 .timetable{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}.lesson-row{background:var(--lesson-bg);border:1px solid var(--lesson-border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start}.lesson-row.has-deadline{background:var(--red-soft);border-color:var(--red)}.lesson-info strong{display:block;font-size:15px;color:var(--ink);margin-bottom:2px}.lesson-info span{font-size:13px;color:var(--muted)}.lesson-row.has-deadline .lesson-info strong{color:var(--red)}.lesson-actions button{background:var(--soft);color:var(--accent);border:0;border-radius:6px;padding:8px 12px;font-size:12px;font-weight:600}.lesson-actions button:hover{filter:brightness(.95)}
 .note-ws{display:grid;grid-template-columns:240px minmax(0,1fr);gap:18px}.tree-pane{background:#fafbfe;border:1px solid var(--line);border-radius:12px;padding:10px;max-height:70vh;overflow-y:auto}
 .tree-node{margin:0}.tree-row{display:flex;align-items:center;gap:4px;padding:7px 6px;border-radius:7px;font-size:14px;color:#5b6478;cursor:pointer;position:relative;user-select:none}.tree-row:hover{background:#eff1f8}.tree-row.sel{background:var(--soft);color:var(--accent);font-weight:650}.tree-row .caret{width:16px;height:16px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#9aa1af;flex:none}.tree-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.tree-row .addsub,.tree-row .deltopic,.tree-row .mvup,.tree-row .mvdn{background:transparent;color:#a1a7b3;font-size:14px;padding:0 3px;line-height:1;display:none}.tree-row:hover .addsub,.tree-row:hover .deltopic,.tree-row:hover .mvup,.tree-row:hover .mvdn,.tree-row.sel .addsub,.tree-row.sel .deltopic,.tree-row.sel .mvup,.tree-row.sel .mvdn{display:inline}.tree-row .addsub:hover{color:var(--accent)}.tree-row .deltopic:hover{color:#e05555}.tree-row .mvup:hover,.tree-row .mvdn:hover{color:var(--accent)}.tree-children{margin-left:14px;border-left:1px dashed #e1e4ec;padding-left:4px}
-.note-editor{min-width:0}.editor-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}.note-title-input{flex:1;font-size:22px;font-weight:700;border:0;border-bottom:1px solid transparent;padding:6px 2px;outline:none;background:transparent;color:var(--ink)}.note-title-input:focus{border-color:var(--line)}.editor{width:100%;min-height:340px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:16px;color:var(--ink);line-height:1.7;background:#fff;font-size:15px}
+.note-editor{min-width:0}.editor-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}.note-title-input{flex:1;font-size:22px;font-weight:700;border:0;border-bottom:1px solid transparent;padding:6px 2px;outline:none;background:transparent;color:var(--ink)}.note-title-input:focus{border-color:var(--line)}.editor{width:100%;min-height:340px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:16px;color:var(--ink);line-height:1.7;background:#fff;font-size:15px}
 .editor-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px;gap:8px}.editor-foot .meta{font-size:13px;color:var(--muted)}
 .note-list{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}.note-list h3{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin:0 0 8px}.note-item{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:14px;color:#4e586d}.note-item:hover{background:#f5f6fb}.note-item.sel{background:var(--soft);color:var(--accent);font-weight:650}.note-item .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.note-item .del{background:transparent;color:#b8bdc9;padding:0 4px;font-size:16px}.note-item .del:hover{color:#e05555}
 .add-wrap{position:relative;display:inline-block}.add-menu{position:absolute;top:calc(100% + 4px);right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:190px;max-height:260px;overflow-y:auto;z-index:6;display:none}.add-menu.show{display:block}.add-menu button{display:block;width:100%;text-align:left;padding:12px 16px;background:transparent;color:var(--ink);font-size:14px}.add-menu button:hover{background:var(--soft);color:var(--accent)}
-/* Note Tools Menu */
-.note-tools-wrap{position:relative;display:inline-block}.note-tools-btn{background:transparent;color:#c7ccd6;font-size:20px;letter-spacing:2px;padding:0 4px;cursor:pointer;line-height:1;transition:color .2s;font-weight:800}.note-tools-btn:hover,.note-tools-btn.show{color:var(--accent)}.note-tools-menu{position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);min-width:160px;z-index:6;display:none;overflow:hidden;margin-top:4px}.note-tools-menu.show{display:block}.note-tools-menu button{display:block;width:100%;text-align:left;padding:10px 14px;background:transparent;color:var(--ink);font-size:13px}.note-tools-menu button:hover{background:var(--soft);color:var(--accent)}
 .fullscreen-note{position:fixed;inset:0;background:#fff;z-index:20;display:none;flex-direction:column;padding:18px}.fullscreen-note.show{display:flex}.fs-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}.fs-head .note-title-input{font-size:24px}.fs-editor{flex:1;width:100%;border:1px solid var(--line);border-radius:10px;padding:18px;font-size:16px;line-height:1.7;resize:none;color:var(--ink)}.fs-foot{display:flex;justify-content:space-between;align-items:center;margin-top:10px}
 .modal-backdrop{position:fixed;inset:0;background:#171b2a66;display:none;align-items:center;justify-content:center;padding:18px;z-index:7}.modal-backdrop.show{display:flex}.modal{background:#fff;border-radius:15px;padding:22px;width:min(420px,100%);box-shadow:0 20px 70px #10132244}.modal h2{margin:0 0 12px;font-size:18px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.field{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px;background:white;color:var(--ink);font-size:15px}.field-label{display:block;font-size:13px;color:var(--muted);margin:14px 0 6px}
 .mobile-menu{display:none}.main-click-overlay{position:fixed;inset:0;z-index:3;display:none}.main-click-overlay.active{display:block}
@@ -82,9 +80,12 @@ button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}button:
 </div>
 
 <div class="fullscreen-note" id="fsNote">
-  <div class="fs-head"><input class="note-title-input" id="fsTitle" placeholder="Untitled note"></div>
+  <div class="fs-head">
+    <input class="note-title-input" id="fsTitle" placeholder="Untitled note">
+    <button class="btn small" id="fsClose">⤡ Exit</button>
+  </div>
   <textarea class="fs-editor" id="fsBody" placeholder="Start writing..."></textarea>
-  <div class="fs-foot"><div class="meta muted" id="fsMeta" style="font-size:13px"></div><div style="display:flex;gap:6px"><button class="btn" id="fsClose">⤡ Close</button><button class="btn primary" id="fsSave">Save note</button></div></div>
+  <div class="fs-foot"><div class="meta muted" id="fsMeta" style="font-size:13px"></div></div>
 </div>
 
 <div class="modal-backdrop" id="modalBackdrop"><div class="modal"><h2 id="modalTitle">Add</h2><div id="modalBody"></div><div class="modal-actions"><button class="btn" id="modalCancel">Cancel</button><button class="btn primary" id="modalSave">Save</button></div></div></div>
@@ -94,8 +95,7 @@ const $=id=>document.getElementById(id);
 const todayISO=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
 const uid=()=>Math.random().toString(36).slice(2,10);
 
-// --- EXACT TIMETABLE DATA FROM IMAGE ---
-// Mon=1, Tue=2, Wed=3, Thu=4, Fri=5
+// --- EXACT TIMETABLE DATA ---
 const TIMETABLE = {
   1: { // Week 1
     1: [
@@ -176,7 +176,7 @@ if(!data.settings) data.settings = defaults.settings;
 (function migrate(){data.subjects.forEach(s=>{if(!Array.isArray(s.topics))s.topics=[];s.topics.forEach(function fix(t){if(!Array.isArray(t.children))t.children=(t.subtopics||[]).map(st=>({id:st.id||uid(),name:st.name,children:[]}));t.children.forEach(fix)})});data.notes.forEach(n=>{if(!n.path)n.path=n.subtopicId?[n.topicId,n.subtopicId]:(n.topicId?[n.topicId]:[])})})();
 
 let currentSubject=data.subjects[0]?.id||null;
-let currentPath=[],currentNote=null,expanded=new Set(),expandedSubjects=new Set(),dirty=false;
+let currentPath=[],currentNote=null,expanded=new Set(),expandedSubjects=new Set();
 let calDate=new Date(),selectedDate=todayISO(),modalAction=null;
 
 function nextMondayISO(){let d=new Date();let day=d.getDay();let diff=day===1?7:(8-day)%7;if(diff===0)diff=7;d.setDate(d.getDate()+diff);return d.toISOString().split('T')[0]}
@@ -233,11 +233,11 @@ function renderSidebarTree(){
     if(subjOpen) html+=renderSbTopics(s,s.topics);
   });
   host.innerHTML=html;
-  host.querySelectorAll('[data-subj]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();currentSubject=el.dataset.subj;currentPath=[];currentNote=null;dirty=false;showView('notes');renderAll()});
+  host.querySelectorAll('[data-subj]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();currentSubject=el.dataset.subj;currentPath=[];currentNote=null;showView('notes');renderAll()});
   host.querySelectorAll('[data-subjcaret]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();const id=el.dataset.subjcaret;if(expandedSubjects.has(id))expandedSubjects.delete(id);else expandedSubjects.add(id);renderSidebarTree()});
-  host.querySelectorAll('[data-sbnav]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();currentSubject=el.dataset.subj;currentPath=JSON.parse(el.dataset.sbnav);currentNote=null;dirty=false;showView('notes');renderAll()});
+  host.querySelectorAll('[data-sbnav]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();currentSubject=el.dataset.subj;currentPath=JSON.parse(el.dataset.sbnav);currentNote=null;showView('notes');renderAll()});
   host.querySelectorAll('[data-sbcaret]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();const id=el.dataset.sbcaret;if(expanded.has(id))expanded.delete(id);else expanded.add(id);renderSidebarTree()});
-  host.querySelectorAll('[data-sbnote]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();const n=data.notes.find(x=>x.id===el.dataset.sbnote);if(!n)return;currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;dirty=false;showView('notes');renderAll()});
+  host.querySelectorAll('[data-sbnote]').forEach(el=>el.onclick=(ev)=>{ev.stopPropagation();const n=data.notes.find(x=>x.id===el.dataset.sbnote);if(!n)return;currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;showView('notes');renderAll()});
 }
 function renderSbTopics(subject,topics){
   if(!topics.length)return '';
@@ -283,7 +283,7 @@ function renderNotes(){
       const id=path[path.length-1];
       if(expanded.has(id)) expanded.delete(id); else expanded.add(id);
     } else {
-      currentPath=path; currentNote=null; dirty=false;
+      currentPath=path; currentNote=null;
       path.forEach(id=>expanded.add(id));
     }
     renderNotes();
@@ -324,17 +324,11 @@ function renderNoteEditor(s){
     </div>
     ${note?`
       <div class="editor-head">
-        <input class="note-title-input" id="noteTitle" value="${esc(note.title)}" placeholder="Untitled note">
-        <div class="note-tools-wrap">
-          <button class="note-tools-btn ${dirty?'show':''}" id="noteToolsBtn">•••</button>
-          <div class="note-tools-menu" id="noteToolsMenu">
-            <button id="toolBold">Make bold</button>
-            <button id="toolFS">Full screen</button>
-          </div>
-        </div>
+        <input class="note-title-input" id="noteTitle" value="${esc(note.title)}" placeholder="Untitled note" oninput="autoSave()">
+        <button class="btn small" id="fsBtn" title="Full screen" style="padding:8px 12px; font-size:16px">⤢</button>
       </div>
-      <textarea class="editor" id="noteBody" placeholder="Start writing...">${esc(note.body)}</textarea>
-      <div class="editor-foot"><div class="meta">${note.updated?'Updated '+new Date(note.updated).toLocaleString():'New note'}</div><div style="display:flex;gap:6px"><button class="btn" id="deleteNote">Delete</button><button class="btn primary" id="saveNote">Save note</button></div></div>
+      <textarea class="editor" id="noteBody" placeholder="Start writing..." oninput="autoSave()">${esc(note.body)}</textarea>
+      <div class="editor-foot"><div class="meta" id="saveStatus">Autosaved</div><div style="display:flex;gap:6px"><button class="btn" id="deleteNote">Delete</button></div></div>
       <div class="note-list"><h3>Notes in this ${currentPath.length>1?'subtopic':'topic'}</h3>${list.length?list.map(n=>`<div class="note-item ${n.id===currentNote?'sel':''}" data-open-note="${n.id}"><span class="nm">${esc(n.title||'Untitled note')}</span><button class="del" data-del-note="${n.id}">×</button></div>`).join(''):'<div class="muted" style="font-size:13px;padding:6px 0">No other notes yet.</div>'}</div>
     `:`
       <div class="empty">${currentPath.length?'No note selected.':'Pick a topic first.'}</div>
@@ -346,53 +340,12 @@ function renderNoteEditor(s){
   addBtn.onclick=(e)=>{e.stopPropagation();addMenu.classList.toggle('show')};
   addMenu.querySelectorAll('[data-add]').forEach(b=>b.onclick=(e)=>{e.stopPropagation();addMenu.classList.remove('show');if(b.dataset.add==='topic')addTopic();else if(b.dataset.add==='subtopic')addSubtopicHere();else addNoteHere()});
   
-  if($('noteTitle')){$('noteTitle').oninput=()=>markDirty(true);$('noteBody').oninput=()=>markDirty(true)}
-  
-  // Note Tools Menu
-  const toolsBtn = $('noteToolsBtn');
-  const toolsMenu = $('noteToolsMenu');
-  if(toolsBtn) {
-    toolsBtn.onclick=(e)=>{
-      e.stopPropagation();
-      toolsBtn.classList.add('show');
-      toolsMenu.classList.toggle('show');
-    };
-    // Make Bold
-    $('toolBold').onclick=(e)=>{
-      e.stopPropagation();
-      toolsMenu.classList.remove('show');
-      const body = $('noteBody');
-      const start = body.selectionStart;
-      const end = body.selectionEnd;
-      const text = body.value;
-      // Wrap selection in ** or insert if nothing selected
-      const boldText = text.substring(start, end) || 'bold text';
-      body.value = text.substring(0, start) + '**' + boldText + '**' + text.substring(end);
-      body.focus();
-      body.setSelectionRange(start + 2, start + 2 + boldText.length);
-      markDirty(true);
-    };
-    // Full screen
-    $('toolFS').onclick=(e)=>{
-      e.stopPropagation();
-      toolsMenu.classList.remove('show');
-      openFullscreen(note);
-    };
-    // Close menu on outside click
-    document.addEventListener('click', function closeTools(e) {
-      if(!e.target.closest('.note-tools-wrap')) {
-        toolsMenu.classList.remove('show');
-        toolsBtn.classList.remove('show');
-      }
-    });
-  }
-
-  if($('saveNote'))$('saveNote').onclick=()=>saveNote();
-  if($('deleteNote'))$('deleteNote').onclick=()=>{if(!confirm('Delete this note?'))return;data.notes=data.notes.filter(n=>n.id!==currentNote);currentNote=null;dirty=false;save()};
+  if($('fsBtn'))$('fsBtn').onclick=()=>openFullscreen(note);
+  if($('deleteNote'))$('deleteNote').onclick=()=>{if(!confirm('Delete this note?'))return;data.notes=data.notes.filter(n=>n.id!==currentNote);currentNote=null;save()};
   if($('createNote'))$('createNote').onclick=()=>addNoteHere();
   document.querySelectorAll('[data-open-note]').forEach(el=>el.onclick=(e)=>{
     if(e.target.closest('[data-del-note]'))return;
-    currentNote=el.dataset.openNote;dirty=false;renderNotes();
+    currentNote=el.dataset.openNote;renderNotes();
   });
   document.querySelectorAll('[data-del-note]').forEach(el=>el.onclick=(e)=>{
     e.stopPropagation();
@@ -402,48 +355,30 @@ function renderNoteEditor(s){
     save();
   });
 }
-function markDirty(v){
-  dirty=v;
-  const d=$('noteToolsBtn');
-  if(d){
-    if(v) d.classList.add('show');
-    else d.classList.remove('show');
-  }
-}
 
-function saveNote(){
-  if(!currentSubject||!currentPath.length){alert('Pick a topic first.');return}
-  let note=data.notes.find(n=>n.id===currentNote);
-  const title=$('noteTitle').value, body=$('noteBody').value;
-  if(!note){note={id:uid(),subject:currentSubject,path:[...currentPath],title,body,updated:Date.now()};data.notes.push(note);currentNote=note.id}
-  else{note.title=title;note.body=body;note.updated=Date.now()}
-  markDirty(false);
-  save();
-}
-function addNoteHere(){
-  if(!currentSubject)return;
-  if(!currentPath.length){alert('Select or create a topic first.');return}
-  const note={id:uid(),subject:currentSubject,path:[...currentPath],title:'',body:'',updated:Date.now()};
-  data.notes.push(note);currentNote=note.id;dirty=false;
-  save();
-  setTimeout(()=>{$('noteTitle')?.focus();markDirty(false)},0);
-}
-function addTopic(){
-  if(!currentSubject)return;
-  openModal('New topic (top level)',`<label class="field-label">Topic name</label><input class="field" id="topicName" placeholder="e.g. Theme 3">`,()=>{
-    const v=$('topicName').value.trim(), s=data.subjects.find(x=>x.id===currentSubject);
-    if(v&&s){const t={id:uid(),name:v,children:[]};s.topics.push(t);currentPath=[t.id];expanded.add(t.id);currentNote=null;dirty=false;save()}
-  });
-}
-function addSubtopicHere(){
-  if(!currentSubject)return;
-  if(!currentPath.length){addTopic();return}
-  const s=data.subjects.find(x=>x.id===currentSubject), parent=findTopic(s.topics,currentPath);
-  if(!parent){addTopic();return}
-  openModal('New subtopic inside "'+parent.name+'"',`<label class="field-label">Subtopic name</label><input class="field" id="subName" placeholder="e.g. Business growth">`,()=>{
-    const v=$('subName').value.trim();
-    if(v){const t={id:uid(),name:v,children:[]};parent.children.push(t);currentPath=[...currentPath,t.id];expanded.add(t.id);currentNote=null;dirty=false;save()}
-  });
+/* ---------- AUTOSAVE LOGIC ---------- */
+let autoSaveTimer;
+function autoSave(){
+  const status = $('saveStatus');
+  if(status) status.textContent = 'Saving...';
+  clearTimeout(autoSaveTimer);
+  autoSaveTimer = setTimeout(()=>{
+    if(!currentNote) return;
+    let note = data.notes.find(n=>n.id===currentNote);
+    if(!note) return;
+    
+    // Update note data
+    if($('noteTitle')) note.title = $('noteTitle').value;
+    if($('noteBody')) note.body = $('noteBody').value;
+    note.updated = Date.now();
+    
+    // Save to local storage directly without full re-render
+    localStorage.setItem('studyspace_data', JSON.stringify(data));
+    if(status) status.textContent = 'Autosaved ' + new Date().toLocaleTimeString();
+    
+    // Update the sidebar/note list silently
+    renderSidebarTree(); 
+  }, 600); // saves half a second after you stop typing
 }
 
 /* ---------- FULLSCREEN NOTE ---------- */
@@ -453,18 +388,56 @@ function openFullscreen(note){
   fsNoteId=note.id;
   $('fsTitle').value=note.title||'';
   $('fsBody').value=note.body||'';
-  $('fsMeta').textContent=note.updated?'Updated '+new Date(note.updated).toLocaleString():'New note';
+  $('fsMeta').textContent='Autosaved';
   $('fsNote').classList.add('show');
   setTimeout(()=>$('fsTitle').focus(),0);
-  $('fsSave').onclick=()=>{
-    const n=data.notes.find(x=>x.id===fsNoteId); if(!n)return;
-    n.title=$('fsTitle').value; n.body=$('fsBody').value; n.updated=Date.now();
-    $('fsMeta').textContent='Updated '+new Date(n.updated).toLocaleString();
-    save();
+  
+  const fsAutoSave = () => {
+    const n = data.notes.find(x=>x.id===fsNoteId); if(!n) return;
+    n.title = $('fsTitle').value;
+    n.body = $('fsBody').value;
+    n.updated = Date.now();
+    localStorage.setItem('studyspace_data', JSON.stringify(data));
+    $('fsMeta').textContent = 'Autosaved ' + new Date().toLocaleTimeString();
   };
-  $('fsClose').onclick=()=>{$('fsNote').classList.remove('show');fsNoteId=null;renderNotes()};
+
+  $('fsTitle').oninput = fsAutoSave;
+  $('fsBody').oninput = fsAutoSave;
+
+  $('fsClose').onclick=()=>{
+    $('fsNote').classList.remove('show');
+    fsNoteId=null;
+    renderNotes(); // Re-render standard view to show updated text
+    renderSidebarTree();
+  };
 }
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&$('fsNote').classList.contains('show')){$('fsNote').classList.remove('show');fsNoteId=null;renderNotes()}});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&$('fsNote').classList.contains('show')){$('fsNote').classList.remove('show');fsNoteId=null;renderNotes();renderSidebarTree()}});
+
+function addNoteHere(){
+  if(!currentSubject)return;
+  if(!currentPath.length){alert('Select or create a topic first.');return}
+  const note={id:uid(),subject:currentSubject,path:[...currentPath],title:'',body:'',updated:Date.now()};
+  data.notes.push(note);currentNote=note.id;
+  save();
+  setTimeout(()=>{$('noteTitle')?.focus()},0);
+}
+function addTopic(){
+  if(!currentSubject)return;
+  openModal('New topic (top level)',`<label class="field-label">Topic name</label><input class="field" id="topicName" placeholder="e.g. Theme 3">`,()=>{
+    const v=$('topicName').value.trim(), s=data.subjects.find(x=>x.id===currentSubject);
+    if(v&&s){const t={id:uid(),name:v,children:[]};s.topics.push(t);currentPath=[t.id];expanded.add(t.id);currentNote=null;save()}
+  });
+}
+function addSubtopicHere(){
+  if(!currentSubject)return;
+  if(!currentPath.length){addTopic();return}
+  const s=data.subjects.find(x=>x.id===currentSubject), parent=findTopic(s.topics,currentPath);
+  if(!parent){addTopic();return}
+  openModal('New subtopic inside "'+parent.name+'"',`<label class="field-label">Subtopic name</label><input class="field" id="subName" placeholder="e.g. Business growth">`,()=>{
+    const v=$('subName').value.trim();
+    if(v){const t={id:uid(),name:v,children:[]};parent.children.push(t);currentPath=[...currentPath,t.id];expanded.add(t.id);currentNote=null;save()}
+  });
+}
 
 /* ---------- HOME / TASKS / CALENDAR ---------- */
 function renderStats(){$('statSubjects').textContent=data.subjects.length;$('statNotes').textContent=data.notes.length;$('statTasks').textContent=data.tasks.filter(t=>!t.done).length}
@@ -601,7 +574,7 @@ function renderHome(){
 
   document.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>{
     let n=data.notes.find(x=>x.id===b.dataset.open);
-    currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;dirty=false;
+    currentSubject=n.subject;currentPath=[...n.path];currentNote=n.id;
     showView('notes');renderAll();
   });
 }
@@ -624,7 +597,7 @@ $('quickNote').onclick=(e)=>{
   menu.querySelectorAll('[data-qsub]').forEach(b=>b.onclick=(ev)=>{
     ev.stopPropagation();
     menu.classList.remove('show');
-    currentSubject=b.dataset.qsub;currentPath=[];currentNote=null;dirty=false;
+    currentSubject=b.dataset.qsub;currentPath=[];currentNote=null;
     showView('notes');
     const s=data.subjects.find(x=>x.id===currentSubject);
     if(s&&s.topics.length){currentPath=[s.topics[0].id];expanded.add(s.topics[0].id)}
